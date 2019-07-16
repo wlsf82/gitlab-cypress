@@ -1,0 +1,24 @@
+{
+  "name": "gitlab-cypress",
+  "version": "1.0.0",
+  "description": "Sample project to experiment with Cypress for testing the GitLab application",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "keywords": [
+    "testing",
+    "automation",
+    "cypress",
+    "gitlab"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/wlsf82/gitlab-cypress"
+  },
+  "author": "Walmyr Filho <walmyr@gitlab.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^3.4.0",
+    "faker": "^4.1.0"
+  }
+}
