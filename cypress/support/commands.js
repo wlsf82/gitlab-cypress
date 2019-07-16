@@ -41,7 +41,7 @@ Cypress.Commands.add("createProject", project => {
 });
 
 Cypress.Commands.add("createIssue", issue => {
-    cy.visit(`${Cypress.env("USER_NAME")}/${issue.project}/issues/new`);
+    cy.visit(`${Cypress.env("user_name")}/${issue.project}/issues/new`);
 
     cy.get(".qa-issuable-form-title").type(issue.title);
     cy.get(".qa-issuable-form-description").type(issue.description);
