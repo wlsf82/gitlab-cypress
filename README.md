@@ -4,7 +4,7 @@ Sample project to experiment with Cypress for testing the GitLab application
 
 ## Installation
 
-Run `npm t` to install the dev dependencies.
+Run `npm i` to install the dev dependencies.
 
 ## Tests
 
