@@ -26,6 +26,7 @@
 
 Cypress.Commands.add("login", () => {
     cy.visit("users/sign_in");
+
     cy.get(".qa-login-field").type(Cypress.env("user_name"));
     cy.get(".qa-password-field").type(Cypress.env("user_password"));
     cy.get(".qa-sign-in-button").click();
