@@ -27,9 +27,9 @@
 Cypress.Commands.add("login", () => {
     cy.visit("users/sign_in");
 
-    cy.get(".qa-login-field").type(Cypress.env("user_name"));
-    cy.get(".qa-password-field").type(Cypress.env("user_password"));
-    cy.get(".qa-sign-in-button").click();
+    cy.get("[data-qa-selector='login_field']").type(Cypress.env("user_name"));
+    cy.get("[data-qa-selector='password_field']").type(Cypress.env("user_password"));
+    cy.get("[data-qa-selector='sign_in_button']").click();
 });
 
 Cypress.Commands.add("createProject", project => {
