@@ -21,6 +21,5 @@ describe("Create Group Label", () => {
 
         cy.url().should("be.equal", `${Cypress.config().baseUrl}groups/${group.name}/-/labels`);
         cy.get(".manage-labels-list").should("contain", label.title);
-    
     });
 });

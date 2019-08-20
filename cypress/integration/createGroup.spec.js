@@ -13,6 +13,5 @@ describe("Create Group", () => {
 
         cy.url().should("be.equal", `${Cypress.config().baseUrl}${group.name}`);
         cy.contains(group.name).should("be.visible");
-    
     });
 });
