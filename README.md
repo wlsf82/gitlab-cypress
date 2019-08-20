@@ -24,8 +24,10 @@ Run `npm i` to install the dev dependencies.
 
 > Before running the tests, create a file called `cypress.env.json`, based on `cypress.env.example.json`, and update the values of its properties with the credentials of a valid user.
 
-Run `npm t` to run the tests in headless mode.
+Run `npm t` to run the tests in headless mode. The test results should look like the below image.
+
+![Cypress test framework running GitLab tests in headless mode](test-results-headless.png)
 
 Run `npx cypress open`, then click 'Run all specs' to run the tests in interactive mode. You should see something like the below gif.
 
-![Cypress test framework running GitLab tests](GitLab-Cypress.gif)
+![Cypress test framework running GitLab tests in interactive mode](GitLab-Cypress.gif)
