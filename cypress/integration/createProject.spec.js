@@ -17,7 +17,7 @@ describe('Create Project', () => {
   })
 
   context('Create project via API', () => {
-    const projectName = faker.random.word()
+    const projectName = faker.random.uuid()
 
     beforeEach(() => cy.createAccessToken(faker.random.uuid())
       .then(accessTokenValue =>
