@@ -32,6 +32,17 @@ Cypress.Commands.add("login", () => {
     cy.get("[data-qa-selector='sign_in_button']").click();
 });
 
+Cypress.Commands.add("createAccessToken", name => {
+    cy.visit("profile/personal_access_tokens");
+
+    cy.get(".qa-personal-access-token-name-field").type(name);
+    cy.get(".qa-api-radio").check();
+    cy.get(".qa-create-token-button").click();
+
+    cy.get(".qa-created-personal-access-token")
+      .then($input => $input[0].value);
+});
+
 Cypress.Commands.add("createProject", project => {
     cy.visit("projects/new");
 
