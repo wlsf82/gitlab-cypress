@@ -14,10 +14,13 @@ describe('Create Issue', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.createProject(project)
+    cy.createAccessToken(faker.random.uuid())
+      .then(accessTokenValue =>
+        cy.createProjectViaApi(accessTokenValue, project.name))
   })
 
   it('successfully creates an issue', () => {
+    cy.visit(Cypress.env('user_name') + '/' + project.name)
     cy.createIssue(issue)
 
     cy.get('.issue-details').should('contain', issue.title)
