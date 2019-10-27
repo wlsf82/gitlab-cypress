@@ -19,11 +19,9 @@ describe("Create Project", () => {
     context("Create project via API", () => {
         const projectName = faker.random.word();
 
-        beforeEach(() => {
-            cy.createAccessToken(faker.random.uuid())
-              .then(accessTokenValue =>
-                cy.createProjectViaApi(accessTokenValue, projectName));
-        });
+        beforeEach(() => cy.createAccessToken(faker.random.uuid())
+            .then(accessTokenValue =>
+                cy.createProjectViaApi(accessTokenValue, projectName)));
 
         it("successfully visits the just create project", () => {
             cy.visit(Cypress.env("user_name") + "/" + projectName);
