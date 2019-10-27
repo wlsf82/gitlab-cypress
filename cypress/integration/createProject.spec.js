@@ -21,13 +21,8 @@ describe("Create Project", () => {
 
         beforeEach(() => {
             cy.createAccessToken(faker.random.uuid())
-              .then(accessTokenValue => {
-                cy.request(
-                    "POST",
-                    `/api/v4/projects/?private_token=${accessTokenValue}`,
-                    { name: projectName }
-                );
-              });
+              .then(accessTokenValue =>
+                cy.createProjectViaApi(accessTokenValue, projectName));
         });
 
         it("successfully visits the just create project", () => {

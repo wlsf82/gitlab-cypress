@@ -52,6 +52,14 @@ Cypress.Commands.add("createProject", project => {
     cy.contains("Create project").click();
 });
 
+Cypress.Commands.add("createProjectViaApi", (accessToken, name) => {
+    cy.request(
+        "POST",
+        `/api/v4/projects/?private_token=${accessToken}`,
+        { name }
+    );
+})
+
 Cypress.Commands.add("createIssue", issue => {
     cy.visit(`${Cypress.env("user_name")}/${issue.project}/issues/new`);
 
