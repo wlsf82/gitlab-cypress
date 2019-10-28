@@ -54,6 +54,12 @@ Cypress.Commands.add('createGroupLabel', label => {
 
 // Custom commands that interact with the app via API
 
+Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
+  cy.request(
+    'POST', `/api/v4/groups/?private_token=${accessToken}`, { name, path }
+  )
+})
+
 Cypress.Commands.add('createProjectViaApi', (accessToken, name) => {
   cy.request(
     'POST', `/api/v4/projects/?private_token=${accessToken}`, { name }
