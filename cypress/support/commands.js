@@ -19,7 +19,7 @@ Cypress.Commands.add('createAccessToken', name => {
     .then($input => $input[0].value)
 })
 
-Cypress.Commands.add('createProject', project => {
+Cypress.Commands.add('createProjectViaGui', project => {
   cy.visit('projects/new')
 
   cy.get('#project_name').type(project.name)
