@@ -63,5 +63,5 @@ Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
 Cypress.Commands.add('createProjectViaApi', (accessToken, name) => {
   cy.request(
     'POST', `/api/v4/projects/?private_token=${accessToken}`, { name }
-  )
+  ).then(response => [accessToken, response.body.id])
 })
