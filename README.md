@@ -4,7 +4,9 @@ Sample project to experiment with Cypress for testing the GitLab application.
 
 ## Pre-requirements
 
-You need to have node and npm installed on your local environment.
+You need to have a GitLab local environment such as GDK or Docker up and running.
+
+You also need to have node and npm installed on your local environment.
 
 For this project I used the following versions:
 
