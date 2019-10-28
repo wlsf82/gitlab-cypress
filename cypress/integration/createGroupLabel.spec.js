@@ -3,7 +3,7 @@ const faker = require('faker')
 describe('Create Group Label', () => {
   const group = {
     name: faker.random.uuid(),
-    path: faker.random.uuid(),
+    path: faker.random.uuid()
   }
 
   beforeEach(() => {
