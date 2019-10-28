@@ -1,3 +1,5 @@
+// Custom commands that interact with the app via GUI
+
 Cypress.Commands.add('login', () => {
   cy.visit('users/sign_in')
 
@@ -26,12 +28,6 @@ Cypress.Commands.add('createProject', project => {
   cy.contains('Create project').click()
 })
 
-Cypress.Commands.add('createProjectViaApi', (accessToken, name) => {
-  cy.request(
-    'POST', `/api/v4/projects/?private_token=${accessToken}`, { name }
-  )
-})
-
 Cypress.Commands.add('createIssue', issue => {
   cy.visit(`${Cypress.env('user_name')}/${issue.project}/issues/new`)
 
@@ -54,4 +50,12 @@ Cypress.Commands.add('createGroupLabel', label => {
 
   cy.get('.qa-label-title').type(label.title)
   cy.contains('Create label').click()
+})
+
+// Custom commands that interact with the app via API
+
+Cypress.Commands.add('createProjectViaApi', (accessToken, name) => {
+  cy.request(
+    'POST', `/api/v4/projects/?private_token=${accessToken}`, { name }
+  )
 })
