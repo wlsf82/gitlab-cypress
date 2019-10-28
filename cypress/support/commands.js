@@ -65,3 +65,9 @@ Cypress.Commands.add('createProjectViaApi', (accessToken, name) => {
     'POST', `/api/v4/projects/?private_token=${accessToken}`, { name }
   ).then(response => [accessToken, response.body.id])
 })
+
+Cypress.Commands.add('createIssueViaApi', (accessToken, projectId, title) => {
+  cy.request(
+    'POST', `/api/v4/projects/${projectId}/issues?private_token=${accessToken}`, { title }
+  ).then(response => response.body.iid)
+})
