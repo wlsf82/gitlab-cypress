@@ -20,7 +20,6 @@ describe('Create Issue', () => {
   })
 
   it('successfully creates an issue', () => {
-    cy.visit(Cypress.env('user_name') + '/' + project.name)
     cy.createIssue(issue)
 
     cy.get('.issue-details').should('contain', issue.title)
