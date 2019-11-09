@@ -15,7 +15,7 @@ describe('Comments on an Issue', () => {
 
             cy.createIssueViaApi(accessToken, projectId, issueTitle)
               .then(issueIid =>
-                cy.visit(Cypress.env('user_name') + '/' + projectName + '/issues/' + issueIid))
+                cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`))
           }))
   })
 

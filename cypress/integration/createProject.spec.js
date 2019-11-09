@@ -24,7 +24,7 @@ describe('Create Project', () => {
         cy.createProjectViaApi(accessTokenValue, projectName)))
 
     it('successfully visits the just create project', () => {
-      cy.visit(Cypress.env('user_name') + '/' + projectName)
+      cy.visit(`${Cypress.env('user_name')}/${projectName}`)
 
       cy.get('.qa-project-name')
         .should('be.visible')
