@@ -65,6 +65,11 @@ Cypress.Commands.add('labelIssueWith', label => {
   cy.get('body').click()
 })
 
+Cypress.Commands.add('commentOnIssue', comment => {
+  cy.get('.qa-comment-input').type(comment)
+  cy.get('.qa-comment-button').click()
+})
+
 // Custom commands that interact with the app via API
 
 Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {

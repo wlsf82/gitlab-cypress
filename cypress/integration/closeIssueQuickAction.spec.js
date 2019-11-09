@@ -20,8 +20,7 @@ describe('Close an issue using quick action', () => {
   })
 
   it('successfully', () => {
-    cy.get('.qa-comment-input').type('/close ')
-    cy.get('.qa-comment-button').click()
+    cy.commentOnIssue('/close ')
 
     cy.contains('Closed this issue')
       .should('be.visible')

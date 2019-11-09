@@ -22,8 +22,7 @@ describe('Comments on an Issue', () => {
   it('successfully', () => {
     const comment = faker.random.words(3)
 
-    cy.get('.qa-comment-input').type(comment)
-    cy.get('.qa-comment-button').click()
+    cy.commentOnIssue(comment)
 
     cy.get('.qa-noteable-note-item').should('contain', comment)
   })
