@@ -70,6 +70,11 @@ Cypress.Commands.add('commentOnIssue', comment => {
   cy.get('.qa-comment-button').click()
 })
 
+Cypress.Commands.add('logout', comment => {
+  cy.get('.qa-user-avatar').click()
+  cy.contains('Sign out').click()
+})
+
 // Custom commands that interact with the app via API
 
 Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
