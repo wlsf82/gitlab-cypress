@@ -59,6 +59,12 @@ Cypress.Commands.add('createProjectMilestone', milestone => {
   cy.get('.qa-milestone-create-button').click()
 })
 
+Cypress.Commands.add('labelIssueWith', label => {
+  cy.get('.qa-edit-link-labels').click()
+  cy.contains(label.name).click()
+  cy.get('body').click()
+})
+
 // Custom commands that interact with the app via API
 
 Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
@@ -77,4 +83,15 @@ Cypress.Commands.add('createIssueViaApi', (accessToken, projectId, title) => {
   cy.request(
     'POST', `/api/v4/projects/${projectId}/issues?private_token=${accessToken}`, { title }
   ).then(response => response.body.iid)
+})
+
+Cypress.Commands.add('createProjectLabelViaApi', (accessToken, projectId, label) => {
+  cy.request(
+    'POST',
+    `/api/v4/projects/${projectId}/labels?private_token=${accessToken}`,
+    {
+      name: label.name,
+      color: label.color
+    }
+  )
 })
