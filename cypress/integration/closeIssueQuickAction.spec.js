@@ -28,7 +28,7 @@ describe('Close an issue using quick action', () => {
     cy.reload()
 
     cy.get('.status-box-issue-closed')
-      .should('exist')
+      .should('be.visible')
       .and('contain', 'Closed')
   })
 })
