@@ -52,6 +52,13 @@ Cypress.Commands.add('createGroupLabel', label => {
   cy.contains('Create label').click()
 })
 
+Cypress.Commands.add('createProjectMilestone', milestone => {
+  cy.visit(`${Cypress.env('user_name')}/${milestone.project.name}/-/milestones/new`)
+
+  cy.get('.qa-milestone-title').type(milestone.title)
+  cy.get('.qa-milestone-create-button').click()
+})
+
 // Custom commands that interact with the app via API
 
 Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
