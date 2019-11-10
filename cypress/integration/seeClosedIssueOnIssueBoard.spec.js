@@ -16,7 +16,7 @@ describe('Issue board', () => {
             cy.createIssueViaApi(accessToken, projectId, issueTitle)
               .then(issueIid => {
                 cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
-                cy.commentOnIssue('/close ')
+                cy.get('.d-none.btn-close').click()
               })
           }))
     cy.visit(`${Cypress.env('user_name')}/${projectName}/-/boards`)

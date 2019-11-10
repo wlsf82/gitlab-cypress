@@ -16,8 +16,7 @@ describe('Reopen a closed issue', () => {
             cy.createIssueViaApi(accessToken, projectId, issueTitle)
               .then(issueIid => {
                 cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
-                cy.commentOnIssue('/close ')
-                cy.reload()
+                cy.get('.d-none.btn-close').click()
               })
           }))
   })
