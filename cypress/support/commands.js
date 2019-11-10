@@ -80,15 +80,6 @@ Cypress.Commands.add('addMilestoneOnIssue', milestone => {
   cy.contains(milestone.title).click()
 })
 
-Cypress.Commands.add('editIssueTitle', newTitle => {
-  cy.get('.qa-edit-button').click()
-  cy.get('.qa-title-input')
-    .as('issueTitleInput')
-    .clear()
-  cy.get('@issueTitleInput').type(newTitle)
-  cy.get('.qa-save-button').click()
-})
-
 // Custom commands that interact with the app via API
 
 Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
