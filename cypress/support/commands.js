@@ -75,6 +75,11 @@ Cypress.Commands.add('logout', comment => {
   cy.contains('Sign out').click()
 })
 
+Cypress.Commands.add('addMilestoneOnIssue', milestone => {
+  cy.get('.block.milestone .edit-link').click()
+  cy.contains(milestone.title).click()
+})
+
 // Custom commands that interact with the app via API
 
 Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
@@ -103,5 +108,13 @@ Cypress.Commands.add('createProjectLabelViaApi', (accessToken, projectId, label)
       name: label.name,
       color: label.color
     }
+  )
+})
+
+Cypress.Commands.add('createProjectMilestoneViaApi', (accessToken, projectId, milestone) => {
+  cy.request(
+    'POST',
+    `/api/v4/projects/${projectId}/milestones?private_token=${accessToken}`,
+    { title: milestone.title }
   )
 })
