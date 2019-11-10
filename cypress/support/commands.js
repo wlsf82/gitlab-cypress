@@ -45,6 +45,13 @@ Cypress.Commands.add('createPublicGroup', group => {
   cy.contains('Create group').click()
 })
 
+Cypress.Commands.add('createSubgroup', (groupId, subgroup) => {
+  cy.visit(`groups/new?parent_id=${groupId}`)
+
+  cy.get('#group_name').type(subgroup.name)
+  cy.contains('Create group').click()
+})
+
 Cypress.Commands.add('createGroupLabel', label => {
   cy.visit(`groups/${label.group}/-/labels/new`)
 
