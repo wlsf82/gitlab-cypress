@@ -92,7 +92,7 @@ Cypress.Commands.add('addMilestoneOnIssue', milestone => {
 Cypress.Commands.add('createGroupViaApi', (accessToken, name, path) => {
   cy.request(
     'POST', `/api/v4/groups/?private_token=${accessToken}`, { name, path }
-  )
+  ).then(response => response.body.id)
 })
 
 Cypress.Commands.add('createProjectViaApi', (accessToken, name) => {
