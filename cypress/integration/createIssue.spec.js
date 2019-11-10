@@ -19,7 +19,7 @@ describe('Create Issue', () => {
         cy.createProjectViaApi(accessTokenValue, project.name))
   })
 
-  it('successfully creates an issue', () => {
+  it('successfully', () => {
     cy.createIssue(issue)
 
     cy.get('.issue-details').should('contain', issue.title)

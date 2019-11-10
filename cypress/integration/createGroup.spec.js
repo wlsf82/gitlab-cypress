@@ -3,7 +3,7 @@ const faker = require('faker')
 describe('Create Group', () => {
   beforeEach(() => cy.login())
 
-  it('successfully creates a group', () => {
+  it('successfully', () => {
     const group = {
       name: faker.random.uuid(),
       description: faker.random.words(5)

@@ -14,7 +14,7 @@ describe('Create Group Label', () => {
     cy.visit(group.path)
   })
 
-  it('successfully creates a group label', () => {
+  it('successfully', () => {
     const label = {
       group: group.path,
       title: faker.random.word()

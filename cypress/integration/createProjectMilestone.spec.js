@@ -15,7 +15,7 @@ describe('Create Projet Milestone', () => {
         cy.createProjectViaApi(accessTokenValue, project.name))
   })
 
-  it('successfully creates an issue', () => {
+  it('successfully', () => {
     cy.createProjectMilestone(milestone)
 
     cy.get('.qa-milestone-title').should('contain', milestone.title)
