@@ -26,6 +26,8 @@ Run `npm i` to install the dev dependencies.
 
 > Before running the tests, create a file called `cypress.env.json`, based on `cypress.env.example.json`, and update the values of its properties with the credentials of a valid user.
 
+> After that, log in on your local GitLab environment and create an access token, then export it as an environment variable called `CYPRESS_ACCESS_TOKEN`. This token will be used by most of the tests.
+
 Run `npm t` to run the tests in headless mode. The test results should look like the below image.
 
 ![Cypress test framework running GitLab tests in headless mode](assets/test-results-headless.png)
