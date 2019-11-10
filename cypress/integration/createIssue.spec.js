@@ -14,9 +14,7 @@ describe('Create Issue', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.createAccessToken(faker.random.uuid())
-      .then(accessTokenValue =>
-        cy.createProjectViaApi(accessTokenValue, project.name))
+    cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), project.name)
   })
 
   it('successfully', () => {

@@ -6,19 +6,13 @@ describe('Reopen a closed issue', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.createAccessToken(faker.random.uuid())
-      .then(accessTokenValue =>
-        cy.createProjectViaApi(accessTokenValue, projectName)
-          .then(data => {
-            const accessToken = data[0]
-            const projectId = data[1]
-
-            cy.createIssueViaApi(accessToken, projectId, issueTitle)
-              .then(issueIid => {
-                cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
-                cy.get('.d-none.btn-close').click()
-              })
-          }))
+    cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), projectName)
+      .then(projectId =>
+        cy.createIssueViaApi(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle))
+          .then(issueIid => {
+            cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+            cy.get('.d-none.btn-close').click()
+          })
   })
 
   it('successfully', () => {

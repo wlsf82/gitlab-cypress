@@ -7,10 +7,8 @@ describe('Create a subgroup', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.createAccessToken(faker.random.uuid())
-      .then(accessTokenValue =>
-        cy.createGroupViaApi(accessTokenValue, groupName, groupPath)
-          .then(groupId => cy.createSubgroup(groupId, subgroup)))
+    cy.createGroupViaApi(Cypress.env('ACCESS_TOKEN'), groupName, groupPath)
+      .then(groupId => cy.createSubgroup(groupId, subgroup))
   })
 
   it('successfully', () => {

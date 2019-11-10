@@ -8,9 +8,7 @@ describe('Create Group Label', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.createAccessToken(faker.random.uuid())
-      .then(accessTokenValue =>
-        cy.createGroupViaApi(accessTokenValue, group.name, group.path))
+    cy.createGroupViaApi(Cypress.env('ACCESS_TOKEN'), group.name, group.path)
     cy.visit(group.path)
   })
 

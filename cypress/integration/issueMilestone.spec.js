@@ -7,19 +7,13 @@ describe('Issue milestone', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.createAccessToken(faker.random.uuid())
-      .then(accessTokenValue =>
-        cy.createProjectViaApi(accessTokenValue, projectName)
-          .then(data => {
-            const accessToken = data[0]
-            const projectId = data[1]
-
-            cy.createProjectMilestoneViaApi(accessToken, projectId, milestone)
-
-            cy.createIssueViaApi(accessToken, projectId, issueTitle)
-              .then(issueIid =>
-                cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`))
-          }))
+    cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), projectName)
+      .then(projectId => {
+        cy.createProjectMilestoneViaApi(Cypress.env('ACCESS_TOKEN'), projectId, milestone)
+        cy.createIssueViaApi(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle)
+          .then(issueIid =>
+            cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`))
+      })
   })
 
   it('adds milestone to an issue', () => {
