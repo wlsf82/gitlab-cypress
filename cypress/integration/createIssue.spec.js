@@ -20,7 +20,8 @@ describe('Create Issue', () => {
   it('successfully', () => {
     cy.createIssue(issue)
 
-    cy.get('.issue-details').should('contain', issue.title)
-    cy.get('.issue-details').should('contain', issue.description)
+    cy.get('.issue-details')
+      .should('contain', issue.title)
+      .and('contain', issue.description)
   })
 })
