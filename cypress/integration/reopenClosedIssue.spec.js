@@ -8,11 +8,11 @@ describe('Reopen a closed issue', () => {
     cy.login()
     cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), projectName)
       .then(projectId =>
-        cy.createIssueViaApi(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle))
-          .then(issueIid => {
-            cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
-            cy.get('.d-none.btn-close').click()
-          })
+        cy.createIssueViaApi(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle)
+      ).then(issueIid => {
+        cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+        cy.get('.d-none.btn-close').click()
+      })
   })
 
   it('successfully', () => {
