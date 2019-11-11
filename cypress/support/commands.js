@@ -16,7 +16,6 @@ Cypress.Commands.add('createAccessToken', name => {
   cy.get('.qa-create-token-button').click()
 
   cy.get('.qa-created-personal-access-token')
-    .then($input => $input[0].value)
 })
 
 Cypress.Commands.add('createProjectViaGui', project => {
