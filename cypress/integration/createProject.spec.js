@@ -15,18 +15,4 @@ describe('Create Project', () => {
     cy.contains(project.name).should('be.visible')
     cy.contains(project.description).should('be.visible')
   })
-
-  context('Create project via API', () => {
-    const projectName = faker.random.uuid()
-
-    beforeEach(() => cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), projectName))
-
-    it('successfully visits the just create project', () => {
-      cy.visit(`${Cypress.env('user_name')}/${projectName}`)
-
-      cy.get('.qa-project-name')
-        .should('be.visible')
-        .and('contain', projectName)
-    })
-  })
 })
