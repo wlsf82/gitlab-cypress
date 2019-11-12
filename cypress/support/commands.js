@@ -12,8 +12,6 @@ Cypress.Commands.add('createAccessToken', name => {
   cy.get('.qa-personal-access-token-name-field').type(name)
   cy.get('.qa-api-radio').check()
   cy.get('.qa-create-token-button').click()
-
-  cy.get('.qa-created-personal-access-token')
 })
 
 Cypress.Commands.add('createProjectViaGui', project => {
