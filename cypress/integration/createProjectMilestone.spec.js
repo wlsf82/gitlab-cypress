@@ -16,6 +16,6 @@ describe('Create Projet Milestone', () => {
   it('successfully', () => {
     cy.createProjectMilestone(milestone)
 
-    cy.get('.qa-milestone-title').should('contain', milestone.title)
+    cy.get('.milestone-detail h2').should('contain', milestone.title)
   })
 })
