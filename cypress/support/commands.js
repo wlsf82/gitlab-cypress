@@ -81,3 +81,9 @@ Cypress.Commands.add('addMilestoneOnIssue', milestone => {
   cy.get('.block.milestone .edit-link').click()
   cy.contains(milestone.title).click()
 })
+
+Cypress.Commands.add('createFile', file => {
+  cy.get('#file_name').type(file.name)
+  cy.get('#editor').type(file.content)
+  cy.get('.qa-commit-button').click()
+})
