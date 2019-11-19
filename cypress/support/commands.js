@@ -72,7 +72,7 @@ Cypress.Commands.add('commentOnIssue', comment => {
   cy.get('.qa-comment-button').click()
 })
 
-Cypress.Commands.add('logout', comment => {
+Cypress.Commands.add('logout', () => {
   cy.get('.qa-user-avatar').click()
   cy.contains('Sign out').click()
 })
