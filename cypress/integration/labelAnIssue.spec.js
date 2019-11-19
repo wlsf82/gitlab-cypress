@@ -9,18 +9,18 @@ describe('Label an issue', () => {
   }
 
   beforeEach(() => {
-    cy.login()
-    cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), projectName)
+    cy.gui_login()
+    cy.api_createProject(Cypress.env('ACCESS_TOKEN'), projectName)
       .then(projectId => {
-        cy.createProjectLabelViaApi(Cypress.env('ACCESS_TOKEN'), projectId, label)
-        cy.createIssueViaApi(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle)
+        cy.api_createProjectLabel(Cypress.env('ACCESS_TOKEN'), projectId, label)
+        cy.api_createIssue(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle)
           .then(issueIid =>
             cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`))
       })
   })
 
   it('successfully', () => {
-    cy.labelIssueWith(label)
+    cy.gui_labelIssueWith(label)
 
     cy.get('.qa-labels-block').should('contain', label.name)
   })

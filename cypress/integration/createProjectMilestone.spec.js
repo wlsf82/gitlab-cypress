@@ -9,12 +9,12 @@ describe('Create Projet Milestone', () => {
   }
 
   beforeEach(() => {
-    cy.login()
-    cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), project.name)
+    cy.gui_login()
+    cy.api_createProject(Cypress.env('ACCESS_TOKEN'), project.name)
   })
 
   it('successfully', () => {
-    cy.createProjectMilestone(milestone)
+    cy.gui_createProjectMilestone(milestone)
 
     cy.get('.milestone-detail h2').should('contain', milestone.title)
   })

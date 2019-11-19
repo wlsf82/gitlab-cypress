@@ -1,7 +1,7 @@
 const faker = require('faker')
 
 describe('Create Project', () => {
-  beforeEach(() => cy.login())
+  beforeEach(() => cy.gui_login())
 
   it('successfully', () => {
     const project = {
@@ -9,7 +9,7 @@ describe('Create Project', () => {
       description: faker.random.words(5)
     }
 
-    cy.createProjectViaGui(project)
+    cy.gui_createProject(project)
 
     cy.url().should('be.equal', `${Cypress.config().baseUrl}${Cypress.env('user_name')}/${project.name}`)
     cy.contains(project.name).should('be.visible')

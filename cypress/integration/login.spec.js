@@ -1,6 +1,6 @@
 describe('Login', () => {
   it('successfully', () => {
-    cy.login()
+    cy.gui_login()
 
     cy.get('.qa-user-avatar').should('exist')
   })

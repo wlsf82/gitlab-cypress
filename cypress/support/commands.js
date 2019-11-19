@@ -1,4 +1,4 @@
-Cypress.Commands.add('login', () => {
+Cypress.Commands.add('gui_login', () => {
   cy.visit('users/sign_in')
 
   cy.get("[data-qa-selector='login_field']").type(Cypress.env('user_name'))
@@ -6,7 +6,7 @@ Cypress.Commands.add('login', () => {
   cy.get("[data-qa-selector='sign_in_button']").click()
 })
 
-Cypress.Commands.add('createAccessToken', name => {
+Cypress.Commands.add('gui_createAccessToken', name => {
   cy.visit('profile/personal_access_tokens')
 
   cy.get('.qa-personal-access-token-name-field').type(name)
@@ -14,7 +14,7 @@ Cypress.Commands.add('createAccessToken', name => {
   cy.get('.qa-create-token-button').click()
 })
 
-Cypress.Commands.add('createProjectViaGui', project => {
+Cypress.Commands.add('gui_createProject', project => {
   cy.visit('projects/new')
 
   cy.get('#project_name').type(project.name)
@@ -23,7 +23,7 @@ Cypress.Commands.add('createProjectViaGui', project => {
   cy.contains('Create project').click()
 })
 
-Cypress.Commands.add('createIssue', issue => {
+Cypress.Commands.add('gui_createIssue', issue => {
   cy.visit(`${Cypress.env('user_name')}/${issue.project}/issues/new`)
 
   cy.get('.qa-issuable-form-title').type(issue.title)
@@ -31,7 +31,7 @@ Cypress.Commands.add('createIssue', issue => {
   cy.contains('Submit issue').click()
 })
 
-Cypress.Commands.add('createPublicGroup', group => {
+Cypress.Commands.add('gui_createPublicGroup', group => {
   cy.visit('groups/new')
 
   cy.get('#group_name').type(group.name)
@@ -40,49 +40,49 @@ Cypress.Commands.add('createPublicGroup', group => {
   cy.contains('Create group').click()
 })
 
-Cypress.Commands.add('createSubgroup', (groupId, subgroup) => {
+Cypress.Commands.add('gui_createSubgroup', (groupId, subgroup) => {
   cy.visit(`groups/new?parent_id=${groupId}`)
 
   cy.get('#group_name').type(subgroup.name)
   cy.contains('Create group').click()
 })
 
-Cypress.Commands.add('createGroupLabel', label => {
+Cypress.Commands.add('gui_createGroupLabel', label => {
   cy.visit(`groups/${label.group}/-/labels/new`)
 
   cy.get('.qa-label-title').type(label.title)
   cy.contains('Create label').click()
 })
 
-Cypress.Commands.add('createProjectMilestone', milestone => {
+Cypress.Commands.add('gui_createProjectMilestone', milestone => {
   cy.visit(`${Cypress.env('user_name')}/${milestone.project.name}/-/milestones/new`)
 
   cy.get('.qa-milestone-title').type(milestone.title)
   cy.get('.qa-milestone-create-button').click()
 })
 
-Cypress.Commands.add('labelIssueWith', label => {
+Cypress.Commands.add('gui_labelIssueWith', label => {
   cy.get('.qa-edit-link-labels').click()
   cy.contains(label.name).click()
   cy.get('body').click()
 })
 
-Cypress.Commands.add('commentOnIssue', comment => {
+Cypress.Commands.add('gui_commentOnIssue', comment => {
   cy.get('.qa-comment-input').type(comment)
   cy.get('.qa-comment-button').click()
 })
 
-Cypress.Commands.add('logout', () => {
+Cypress.Commands.add('gui_logout', () => {
   cy.get('.qa-user-avatar').click()
   cy.contains('Sign out').click()
 })
 
-Cypress.Commands.add('addMilestoneOnIssue', milestone => {
+Cypress.Commands.add('gui_addMilestoneOnIssue', milestone => {
   cy.get('.block.milestone .edit-link').click()
   cy.contains(milestone.title).click()
 })
 
-Cypress.Commands.add('createFile', file => {
+Cypress.Commands.add('gui_createFile', file => {
   cy.get('#file_name').type(file.name)
   cy.get('#editor').type(file.content)
   cy.get('.qa-commit-button').click()

@@ -1,7 +1,7 @@
 const faker = require('faker')
 
 describe('Create Group', () => {
-  beforeEach(() => cy.login())
+  beforeEach(() => cy.gui_login())
 
   it('successfully', () => {
     const group = {
@@ -9,7 +9,7 @@ describe('Create Group', () => {
       description: faker.random.words(5)
     }
 
-    cy.createPublicGroup(group)
+    cy.gui_createPublicGroup(group)
 
     cy.url().should('be.equal', `${Cypress.config().baseUrl}${group.name}`)
     cy.contains(group.name).should('be.visible')

@@ -6,9 +6,9 @@ describe('Create a subgroup', () => {
   const subgroup = { name: `sub-group-${faker.random.uuid()}` }
 
   beforeEach(() => {
-    cy.login()
-    cy.createGroupViaApi(Cypress.env('ACCESS_TOKEN'), groupName, groupPath)
-      .then(groupId => cy.createSubgroup(groupId, subgroup))
+    cy.gui_login()
+    cy.api_createGroup(Cypress.env('ACCESS_TOKEN'), groupName, groupPath)
+      .then(groupId => cy.gui_createSubgroup(groupId, subgroup))
   })
 
   it('successfully', () => {

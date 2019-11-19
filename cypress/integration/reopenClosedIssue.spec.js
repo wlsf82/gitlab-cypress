@@ -5,10 +5,10 @@ describe('Reopen a closed issue', () => {
   const issueTitle = faker.random.uuid()
 
   beforeEach(() => {
-    cy.login()
-    cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), projectName)
+    cy.gui_login()
+    cy.api_createProject(Cypress.env('ACCESS_TOKEN'), projectName)
       .then(projectId =>
-        cy.createIssueViaApi(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle)
+        cy.api_createIssue(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle)
       ).then(issueIid => {
         cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
         cy.get('.d-none.btn-close').click()

@@ -13,12 +13,12 @@ describe('Create Issue', () => {
   }
 
   beforeEach(() => {
-    cy.login()
-    cy.createProjectViaApi(Cypress.env('ACCESS_TOKEN'), project.name)
+    cy.gui_login()
+    cy.api_createProject(Cypress.env('ACCESS_TOKEN'), project.name)
   })
 
   it('successfully', () => {
-    cy.createIssue(issue)
+    cy.gui_createIssue(issue)
 
     cy.get('.issue-details')
       .should('contain', issue.title)
