@@ -10,7 +10,7 @@ describe('Create new file', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createProject(Cypress.env('ACCESS_TOKEN'), projectName)
+    cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), projectName)
     cy.visit(`${Cypress.env('user_name')}/${projectName}/new/master`)
   })
 

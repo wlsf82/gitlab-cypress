@@ -7,9 +7,9 @@ describe('Issue board', () => {
   beforeEach(() => cy.gui_login())
 
   it('sees an opened issue on the issue board, closes it, and sees it closed', () => {
-    cy.api_createProject(Cypress.env('ACCESS_TOKEN'), projectName)
+    cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), projectName)
       .then(projectId =>
-        cy.api_createIssue(Cypress.env('ACCESS_TOKEN'), projectId, issueTitle)
+        cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), projectId, issueTitle)
       ).then(issueIid => {
         cy.visit(`${Cypress.env('user_name')}/${projectName}/-/boards`)
 

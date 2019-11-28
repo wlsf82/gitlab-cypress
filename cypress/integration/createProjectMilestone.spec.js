@@ -10,7 +10,7 @@ describe('Create Projet Milestone', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createProject(Cypress.env('ACCESS_TOKEN'), project.name)
+    cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), project.name)
   })
 
   it('successfully', () => {

@@ -8,7 +8,7 @@ describe('Create Group Label', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createGroup(Cypress.env('ACCESS_TOKEN'), group.name, group.path)
+    cy.api_createGroup(Cypress.env('GITLAB_ACCESS_TOKEN'), group.name, group.path)
     cy.visit(group.path)
   })
 

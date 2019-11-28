@@ -26,7 +26,7 @@ Run `npm i` to install the dev dependencies.
 
 > Before running the tests, create a file called `cypress.env.json`, based on `cypress.env.example.json`, and update the values of its properties with the credentials of a valid user.
 
-> After that, log in on your local GitLab environment and create an access token, then export it as an environment variable called `CYPRESS_ACCESS_TOKEN`. This token will be used by most of the tests.
+> After that, log in on your local GitLab environment and create an access token, then export it as an environment variable called `CYPRESS_GITLAB_ACCESS_TOKEN`. This token will be used by most of the tests.
 
 > By default, the tests will run against `http://localhos:3000/`. If you need to run the tests in a different URL, changed the `baseUrl` property in the `cypress.json` file.
 

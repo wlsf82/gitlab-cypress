@@ -7,7 +7,7 @@ describe('Create a subgroup', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createGroup(Cypress.env('ACCESS_TOKEN'), groupName, groupPath)
+    cy.api_createGroup(Cypress.env('GITLAB_ACCESS_TOKEN'), groupName, groupPath)
       .then(groupId => cy.gui_createSubgroup(groupId, subgroup))
   })
 
