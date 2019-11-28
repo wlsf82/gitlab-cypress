@@ -4,7 +4,7 @@ Sample project to experiment with Cypress for testing the GitLab application.
 
 ## Pre-requirements
 
-You need to have a GitLab local environment such as GDK or Docker up and running.
+You need to have a GitLab local environment such as [GDK](https://gitlab.com/gitlab-org/gitlab-development-kit) or Docker up and running.
 
 You also need to have node and npm installed on your computer.
 
@@ -31,6 +31,8 @@ Run `npm i` to install the dev dependencies.
 > Before running the tests, create a file called `cypress.env.json` in the project root directory, based on `cypress.env.example.json`, and update the value of the `user_password` property with the credentials of the `root` user.
 
 > After that, log in on your local GitLab environment and create an access token, then export it as an environment variable called `CYPRESS_GITLAB_ACCESS_TOKEN`. This token will be used by most of the tests.
+
+> An easy way to create this tokern is to simply run the test `cypress/integration/createAccessToken.spec.js` in interactive mode (see below for instructions), and use the automatically create token to be exported as the environment variable.
 
 > By default, the tests will run against `http://localhos/`, but if you need to run the tests in a different URL (e.g.: `http://localhos:3000/`), change the `baseUrl` property in the `cypress.json` file.
 
