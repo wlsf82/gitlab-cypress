@@ -46,6 +46,8 @@ Run `npm t` to run the tests in headless mode. The test results should look like
 
 Run `npx cypress open`, then click 'Run all specs' to run the tests in interactive mode. You should see something like the below gif.
 
+> Another option is run click in a specific test file to run it only.
+
 ![Cypress test framework running GitLab tests in interactive mode](assets/GitLab-Cypress.gif)
 
 ___
