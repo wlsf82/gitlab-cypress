@@ -36,9 +36,13 @@ Run `npm i` to install the dev dependencies.
 
 > By default, the tests will run against `http://localhos/`, but if you need to run them in a different URL (e.g.: `http://localhos:3000/`), change the `baseUrl` property in the `cypress.json` file.
 
+### Headless mode
+
 Run `npm t` to run the tests in headless mode. The test results should look like the below image.
 
 ![Cypress test framework running GitLab tests in headless mode](assets/test-results-headless.png)
+
+### Interactive mode
 
 Run `npx cypress open`, then click 'Run all specs' to run the tests in interactive mode. You should see something like the below gif.
 
