@@ -1,0 +1,10 @@
+image: 'alpine'
+
+stages:
+  - lint
+
+linting:
+  stage: lint
+  script:
+    - npm install
+    - npm run lint
