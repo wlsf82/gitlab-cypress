@@ -3,7 +3,19 @@
   "version": "1.0.0",
   "description": "Sample project to experiment with Cypress for testing the GitLab application",
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run",
+    "lint": "npx standard",
+    "lint:fix": "npx standard --fix"
+  },
+  "standard": {
+    "globals": [
+      "beforeEach",
+      "cy",
+      "Cypress",
+      "describe",
+      "expect",
+      "it"
+    ]
   },
   "keywords": [
     "testing",
