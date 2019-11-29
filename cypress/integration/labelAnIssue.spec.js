@@ -11,11 +11,11 @@ describe('Label an issue', () => {
   beforeEach(() => {
     cy.gui_login()
     cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), projectName)
-      .then(projectId => {
-        cy.api_createProjectLabel(Cypress.env('GITLAB_ACCESS_TOKEN'), projectId, label)
-        cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), projectId, issueTitle)
-          .then(issueIid =>
-            cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`))
+      .then(resonse => {
+        cy.api_createProjectLabel(Cypress.env('GITLAB_ACCESS_TOKEN'), resonse.body.id, label)
+        cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), resonse.body.id, issueTitle)
+          .then(response =>
+            cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${response.body.iid}`))
       })
   })
 

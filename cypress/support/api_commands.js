@@ -1,19 +1,19 @@
 Cypress.Commands.add('api_createGroup', (accessToken, name, path) => {
   cy.request(
     'POST', `/api/v4/groups/?private_token=${accessToken}`, { name, path }
-  ).then(response => response.body.id)
+  ).then(response => response)
 })
 
 Cypress.Commands.add('api_createProject', (accessToken, name) => {
   cy.request(
     'POST', `/api/v4/projects/?private_token=${accessToken}`, { name }
-  ).then(response => response.body.id)
+  ).then(response => response)
 })
 
 Cypress.Commands.add('api_createIssue', (accessToken, projectId, title) => {
   cy.request(
     'POST', `/api/v4/projects/${projectId}/issues?private_token=${accessToken}`, { title }
-  ).then(response => response.body.iid)
+  ).then(response => response)
 })
 
 Cypress.Commands.add('api_createProjectLabel', (accessToken, projectId, label) => {
