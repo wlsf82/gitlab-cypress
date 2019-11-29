@@ -6,5 +6,5 @@ stages:
 linting:
   stage: lint
   script:
-    - npm install standardjs
+    - npm install
     - npm run lint
