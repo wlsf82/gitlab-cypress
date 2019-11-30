@@ -10,13 +10,13 @@ describe('Issue board', () => {
     cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), projectName)
       .then(resonse =>
         cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), resonse.body.id, issueTitle)
-      ).then(response => {
+      ).then(res => {
         cy.visit(`${Cypress.env('user_name')}/${projectName}/-/boards`)
 
         cy.get('[data-board-type="backlog"] [data-qa-selector="board_card"]')
           .should('contain', issueTitle)
 
-        cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${response.body.iid}`)
+        cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${res.body.iid}`)
         cy.get('.d-none.btn-close').click()
 
         cy.visit(`${Cypress.env('user_name')}/${projectName}/-/boards`)

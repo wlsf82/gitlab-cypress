@@ -7,10 +7,10 @@ describe('Reopen a closed issue', () => {
   beforeEach(() => {
     cy.gui_login()
     cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), projectName)
-      .then(response =>
-        cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), response.body.id, issueTitle)
-      ).then(response => {
-        cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${response.body.iid}`)
+      .then(res =>
+        cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), res.body.id, issueTitle)
+      ).then(res => {
+        cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${res.body.iid}`)
         cy.get('.d-none.btn-close').click()
       })
   })
