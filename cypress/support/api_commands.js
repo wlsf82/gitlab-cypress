@@ -3,7 +3,7 @@ Cypress.Commands.add('api_createGroup', (accessToken, name, path) => {
     method: 'POST',
     url: `/api/v4/groups/?private_token=${accessToken}`,
     body: { name, path }
-  }).then(response => response)
+  })
 })
 
 Cypress.Commands.add('api_createProject', (accessToken, name) => {
@@ -11,7 +11,7 @@ Cypress.Commands.add('api_createProject', (accessToken, name) => {
     method: 'POST',
     url: `/api/v4/projects/?private_token=${accessToken}`,
     body: { name }
-  }).then(response => response)
+  })
 })
 
 Cypress.Commands.add('api_createIssue', (accessToken, projectId, title) => {
@@ -19,7 +19,7 @@ Cypress.Commands.add('api_createIssue', (accessToken, projectId, title) => {
     method: 'POST',
     url: `/api/v4/projects/${projectId}/issues?private_token=${accessToken}`,
     body: { title }
-  }).then(response => response)
+  })
 })
 
 Cypress.Commands.add('api_createProjectLabel', (accessToken, projectId, label) => {
@@ -30,7 +30,7 @@ Cypress.Commands.add('api_createProjectLabel', (accessToken, projectId, label) =
       name: label.name,
       color: label.color
     }
-  }).then(response => response)
+  })
 })
 
 Cypress.Commands.add('api_createProjectMilestone', (accessToken, projectId, milestone) => {
@@ -38,5 +38,5 @@ Cypress.Commands.add('api_createProjectMilestone', (accessToken, projectId, mile
     method: 'POST',
     url: `/api/v4/projects/${projectId}/milestones?private_token=${accessToken}`,
     body: { title: milestone.title }
-  }).then(response => response)
+  })
 })
