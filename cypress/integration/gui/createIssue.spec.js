@@ -14,7 +14,7 @@ describe('Create Issue', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), project.name)
+    cy.api_createProject(project.name)
   })
 
   it('successfully', () => {

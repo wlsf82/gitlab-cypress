@@ -7,10 +7,10 @@ describe('Issue milestone', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), projectName)
+    cy.api_createProject(projectName)
       .then(res => {
-        cy.api_createProjectMilestone(Cypress.env('GITLAB_ACCESS_TOKEN'), res.body.id, milestone)
-        cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), res.body.id, issueTitle)
+        cy.api_createProjectMilestone(res.body.id, milestone)
+        cy.api_createIssue(res.body.id, issueTitle)
           .then(res =>
             cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${res.body.iid}`))
       })

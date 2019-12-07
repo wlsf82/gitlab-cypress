@@ -10,10 +10,10 @@ describe('Label an issue', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createProject(Cypress.env('GITLAB_ACCESS_TOKEN'), projectName)
+    cy.api_createProject(projectName)
       .then(resonse => {
-        cy.api_createProjectLabel(Cypress.env('GITLAB_ACCESS_TOKEN'), resonse.body.id, label)
-        cy.api_createIssue(Cypress.env('GITLAB_ACCESS_TOKEN'), resonse.body.id, issueTitle)
+        cy.api_createProjectLabel(resonse.body.id, label)
+        cy.api_createIssue(resonse.body.id, issueTitle)
           .then(res =>
             cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${res.body.iid}`))
       })

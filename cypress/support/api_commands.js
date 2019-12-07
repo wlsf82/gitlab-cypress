@@ -1,4 +1,6 @@
-Cypress.Commands.add('api_createGroup', (accessToken, name, path) => {
+const accessToken = Cypress.env('GITLAB_ACCESS_TOKEN')
+
+Cypress.Commands.add('api_createGroup', (name, path) => {
   cy.request({
     method: 'POST',
     url: `/api/v4/groups/?private_token=${accessToken}`,
@@ -6,7 +8,7 @@ Cypress.Commands.add('api_createGroup', (accessToken, name, path) => {
   })
 })
 
-Cypress.Commands.add('api_createProject', (accessToken, name) => {
+Cypress.Commands.add('api_createProject', name => {
   cy.request({
     method: 'POST',
     url: `/api/v4/projects/?private_token=${accessToken}`,
@@ -14,7 +16,7 @@ Cypress.Commands.add('api_createProject', (accessToken, name) => {
   })
 })
 
-Cypress.Commands.add('api_createIssue', (accessToken, projectId, title) => {
+Cypress.Commands.add('api_createIssue', (projectId, title) => {
   cy.request({
     method: 'POST',
     url: `/api/v4/projects/${projectId}/issues?private_token=${accessToken}`,
@@ -22,7 +24,7 @@ Cypress.Commands.add('api_createIssue', (accessToken, projectId, title) => {
   })
 })
 
-Cypress.Commands.add('api_createProjectLabel', (accessToken, projectId, label) => {
+Cypress.Commands.add('api_createProjectLabel', (projectId, label) => {
   cy.request({
     method: 'POST',
     url: `/api/v4/projects/${projectId}/labels?private_token=${accessToken}`,
@@ -33,7 +35,7 @@ Cypress.Commands.add('api_createProjectLabel', (accessToken, projectId, label) =
   })
 })
 
-Cypress.Commands.add('api_createProjectMilestone', (accessToken, projectId, milestone) => {
+Cypress.Commands.add('api_createProjectMilestone', (projectId, milestone) => {
   cy.request({
     method: 'POST',
     url: `/api/v4/projects/${projectId}/milestones?private_token=${accessToken}`,
