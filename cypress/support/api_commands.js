@@ -27,7 +27,7 @@ Cypress.Commands.add('api_deleteProject', projectId => {
   cy.request({
     method: 'DELETE',
     url: `/api/v4/projects/${projectId}?private_token=${accessToken}`
-  })
+  }).then(response => expect(response.status).to.equal(202))
 })
 
 Cypress.Commands.add('api_createIssue', (projectId, title) => {
