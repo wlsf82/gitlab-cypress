@@ -9,6 +9,7 @@
   },
   "standard": {
     "globals": [
+      "after",
       "beforeEach",
       "cy",
       "Cypress",
