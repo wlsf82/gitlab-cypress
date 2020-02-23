@@ -3,6 +3,10 @@ const faker = require('faker')
 describe('Create Group', () => {
   beforeEach(() => cy.gui_login())
 
+  after(() => cy.api_getAllGroups()
+    .then(response => response.body.forEach(group =>
+      cy.api_deleteGroup(group.id))))
+
   it('successfully', () => {
     const group = {
       name: faker.random.uuid(),

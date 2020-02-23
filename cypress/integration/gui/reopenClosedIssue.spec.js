@@ -15,6 +15,10 @@ describe('Reopen a closed issue', () => {
       })
   })
 
+  after(() => cy.api_getAllProjects()
+    .then(response => response.body.forEach(project =>
+      cy.api_deleteProject(project.id))))
+
   it('successfully', () => {
     cy.get('[data-qa-selector="reopen_issue_button"]').click()
 

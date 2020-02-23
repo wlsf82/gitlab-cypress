@@ -1,6 +1,10 @@
 const faker = require('faker')
 
 describe('Create Group', () => {
+  after(() => cy.api_getAllGroups()
+    .then(response => response.body.forEach(group =>
+      cy.api_deleteGroup(group.id))))
+
   it('successfully', () => {
     const groupName = faker.random.word()
     const groupPath = groupName

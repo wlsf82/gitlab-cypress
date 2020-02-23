@@ -16,6 +16,10 @@ describe('Issue milestone', () => {
       })
   })
 
+  after(() => cy.api_getAllProjects()
+    .then(response => response.body.forEach(project =>
+      cy.api_deleteProject(project.id))))
+
   it('adds milestone to an issue', () => {
     cy.gui_addMilestoneOnIssue(milestone)
 

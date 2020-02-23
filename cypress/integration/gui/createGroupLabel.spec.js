@@ -12,6 +12,10 @@ describe('Create Group Label', () => {
     cy.visit(group.path)
   })
 
+  after(() => cy.api_getAllGroups()
+    .then(response => response.body.forEach(group =>
+      cy.api_deleteGroup(group.id))))
+
   it('successfully', () => {
     const label = {
       group: group.path,

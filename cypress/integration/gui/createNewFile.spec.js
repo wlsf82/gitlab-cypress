@@ -14,6 +14,10 @@ describe('Create new file', () => {
     cy.visit(`${Cypress.env('user_name')}/${projectName}/new/master`)
   })
 
+  after(() => cy.api_getAllProjects()
+    .then(response => response.body.forEach(project =>
+      cy.api_deleteProject(project.id))))
+
   it('successfully', () => {
     cy.gui_createFile(file)
 

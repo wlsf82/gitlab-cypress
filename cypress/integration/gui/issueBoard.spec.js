@@ -6,6 +6,10 @@ describe('Issue board', () => {
 
   beforeEach(() => cy.gui_login())
 
+  after(() => cy.api_getAllProjects()
+    .then(response => response.body.forEach(project =>
+      cy.api_deleteProject(project.id))))
+
   it('sees an opened issue on the issue board, closes it, and sees it closed', () => {
     cy.api_createProject(projectName)
       .then(resonse =>

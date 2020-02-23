@@ -17,6 +17,10 @@ describe('Create Issue', () => {
     cy.api_createProject(project.name)
   })
 
+  after(() => cy.api_getAllProjects()
+    .then(response => response.body.forEach(project =>
+      cy.api_deleteProject(project.id))))
+
   it('successfully', () => {
     cy.gui_createIssue(issue)
 
