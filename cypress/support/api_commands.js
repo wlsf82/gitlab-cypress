@@ -20,7 +20,7 @@ Cypress.Commands.add('api_getAllProjects', () => {
   cy.request({
     method: 'GET',
     url: `/api/v4/projects/?private_token=${accessToken}`
-  }).then(response => console.log(response))
+  })
 })
 
 Cypress.Commands.add('api_deleteProject', projectId => {
