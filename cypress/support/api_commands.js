@@ -8,6 +8,20 @@ Cypress.Commands.add('api_createGroup', (name, path) => {
   })
 })
 
+Cypress.Commands.add('api_getAllGroups', () => {
+  cy.request({
+    method: 'GET',
+    url: `/api/v4/groups/?private_token=${accessToken}`
+  })
+})
+
+Cypress.Commands.add('api_deleteGroup', groupId => {
+  cy.request({
+    method: 'DELETE',
+    url: `/api/v4/groups/${groupId}?private_token=${accessToken}`
+  }).then(response => expect(response.status).to.equal(202))
+})
+
 Cypress.Commands.add('api_createProject', name => {
   cy.request({
     method: 'POST',
