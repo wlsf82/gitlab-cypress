@@ -84,7 +84,7 @@ Cypress.Commands.add('api_createProjectMilestone', (projectId, milestone) => {
 Cypress.Commands.add('api_createUser', user => {
   let skipConfirmation = false
 
-  if (user.hasOwnProperty('skip_confirmation')) {
+  if (Object.prototype.hasOwnProperty.call(user, 'skip_confirmation')) {
     skipConfirmation = user.skip_confirmation
   }
 
