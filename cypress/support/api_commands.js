@@ -15,11 +15,16 @@ Cypress.Commands.add('api_getAllGroups', () => {
   })
 })
 
-Cypress.Commands.add('api_deleteGroup', groupId => {
-  cy.request({
-    method: 'DELETE',
-    url: `/api/v4/groups/${groupId}?private_token=${accessToken}`
-  }).then(response => expect(response.status).to.equal(202))
+Cypress.Commands.add('api_deleteGroups', () => {
+  cy.api_getAllGroups()
+    .then(response => {
+      response.body.forEach(group => {
+        cy.request({
+          method: 'DELETE',
+          url: `/api/v4/groups/${group.id}?private_token=${accessToken}`
+        }).then(response => expect(response.status).to.equal(202))
+      })
+    })
 })
 
 Cypress.Commands.add('api_createProject', name => {
@@ -37,11 +42,16 @@ Cypress.Commands.add('api_getAllProjects', () => {
   })
 })
 
-Cypress.Commands.add('api_deleteProject', projectId => {
-  cy.request({
-    method: 'DELETE',
-    url: `/api/v4/projects/${projectId}?private_token=${accessToken}`
-  }).then(response => expect(response.status).to.equal(202))
+Cypress.Commands.add('api_deleteProjects', () => {
+  cy.api_getAllProjects()
+    .then(response => {
+      response.body.forEach(project => {
+        cy.request({
+          method: 'DELETE',
+          url: `/api/v4/projects/${project.id}?private_token=${accessToken}`
+        }).then(response => expect(response.status).to.equal(202))
+      })
+    })
 })
 
 Cypress.Commands.add('api_createIssue', (projectId, title) => {

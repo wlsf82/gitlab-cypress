@@ -11,9 +11,7 @@ describe('Create a subgroup', () => {
       .then(res => cy.gui_createSubgroup(res.body.id, subgroup))
   })
 
-  after(() => cy.api_getAllGroups()
-    .then(response => response.body.forEach(group =>
-      cy.api_deleteGroup(group.id))))
+  after(() => cy.api_deleteGroups())
 
   it('successfully', () => {
     cy.url().should('be.equal', `${Cypress.config().baseUrl}${groupName}/${subgroup.name}`)

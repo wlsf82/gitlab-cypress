@@ -13,9 +13,7 @@ describe('Comments on an Issue', () => {
         cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${res.body.iid}`))
   })
 
-  after(() => cy.api_getAllProjects()
-    .then(response => response.body.forEach(project =>
-      cy.api_deleteProject(project.id))))
+  after(() => cy.api_deleteProjects())
 
   it('successfully', () => {
     const comment = faker.random.words(3)

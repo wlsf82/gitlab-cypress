@@ -3,9 +3,7 @@ const faker = require('faker')
 describe('Create Project', () => {
   beforeEach(() => cy.gui_login())
 
-  after(() => cy.api_getAllProjects()
-    .then(response => response.body.forEach(project =>
-      cy.api_deleteProject(project.id))))
+  after(() => cy.api_deleteProjects())
 
   it('successfully', () => {
     const project = {
