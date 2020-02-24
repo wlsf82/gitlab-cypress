@@ -30,7 +30,7 @@ Run `npm i` to install the dev dependencies.
 
 ## Tests
 
-> Before running the tests, create a file called `cypress.env.json` in the project root directory, based on `cypress.env.example.json` file, and update the value of the `user_password` property with the credentials of the `root` user.
+> Before running the tests, create a file called `cypress.env.json` in the project root directory, based on the `cypress.env.example.json` file, and update the value of the `user_password` property with the credentials of the `root` user.
 
 > After that, log into your local GitLab environment and create an access token with the 'api' scope, and then, in the `cypress.env.json` file, add a property called `gitlab_access_token` with the value of the just created token. This token will be used by most of the tests.
 
