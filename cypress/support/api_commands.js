@@ -82,6 +82,12 @@ Cypress.Commands.add('api_createProjectMilestone', (projectId, milestone) => {
 })
 
 Cypress.Commands.add('api_createUser', user => {
+  let skipConfirmation = false
+
+  if (user.hasOwnProperty('skip_confirmation')) {
+    skipConfirmation = user.skip_confirmation
+  }
+
   cy.request({
     method: 'POST',
     url: `/api/v4/users/?private_token=${accessToken}`,
@@ -89,7 +95,8 @@ Cypress.Commands.add('api_createUser', user => {
       email: user.email,
       name: user.name,
       username: user.username,
-      password: user.password
+      password: user.password,
+      skip_confirmation: skipConfirmation
     }
   })
 })
