@@ -1,4 +1,4 @@
-const accessToken = Cypress.env('GITLAB_ACCESS_TOKEN')
+const accessToken = Cypress.env('gitlab_access_token')
 
 Cypress.Commands.add('api_createGroup', (name, path) => {
   cy.request({
