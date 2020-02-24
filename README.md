@@ -10,7 +10,7 @@ You need to have a GitLab local environment such as [GDK](https://gitlab.com/git
 
 You also need to have node and npm installed on your computer.
 
-For this project the following versions of node and npm were used:
+For this project, the following versions of node and npm were used:
 
 ```sh
 $ node -v
@@ -32,7 +32,7 @@ Run `npm i` to install the dev dependencies.
 
 > Before running the tests, create a file called `cypress.env.json` in the project root directory, based on the `cypress.env.example.json` file, and update the value of the `user_password` property with the credentials of the `root` user.
 
-> After that, log into your local GitLab environment and create an access token with the 'api' scope, and then, in the `cypress.env.json` file, add a property called `gitlab_access_token` with the value of the just created token. This token will be used by most of the tests.
+> After that, log into your local GitLab environment and create an access token with the `api` scope, and then, in the `cypress.env.json` file, in the property called `gitlab_access_token`, update its value with just created token. This token will be used by most of the tests.
 
 > An easy way to create this token is to simply run the test `cypress/integration/createAccessToken.spec.js` in interactive mode (see below for instructions), and use the automatically created token to update the `cypress.env.json` file.
 
@@ -46,7 +46,7 @@ Run `npm t` to run the tests in headless mode. The test results should look like
 
 ### Interactive mode
 
-Run `npx cypress open`, then click 'Run all specs' to run the tests in interactive mode. You should see something like the below gif.
+Run `npx cypress open`, then click '**Run all specs**' to run the tests in interactive mode. You should see something like the below gif.
 
 > Another option is run click in a specific test file to run it only.
 
