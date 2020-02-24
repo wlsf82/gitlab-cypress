@@ -80,3 +80,30 @@ Cypress.Commands.add('api_createProjectMilestone', (projectId, milestone) => {
     body: { title: milestone.title }
   })
 })
+
+Cypress.Commands.add('api_createUser', user => {
+  cy.request({
+    method: 'POST',
+    url: `/api/v4/users/?private_token=${accessToken}`,
+    body: {
+      email: user.email,
+      name: user.name,
+      username: user.username,
+      password: user.password
+    }
+  })
+})
+
+Cypress.Commands.add('api_getAllUsers', () => {
+  cy.request({
+    method: 'GET',
+    url: `/api/v4/users/?private_token=${accessToken}`
+  }).then(response => console.log(response))
+})
+
+Cypress.Commands.add('api_deleteUser', userId => {
+  cy.request({
+    method: 'DELETE',
+    url: `/api/v4/users/${userId}?private_token=${accessToken}`
+  }).then(response => expect(response.status).to.equal(204))
+})
