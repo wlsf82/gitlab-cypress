@@ -107,3 +107,11 @@ Cypress.Commands.add('api_deleteUser', userId => {
     url: `/api/v4/users/${userId}?private_token=${accessToken}`
   }).then(response => expect(response.status).to.equal(204))
 })
+
+Cypress.Commands.add('api_updateUserWebsite', (userId, website) => {
+  cy.request({
+    method: 'PUT',
+    url: `/api/v4/users/${userId}?private_token=${accessToken}`,
+    body: { website_url: website }
+  })
+})
