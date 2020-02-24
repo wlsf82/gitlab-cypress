@@ -11,22 +11,22 @@ describe('Create User', () => {
 
   after(() => {
     cy.api_getAllUsers()
-    .then(users => {
-      users.body.forEach(user => {
-        if (user.username === newUser.username) {
-          cy.api_deleteUser(user.id)
-        }
+      .then(users => {
+        users.body.forEach(user => {
+          if (user.username === newUser.username) {
+            cy.api_deleteUser(user.id)
+          }
+        })
       })
-    })
   })
 
   it('successfully', () => {
     cy.api_createUser(newUser)
-    .then(response => {
-      expect(response.status).to.equal(201)
-      expect(response.body.email).to.equal(newUser.email)
-      expect(response.body.name).to.equal(newUser.name)
-      expect(response.body.username).to.equal(newUser.username)
-    })
+      .then(response => {
+        expect(response.status).to.equal(201)
+        expect(response.body.email).to.equal(newUser.email)
+        expect(response.body.name).to.equal(newUser.name)
+        expect(response.body.username).to.equal(newUser.username)
+      })
   })
 })
