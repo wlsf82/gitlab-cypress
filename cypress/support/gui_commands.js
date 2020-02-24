@@ -1,8 +1,8 @@
-Cypress.Commands.add('gui_login', () => {
+Cypress.Commands.add('gui_login', (username = Cypress.env('user_name'), password = Cypress.env('user_password')) => {
   cy.visit('users/sign_in')
 
-  cy.get("[data-qa-selector='login_field']").type(Cypress.env('user_name'))
-  cy.get("[data-qa-selector='password_field']").type(Cypress.env('user_password'))
+  cy.get("[data-qa-selector='login_field']").type(username)
+  cy.get("[data-qa-selector='password_field']").type(password)
   cy.get("[data-qa-selector='sign_in_button']").click()
 })
 
