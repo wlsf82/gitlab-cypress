@@ -105,7 +105,7 @@ Cypress.Commands.add('api_getAllUsers', () => {
   cy.request({
     method: 'GET',
     url: `/api/v4/users/?private_token=${accessToken}`
-  }).then(response => console.log(response))
+  })
 })
 
 Cypress.Commands.add('api_deleteUser', userId => {
