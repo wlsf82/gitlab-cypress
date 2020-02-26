@@ -1,10 +1,13 @@
 const accessToken = Cypress.env('gitlab_access_token')
 
-Cypress.Commands.add('api_createGroup', (name, path) => {
+Cypress.Commands.add('api_createGroup', group => {
   cy.request({
     method: 'POST',
     url: `/api/v4/groups/?private_token=${accessToken}`,
-    body: { name, path }
+    body: {
+      name: group.name,
+      path: group.path
+    }
   })
 })
 
@@ -27,11 +30,11 @@ Cypress.Commands.add('api_deleteGroups', () => {
     })
 })
 
-Cypress.Commands.add('api_createProject', name => {
+Cypress.Commands.add('api_createProject', project => {
   cy.request({
     method: 'POST',
     url: `/api/v4/projects/?private_token=${accessToken}`,
-    body: { name }
+    body: { name: project.name }
   })
 })
 
