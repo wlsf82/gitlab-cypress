@@ -34,8 +34,8 @@ Cypress.Commands.add('gui_createProject', project => {
   cy.contains('Create project').click()
 })
 
-Cypress.Commands.add('gui_createIssue', issue => {
-  cy.visit(`${Cypress.env('user_name')}/${issue.project}/issues/new`)
+Cypress.Commands.add('gui_createIssue', (project, issue) => {
+  cy.visit(`${Cypress.env('user_name')}/${project.name}/issues/new`)
 
   cy.get('.qa-issuable-form-title').type(issue.title)
   cy.get('.qa-issuable-form-description').type(issue.description)
@@ -58,15 +58,15 @@ Cypress.Commands.add('gui_createSubgroup', (groupId, subgroup) => {
   cy.contains('Create group').click()
 })
 
-Cypress.Commands.add('gui_createGroupLabel', label => {
-  cy.visit(`groups/${label.group}/-/labels/new`)
+Cypress.Commands.add('gui_createGroupLabel', (group, label) => {
+  cy.visit(`groups/${group.path}/-/labels/new`)
 
   cy.get('.qa-label-title').type(label.title)
   cy.contains('Create label').click()
 })
 
-Cypress.Commands.add('gui_createProjectMilestone', milestone => {
-  cy.visit(`${Cypress.env('user_name')}/${milestone.project.name}/-/milestones/new`)
+Cypress.Commands.add('gui_createProjectMilestone', (project, milestone) => {
+  cy.visit(`${Cypress.env('user_name')}/${project.name}/-/milestones/new`)
 
   cy.get('.qa-milestone-title').type(milestone.title)
   cy.get('.qa-milestone-create-button').click()
