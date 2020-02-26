@@ -4,12 +4,14 @@ describe('Create Project', () => {
   after(() => cy.api_deleteProjects())
 
   it('successfully', () => {
-    const projectName = faker.random.word()
+    const project = {
+      name: faker.random.word()
+    }
 
-    cy.api_createProject(projectName)
+    cy.api_createProject(project)
       .then(response => {
         expect(response.status).to.equal(201)
-        expect(response.body.name).to.equal(projectName)
+        expect(response.body.name).to.equal(project.name)
       })
   })
 })

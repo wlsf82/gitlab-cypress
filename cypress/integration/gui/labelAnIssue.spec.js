@@ -1,8 +1,6 @@
 const faker = require('faker')
 
 describe('Label an issue', () => {
-  const projectName = faker.random.uuid()
-  const issueTitle = faker.random.uuid()
   const label = {
     name: `label-${faker.random.word()}`,
     color: '#ffaabb'
@@ -10,13 +8,12 @@ describe('Label an issue', () => {
 
   beforeEach(() => {
     cy.gui_login()
-    cy.api_createProject(projectName)
-      .then(resonse => {
-        cy.api_createProjectLabel(resonse.body.id, label)
-        cy.api_createIssue(resonse.body.id, issueTitle)
-          .then(res =>
-            cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${res.body.iid}`))
-      })
+    cy.api_createIssue()
+      .then(issueResponse => cy.api_getAllProjects()
+        .then(projectsResponse => {
+          cy.api_createProjectLabel(projectsResponse.body[0].id, label)
+          cy.visit(`${Cypress.env('user_name')}/${projectsResponse.body[0].name}/issues/${issueResponse.body.iid}`)
+        }))
   })
 
   after(() => cy.api_deleteProjects())

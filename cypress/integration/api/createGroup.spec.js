@@ -4,13 +4,19 @@ describe('Create Group', () => {
   after(() => cy.api_deleteGroups())
 
   it('successfully', () => {
-    const groupName = faker.random.word()
-    const groupPath = groupName
+    const randomUuid = faker.random.uuid()
+    const group = {
+      name: randomUuid,
+      path: randomUuid,
+      label: {
+        title: faker.random.word()
+      }
+    }
 
-    cy.api_createGroup(groupName, groupPath)
+    cy.api_createGroup(group)
       .then(response => {
         expect(response.status).to.equal(201)
-        expect(response.body.name).to.equal(groupName)
+        expect(response.body.name).to.equal(group.name)
       })
   })
 })
