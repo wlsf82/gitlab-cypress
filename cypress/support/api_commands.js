@@ -1,3 +1,5 @@
+const faker = require('faker')
+
 const accessToken = Cypress.env('gitlab_access_token')
 
 Cypress.Commands.add('api_createGroup', group => {
@@ -57,12 +59,15 @@ Cypress.Commands.add('api_deleteProjects', () => {
     })
 })
 
-Cypress.Commands.add('api_createIssue', (projectId, title) => {
-  cy.request({
-    method: 'POST',
-    url: `/api/v4/projects/${projectId}/issues?private_token=${accessToken}`,
-    body: { title }
-  })
+Cypress.Commands.add('api_createIssue', () => {
+  cy.api_createProject({ name: `project-${faker.random.uuid()}` })
+    .then(response => {
+      cy.request({
+        method: 'POST',
+        url: `/api/v4/projects/${response.body.id}/issues?private_token=${accessToken}`,
+        body: { title: `title-${faker.random.uuid()}` }
+      })
+    })
 })
 
 Cypress.Commands.add('api_createProjectLabel', (projectId, label) => {
