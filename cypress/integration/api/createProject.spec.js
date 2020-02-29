@@ -8,10 +8,9 @@ describe('Create Project', () => {
       name: faker.random.word()
     }
 
-    cy.api_createProject(project)
-      .then(response => {
-        expect(response.status).to.equal(201)
-        expect(response.body.name).to.equal(project.name)
-      })
+    cy.api_createProject(project).then(response => {
+      expect(response.status).to.equal(201)
+      expect(response.body.name).to.equal(project.name)
+    })
   })
 })

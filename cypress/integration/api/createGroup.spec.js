@@ -13,10 +13,9 @@ describe('Create Group', () => {
       }
     }
 
-    cy.api_createGroup(group)
-      .then(response => {
-        expect(response.status).to.equal(201)
-        expect(response.body.name).to.equal(group.name)
-      })
+    cy.api_createGroup(group).then(response => {
+      expect(response.status).to.equal(201)
+      expect(response.body.name).to.equal(group.name)
+    })
   })
 })

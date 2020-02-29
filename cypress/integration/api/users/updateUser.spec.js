@@ -10,27 +10,24 @@ describe('Update user info', () => {
   }
 
   after(() => {
-    cy.api_getAllUsers()
-      .then(users => {
-        users.body.forEach(user => {
-          if (user.username === newUser.username) {
-            cy.api_deleteUser(user.id)
-          }
-        })
+    cy.api_getAllUsers().then(users => {
+      users.body.forEach(user => {
+        if (user.username === newUser.username) {
+          cy.api_deleteUser(user.id)
+        }
       })
+    })
   })
 
   it('successfully', () => {
     const website = `https://${randomName}.example.com`
 
-    cy.api_createUser(newUser)
-      .then(response => {
-        cy.api_updateUserWebsite(response.body.id, website)
-          .then(response => {
-            expect(response.status).to.equal(200)
-            expect(response.body.username).to.equal(newUser.username)
-            expect(response.body.website_url).to.equal(website)
-          })
+    cy.api_createUser(newUser).then(response => {
+      cy.api_updateUserWebsite(response.body.id, website).then(response => {
+        expect(response.status).to.equal(200)
+        expect(response.body.username).to.equal(newUser.username)
+        expect(response.body.website_url).to.equal(website)
       })
+    })
   })
 })

@@ -12,16 +12,11 @@ describe('Login as another user', () => {
 
   beforeEach(() => cy.api_createUser(newUser))
 
-  after(() => {
-    cy.api_getAllUsers()
-      .then(users => {
-        users.body.forEach(user => {
-          if (user.username === newUser.username) {
-            cy.api_deleteUser(user.id)
-          }
-        })
-      })
-  })
+  after(() => cy.api_getAllUsers().then(users => users.body.forEach(user => {
+    if (user.username === newUser.username) {
+      cy.api_deleteUser(user.id)
+    }
+  })))
 
   it('successfully', () => {
     cy.gui_login(newUser.username, newUser.password)
