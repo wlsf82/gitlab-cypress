@@ -31,7 +31,7 @@
   "author": "Walmyr Filho <walmyr@gitlab.com>",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^4.0.1",
+    "cypress": "^4.1.0",
     "faker": "^4.1.0",
     "standardjs": "^1.0.0-alpha"
   }
