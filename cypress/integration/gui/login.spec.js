@@ -1,4 +1,4 @@
-describe('Login', () => {
+describe('Login as default user', () => {
   it('successfully', () => {
     cy.gui_login()
 
