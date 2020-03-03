@@ -1,6 +1,6 @@
 # GitLab Cypress
 
-[![pipeline status](https://gitlab.com/wlsf82/gitlab-cypress/badges/master/pipeline.svg)](https://gitlab.com/wlsf82/gitlab-cypress/commits/master)
+![Lint](https://github.com/wlsf82/gitlab-cypress/workflows/Lint/badge.svg)
 
 Sample project to experiment with Cypress for testing the GitLab application.
 
