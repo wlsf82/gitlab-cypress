@@ -9,15 +9,11 @@ describe('Create User', () => {
     password: faker.internet.password()
   }
 
-  after(() => {
-    cy.api_getAllUsers().then(users => {
-      users.body.forEach(user => {
-        if (user.username === newUser.username) {
-          cy.api_deleteUser(user.id)
-        }
-      })
-    })
-  })
+  after(() => cy.api_getAllUsers().then(users => users.body.forEach(user => {
+    if (user.username === newUser.username) {
+      cy.api_deleteUser(user.id)
+    }
+  })))
 
   it('successfully', () => {
     cy.api_createUser(newUser).then(response => {
