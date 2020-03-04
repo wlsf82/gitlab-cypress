@@ -101,3 +101,15 @@ Cypress.Commands.add('api_updateUserWebsite', (userId, website) => cy.request({
   url: `/api/v4/users/${userId}?private_token=${accessToken}`,
   body: { website_url: website }
 }))
+
+Cypress.Commands.add('api_getAllBroadcastMessages', () => cy.request({
+  method: 'GET',
+  url: `/api/v4/broadcast_messages/?private_token=${accessToken}`
+}))
+
+Cypress.Commands.add('api_deleteBroadcastMessages', () =>
+  cy.api_getAllBroadcastMessages().then(res => res.body.forEach(message => cy.request({
+    method: 'DELETE',
+    url: `/api/v4/broadcast_messages/${message.id}?private_token=${accessToken}`
+  }).then(res => expect(res.status).to.equal(204))))
+)
