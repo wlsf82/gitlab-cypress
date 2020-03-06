@@ -1,9 +1,7 @@
 const faker = require('faker')
 
 describe('Issue milestone', () => {
-  const milestone = {
-    title: `milestone-${faker.random.word()}`
-  }
+  const milestone = { title: `milestone-${faker.random.word()}` }
 
   beforeEach(() => {
     cy.gui_login()
