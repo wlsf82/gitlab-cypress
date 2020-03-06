@@ -18,7 +18,7 @@ describe('Create a subgroup', () => {
   after(() => cy.api_deleteGroups())
 
   it('successfully', () => {
-    cy.url().should('be.equal', `${Cypress.config().baseUrl}${group.name}/${group.subgroup.name}`)
+    cy.url().should('be.equal', `${Cypress.config('baseUrl')}${group.name}/${group.subgroup.name}`)
     cy.get('h1').should('contain', group.subgroup.name)
   })
 })
