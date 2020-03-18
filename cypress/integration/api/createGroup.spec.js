@@ -7,10 +7,7 @@ describe('Create Group', () => {
     const randomUuid = faker.random.uuid()
     const group = {
       name: randomUuid,
-      path: randomUuid,
-      label: {
-        title: faker.random.word()
-      }
+      path: randomUuid
     }
 
     cy.api_createGroup(group).then(response => {
