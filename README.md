@@ -54,4 +54,4 @@ Run `npx cypress open`, then click '**Run all specs**' to run the tests in inter
 
 ___
 
-Made with 💚 by [Walmyr Filho](https://walmyr-filho.com)
+Made with 💚 by [Walmyr Filho](https://walmyr.dev)
