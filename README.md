@@ -1,7 +1,5 @@
 # GitLab Cypress
 
-![Lint](https://github.com/wlsf82/gitlab-cypress/workflows/Lint/badge.svg)
-
 Sample project to experiment with Cypress for testing the GitLab application.
 
 ## Pre-requirements
