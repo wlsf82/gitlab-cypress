@@ -1,7 +1,7 @@
 const faker = require('faker')
 
 describe('Create Project', () => {
-  after(() => cy.api_deleteProjects())
+  before(() => cy.api_deleteProjects())
 
   it('successfully', () => {
     const project = {

@@ -2,7 +2,7 @@ const faker = require('faker')
 
 describe('Create new file', () => {
   const project = {
-    name: faker.random.uuid(),
+    name: faker.datatype.uuid(),
     file: {
       name: `${faker.random.word()}.txt`,
       content: faker.random.words(10)
@@ -10,12 +10,11 @@ describe('Create new file', () => {
   }
 
   beforeEach(() => {
-    cy.gui_login()
+    cy.api_deleteProjects()
+    cy.login()
     cy.api_createProject(project)
     cy.visit(`${Cypress.env('user_name')}/${project.name}/new/master`)
   })
-
-  after(() => cy.api_deleteProjects())
 
   it('successfully', () => {
     cy.gui_createFile(project.file)

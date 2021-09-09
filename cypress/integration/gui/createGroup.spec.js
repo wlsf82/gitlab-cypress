@@ -1,13 +1,14 @@
 const faker = require('faker')
 
 describe('Create Group', () => {
-  beforeEach(() => cy.gui_login())
-
-  after(() => cy.api_deleteGroups())
+  beforeEach(() => {
+    cy.api_deleteGroups()
+    cy.login()
+  })
 
   it('successfully', () => {
     const group = {
-      name: faker.random.uuid(),
+      name: faker.datatype.uuid(),
       description: faker.random.words(5)
     }
 

@@ -1,15 +1,14 @@
 const faker = require('faker')
 
 describe('Create new page', () => {
-  const project = { name: faker.random.uuid() }
+  const project = { name: faker.datatype.uuid() }
 
   beforeEach(() => {
-    cy.gui_login()
+    cy.api_deleteProjects()
+    cy.login()
     cy.api_createProject(project)
     cy.visit(`${Cypress.env('user_name')}/${project.name}/wikis/home?view=create`)
   })
-
-  after(() => cy.api_deleteProjects())
 
   it('successfully', () => {
     const wikiContent = faker.random.words(4)

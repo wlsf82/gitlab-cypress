@@ -9,7 +9,7 @@ describe('Update user info', () => {
     password: faker.internet.password()
   }
 
-  after(() => cy.api_getAllUsers().then(users => users.body.forEach(user => {
+  before(() => cy.api_getAllUsers().then(users => users.body.forEach(user => {
     if (user.username === newUser.username) {
       cy.api_deleteUser(user.id)
     }

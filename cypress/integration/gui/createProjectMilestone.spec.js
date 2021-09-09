@@ -2,18 +2,17 @@ const faker = require('faker')
 
 describe('Create Projet Milestone', () => {
   const project = {
-    name: faker.random.uuid(),
+    name: faker.datatype.uuid(),
     milestone: {
-      title: `milestone-${faker.random.uuid()}`
+      title: `milestone-${faker.datatype.uuid()}`
     }
   }
 
   beforeEach(() => {
-    cy.gui_login()
+    cy.api_deleteProjects()
+    cy.login()
     cy.api_createProject(project)
   })
-
-  after(() => cy.api_deleteProjects())
 
   it('successfully', () => {
     cy.gui_createProjectMilestone(project, project.milestone)

@@ -1,10 +1,9 @@
 describe('Broadcast message', () => {
   beforeEach(() => {
-    cy.gui_login()
+    cy.api_deleteBroadcastMessages()
+    cy.login()
     cy.visit('admin/broadcast_messages')
   })
-
-  after(() => cy.api_deleteBroadcastMessages())
 
   it('shows a preview then adds the message', () => {
     const broadcastMessage = 'Hello world!'

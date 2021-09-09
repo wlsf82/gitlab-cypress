@@ -1,7 +1,7 @@
 const faker = require('faker')
 
 describe('Create Group Label', () => {
-  const randomUuid = faker.random.uuid()
+  const randomUuid = faker.datatype.uuid()
   const group = {
     name: randomUuid,
     path: randomUuid,
@@ -11,12 +11,11 @@ describe('Create Group Label', () => {
   }
 
   beforeEach(() => {
-    cy.gui_login()
+    cy.api_deleteGroups()
+    cy.login()
     cy.api_createGroup(group)
     cy.visit(group.path)
   })
-
-  after(() => cy.api_deleteGroups())
 
   it('successfully', () => {
     cy.gui_createGroupLabel(group, group.label)

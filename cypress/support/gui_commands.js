@@ -1,20 +1,32 @@
-Cypress.Commands.add('gui_login', (username = Cypress.env('user_name'), password = null) => {
-  let loginId
-  let pw
+Cypress.Commands.add('login', (
+  username = Cypress.env('user_name'),
+  password = null,
+  { cacheSession = true } = {}
+) => {
+  const login = () => {
+    let loginId
+    let pw
 
-  if (password) {
-    loginId = username
-    pw = password
-  } else {
-    loginId = username
-    pw = Cypress.env('user_password')
+    if (password) {
+      loginId = username
+      pw = password
+    } else {
+      loginId = username
+      pw = Cypress.env('user_password')
+    }
+
+    cy.visit('users/sign_in')
+
+    cy.get("[data-qa-selector='login_field']").type(loginId)
+    cy.get("[data-qa-selector='password_field']").type(pw, { log: false })
+    cy.get("[data-qa-selector='sign_in_button']").click()
   }
 
-  cy.visit('users/sign_in')
-
-  cy.get("[data-qa-selector='login_field']").type(loginId)
-  cy.get("[data-qa-selector='password_field']").type(pw)
-  cy.get("[data-qa-selector='sign_in_button']").click()
+  if (cacheSession) {
+    cy.session([username, password], login)
+  } else {
+    login()
+  }
 })
 
 Cypress.Commands.add('gui_createAccessToken', name => {
