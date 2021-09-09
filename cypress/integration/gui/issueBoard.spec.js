@@ -1,7 +1,8 @@
 describe('Issue board', () => {
-  beforeEach(() => cy.gui_login())
-
-  after(() => cy.api_deleteProjects())
+  beforeEach(() => {
+    cy.api_deleteProjects()
+    cy.login()
+  })
 
   it('sees an opened issue on the issue board, closes it, and sees it closed', () => {
     cy.api_createIssue().then(issue => cy.api_getAllProjects().then(projects => {

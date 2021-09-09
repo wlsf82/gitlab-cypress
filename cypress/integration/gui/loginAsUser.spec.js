@@ -10,16 +10,20 @@ describe('Login as another user', () => {
     skip_confirmation: true
   }
 
-  beforeEach(() => cy.api_createUser(newUser))
-
-  after(() => cy.api_getAllUsers().then(users => users.body.forEach(user => {
-    if (user.username === newUser.username) {
-      cy.api_deleteUser(user.id)
-    }
-  })))
+  beforeEach(() => {
+    cy.api_getAllUsers().then(users => users.body.forEach(user => {
+      if (user.username === newUser.username) {
+        cy.api_deleteUser(user.id)
+      }
+    }))
+    cy.api_createUser(newUser)
+  })
 
   it('successfully', () => {
-    cy.gui_login(newUser.username, newUser.password)
+    cy.login(
+      newUser.username,
+      newUser.password,
+      { cacheSession: false })
 
     cy.get('.qa-user-avatar').should('exist')
   })

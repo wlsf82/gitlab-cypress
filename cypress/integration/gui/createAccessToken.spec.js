@@ -1,10 +1,10 @@
 const faker = require('faker')
 
 describe('Create Access Token', () => {
-  beforeEach(() => cy.gui_login())
+  beforeEach(() => cy.login())
 
   it('successfully', () => {
-    cy.gui_createAccessToken(faker.random.uuid())
+    cy.gui_createAccessToken(faker.datatype.uuid())
 
     cy.contains('Your new personal access token has been created.')
       .should('be.visible')

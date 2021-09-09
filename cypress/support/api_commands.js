@@ -20,7 +20,7 @@ Cypress.Commands.add('api_deleteGroups', () =>
   cy.api_getAllGroups().then(res => res.body.forEach(group => cy.request({
     method: 'DELETE',
     url: `/api/v4/groups/${group.id}?private_token=${accessToken}`
-  }).then(res => expect(res.status).to.equal(202))))
+  })))
 )
 
 Cypress.Commands.add('api_createProject', project => cy.request({
@@ -38,16 +38,16 @@ Cypress.Commands.add('api_deleteProjects', () => cy.api_getAllProjects().then(re
   res.body.forEach(project => cy.request({
     method: 'DELETE',
     url: `/api/v4/projects/${project.id}?private_token=${accessToken}`
-  }).then(res => expect(res.status).to.equal(202)))
+  }))
 ))
 
-const defaultProject = { name: `project-${faker.random.uuid()}` }
-
-Cypress.Commands.add('api_createIssue', () => cy.api_createProject(defaultProject).then(res =>
+Cypress.Commands.add('api_createIssue', () => cy.api_createProject(
+  { name: `project-${faker.datatype.uuid()}` }
+).then(res =>
   cy.request({
     method: 'POST',
     url: `/api/v4/projects/${res.body.id}/issues?private_token=${accessToken}`,
-    body: { title: `title-${faker.random.uuid()}` }
+    body: { title: `title-${faker.datatype.uuid()}` }
   })
 ))
 
@@ -94,7 +94,7 @@ Cypress.Commands.add('api_getAllUsers', () => cy.request({
 Cypress.Commands.add('api_deleteUser', userId => cy.request({
   method: 'DELETE',
   url: `/api/v4/users/${userId}?private_token=${accessToken}`
-}).then(res => expect(res.status).to.equal(204)))
+}))
 
 Cypress.Commands.add('api_updateUserWebsite', (userId, website) => cy.request({
   method: 'PUT',
@@ -111,5 +111,5 @@ Cypress.Commands.add('api_deleteBroadcastMessages', () =>
   cy.api_getAllBroadcastMessages().then(res => res.body.forEach(message => cy.request({
     method: 'DELETE',
     url: `/api/v4/broadcast_messages/${message.id}?private_token=${accessToken}`
-  }).then(res => expect(res.status).to.equal(204))))
+  })))
 )

@@ -1,13 +1,14 @@
 const faker = require('faker')
 
 describe('Create Project', () => {
-  beforeEach(() => cy.gui_login())
-
-  after(() => cy.api_deleteProjects())
+  beforeEach(() => {
+    cy.api_deleteProjects()
+    cy.login()
+  })
 
   it('successfully', () => {
     const project = {
-      name: faker.random.uuid(),
+      name: faker.datatype.uuid(),
       description: faker.random.words(5)
     }
 

@@ -1,10 +1,10 @@
 const faker = require('faker')
 
 describe('Create Group', () => {
-  after(() => cy.api_deleteGroups())
+  before(() => cy.api_deleteGroups())
 
   it('successfully', () => {
-    const randomUuid = faker.random.uuid()
+    const randomUuid = faker.datatype.uuid()
     const group = {
       name: randomUuid,
       path: randomUuid
