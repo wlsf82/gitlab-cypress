@@ -23,7 +23,8 @@ describe('Login as another user', () => {
     cy.login(
       newUser.username,
       newUser.password,
-      { cacheSession: false })
+      { cacheSession: false }
+    )
 
     cy.get('.qa-user-avatar').should('exist')
   })
