@@ -38,7 +38,7 @@ Run `npm i` to install the dev dependencies.
 
 ### Headless mode
 
-Run `npm t` to run the tests in headless mode. The test results should look like the below image.
+Run `npm run test:api && npm run test:gui` to run the tests in headless mode. The test results should look like the below image.
 
 ![Cypress test framework running GitLab tests in headless mode](assets/test-results-headless.png)
 
