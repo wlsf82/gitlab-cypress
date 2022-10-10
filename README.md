@@ -12,10 +12,10 @@ For this project, the following versions of node and npm were used:
 
 ```sh
 $ node -v
-v12.13.0
+v16.13.2
 
 $ npm -v
-6.12.1
+8.19.2
 ```
 
 ### Running GitLab on Docker
