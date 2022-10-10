@@ -6,7 +6,8 @@
     "cypress:open": "cypress open",
     "lint": "npx standard",
     "lint:fix": "npx standard --fix",
-    "test": "cypress run"
+    "test:api": "cypress run --spec 'cypress/e2e/api/**/*'",
+    "test:gui": "cypress run --spec cypress/e2e/gui/_index.cy.js"
   },
   "standard": {
     "globals": [
@@ -32,7 +33,7 @@
   "author": "Walmyr Filho <walmyr@gitlab.com>",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^8.3.1",
+    "cypress": "^10.9.0",
     "faker": "^5.5.3",
     "standardjs": "^1.0.0-alpha"
   }

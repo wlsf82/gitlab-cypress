@@ -22,8 +22,10 @@ Cypress.Commands.add('login', (
     cy.get("[data-qa-selector='sign_in_button']").click()
   }
 
+  const options = { cacheAcrossSpecs: true }
+
   if (cacheSession) {
-    cy.session([username, password], login)
+    cy.session([username, password], login, options)
   } else {
     login()
   }

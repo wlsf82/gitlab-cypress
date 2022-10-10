@@ -1,6 +1,0 @@
-{
-    "baseUrl": "http://localhost/",
-    "experimentalSessionSupport": true,
-    "fixturesFolder": false,
-    "pluginsFile": false
-}
