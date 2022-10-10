@@ -32,23 +32,20 @@ Run `npm i` to install the dev dependencies.
 >
 > After that, log into your local GitLab environment and create an access token with the `api` scope, and then, in the `cypress.env.json` file, in the property called `gitlab_access_token`, update its value with the just created token. This token will be used by most of the tests.
 >
-> An easy way to create this token is to simply run the test `cypress/integration/createAccessToken.spec.js` in interactive mode (see below for instructions), and use the automatically created token to update the `cypress.env.json` file.
+> An easy way to create this token is to simply run the test `cypress/e2e/gui/createAccessToken.spec.js` in interactive mode (see below for instructions), and use the automatically created token to update the `cypress.env.json` file.
 >
-> By default, the tests will run against `http://localhos/`, but if you need to run them in a different URL (e.g.: `http://localhos:3000/`), change the `baseUrl` property in the `cypress.json` file.
+> By default, the tests will run against `http://localhos/`, but if you need to run them in a different URL (e.g.: `http://localhos:3000/`), change the `baseUrl` property in the `cypress.config.js` file.
 
 ### Headless mode
 
-Run `npm run test:api && npm run test:gui` to run the tests in headless mode. The test results should look like the below image.
-
-![Cypress test framework running GitLab tests in headless mode](assets/test-results-headless.png)
+Run `npm run test:api && npm run test:gui` to run the tests in headless mode.
 
 ### Interactive mode
 
-Run `npx cypress open`, then click <kbd>Run all specs</kbd> to run the tests in interactive mode. You should see something like the below gif.
-
-> Another option is run click in a specific test file to run it only.
-
-![Cypress test framework running GitLab tests in interactive mode](assets/GitLab-Cypress.gif)
+1. Run `npm run cypress:open` to open the Cypress App
+2. Select E2E Testing
+3. Select one of the available browsers (e.g., Electron), and click the Start button
+3. Finally, click on the test file you want to run and wait for it to finish.
 
 ___
 
