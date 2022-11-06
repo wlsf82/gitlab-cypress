@@ -34,6 +34,7 @@
   "license": "MIT",
   "devDependencies": {
     "cypress": "^10.9.0",
+    "cypress-plugin-api": "^2.2.1",
     "faker": "^5.5.3",
     "standardjs": "^1.0.0-alpha"
   }
