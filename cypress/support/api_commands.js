@@ -55,13 +55,14 @@ Cypress.Commands.add('api_deleteProjects', () => {
 })
 
 Cypress.Commands.add('api_createIssue', () => {
-  cy.api_createProject({ name: `project-${faker.datatype.uuid()}` }).then(({ body }) => {
-    cy.request({
-      method: 'POST',
-      url: `/api/v4/projects/${body.id}/issues?private_token=${accessToken}`,
-      body: { title: `title-${faker.datatype.uuid()}` }
+  cy.api_createProject({ name: `project-${faker.datatype.uuid()}` })
+    .then(({ body }) => {
+      cy.request({
+        method: 'POST',
+        url: `/api/v4/projects/${body.id}/issues?private_token=${accessToken}`,
+        body: { title: `title-${faker.datatype.uuid()}` }
+      })
     })
-  })
 })
 
 Cypress.Commands.add('api_createProjectLabel', (projectId, label) => {
