@@ -13,9 +13,10 @@ describe('Create a sub-group', () => {
   beforeEach(() => {
     cy.api_deleteGroups()
     cy.sessionLogin()
-    cy.api_createGroup(group).then(({ body }) => {
-      cy.gui_createSubgroup(body.id, group.subgroup)
-    })
+    cy.api_createGroup(group)
+      .then(({ body }) => {
+        cy.gui_createSubgroup(body.id, group.subgroup)
+      })
   })
 
   it('creates a sub-group successfully', () => {

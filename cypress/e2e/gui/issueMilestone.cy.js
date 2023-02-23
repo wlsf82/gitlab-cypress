@@ -6,12 +6,12 @@ describe('Issue milestone', () => {
   beforeEach(() => {
     cy.api_deleteProjects()
     cy.sessionLogin()
-    cy.api_createIssue().then(issue => {
-      cy.api_getAllProjects().then(({ body }) => {
+    cy.api_createIssue().as('issue')
+    cy.api_getAllProjects()
+      .then(function({ body }) {
         cy.api_createProjectMilestone(body[0].id, milestone)
-        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${issue.body.iid}`)
+        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${this.issue.body.iid}`)
       })
-    })
   })
 
   it('adds a milestone to an issue', () => {
