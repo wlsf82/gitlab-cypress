@@ -13,12 +13,13 @@ describe('User info', () => {
     }
     const website = `https://${randomName}.example.com`
 
-    cy.api_createUser(newUser).then(({ body }) => {
-      cy.api_updateUserWebsite(body.id, website).then(({ status, body }) => {
-        expect(status).to.equal(200)
-        expect(body.username).to.equal(newUser.username)
-        expect(body.website_url).to.equal(website)
+    cy.api_createUser(newUser)
+      .then(({ body }) => {
+        cy.api_updateUserWebsite(body.id, website).then(({ status, body }) => {
+          expect(status).to.equal(200)
+          expect(body.username).to.equal(newUser.username)
+          expect(body.website_url).to.equal(website)
+        })
       })
-    })
   })
 })

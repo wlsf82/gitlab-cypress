@@ -12,11 +12,12 @@ describe('User', () => {
       password: faker.internet.password()
     }
 
-    cy.api_createUser(newUser).then(({ status, body }) => {
-      expect(status).to.equal(201)
-      expect(body.email).to.equal(newUser.email)
-      expect(body.name).to.equal(newUser.name)
-      expect(body.username).to.equal(newUser.username)
-    })
+    cy.api_createUser(newUser)
+      .then(({ status, body }) => {
+        expect(status).to.equal(201)
+        expect(body.email).to.equal(newUser.email)
+        expect(body.name).to.equal(newUser.name)
+        expect(body.username).to.equal(newUser.username)
+      })
   })
 })

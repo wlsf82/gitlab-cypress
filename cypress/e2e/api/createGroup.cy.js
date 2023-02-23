@@ -10,9 +10,10 @@ describe('Group', () => {
       path: randomUuid
     }
 
-    cy.api_createGroup(group).then(({ status, body }) => {
-      expect(status).to.equal(201)
-      expect(body.name).to.equal(group.name)
-    })
+    cy.api_createGroup(group)
+      .then(({ status, body }) => {
+        expect(status).to.equal(201)
+        expect(body.name).to.equal(group.name)
+      })
   })
 })
