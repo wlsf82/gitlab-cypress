@@ -1,4 +1,4 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Create Projet Milestone', () => {
   const project = {
@@ -10,13 +10,13 @@ describe('Create Projet Milestone', () => {
 
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
+    cy.sessionLogin()
     cy.api_createProject(project)
   })
 
-  it('successfully', () => {
+  it('creates a project milestone successfully', () => {
     cy.gui_createProjectMilestone(project, project.milestone)
 
-    cy.get('.milestone-detail h2').should('contain', project.milestone.title)
+    cy.contains('.milestone-detail h2', project.milestone.title).should('be.visible')
   })
 })

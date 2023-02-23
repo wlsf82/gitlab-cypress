@@ -1,4 +1,4 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Label an issue', () => {
   const label = {
@@ -8,16 +8,18 @@ describe('Label an issue', () => {
 
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
-    cy.api_createIssue().then(issue => cy.api_getAllProjects().then(projects => {
-      cy.api_createProjectLabel(projects.body[0].id, label)
-      cy.visit(`${Cypress.env('user_name')}/${projects.body[0].name}/issues/${issue.body.iid}`)
-    }))
+    cy.sessionLogin()
+    cy.api_createIssue().then(issue => {
+      cy.api_getAllProjects().then(({ body }) => {
+        cy.api_createProjectLabel(body[0].id, label)
+        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${issue.body.iid}`)
+      })
+    })
   })
 
-  it('successfully', () => {
+  it('labels an issue successfully', () => {
     cy.gui_labelIssueWith(label)
 
-    cy.get('.qa-labels-block').should('contain', label.name)
+    cy.contains('.qa-labels-block', label.name).should('be.visible')
   })
 })

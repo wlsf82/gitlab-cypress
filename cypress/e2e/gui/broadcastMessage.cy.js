@@ -1,7 +1,7 @@
 describe('Broadcast message', () => {
   beforeEach(() => {
     cy.api_deleteBroadcastMessages()
-    cy.login()
+    cy.sessionLogin()
     cy.visit('admin/broadcast_messages')
   })
 
@@ -10,11 +10,11 @@ describe('Broadcast message', () => {
 
     cy.get('#broadcast_message_message').type(broadcastMessage)
 
-    cy.get('.broadcast-message-preview').should('contain', broadcastMessage)
+    cy.contains('.broadcast-message-preview', broadcastMessage).should('be.visible')
 
     cy.contains('Add broadcast message').click()
 
     cy.contains('Broadcast Message was successfully created.').should('be.visible')
-    cy.get('table tr').should('contain', broadcastMessage)
+    cy.contains('table tr', broadcastMessage).should('be.visible')
   })
 })

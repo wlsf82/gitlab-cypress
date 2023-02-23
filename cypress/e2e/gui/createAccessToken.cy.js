@@ -1,9 +1,9 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Create Access Token', () => {
-  beforeEach(() => cy.login())
+  beforeEach(() => cy.sessionLogin())
 
-  it('successfully', () => {
+  it('creates an access token successfully', () => {
     cy.gui_createAccessToken(faker.datatype.uuid())
 
     cy.contains('Your new personal access token has been created.')

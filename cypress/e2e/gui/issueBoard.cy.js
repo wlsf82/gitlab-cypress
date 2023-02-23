@@ -1,23 +1,25 @@
 describe('Issue board', () => {
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
+    cy.sessionLogin()
   })
 
-  it('sees an opened issue on the issue board, closes it, and sees it closed', () => {
-    cy.api_createIssue().then(issue => cy.api_getAllProjects().then(projects => {
-      cy.visit(`${Cypress.env('user_name')}/${projects.body[0].name}/-/boards`)
+  it('shows an open issue on the issue board, closes it, and shows it closed', () => {
+    cy.api_createIssue().then(issue => {
+      cy.api_getAllProjects().then(({ body }) => {
+        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/-/boards`)
 
-      cy.get('[data-board-type="backlog"] [data-qa-selector="board_card"]')
-        .should('contain', issue.body.title)
+        cy.contains('[data-board-type="backlog"] [data-qa-selector="board_card"]', issue.body.title)
+          .should('be.visible')
 
-      cy.visit(`${Cypress.env('user_name')}/${projects.body[0].name}/issues/${issue.body.iid}`)
-      cy.get('.d-none.btn-close').click()
+        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${issue.body.iid}`)
+        cy.get('.d-none.btn-close').click()
 
-      cy.visit(`${Cypress.env('user_name')}/${projects.body[0].name}/-/boards`)
+        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/-/boards`)
 
-      cy.get('[data-board-type="closed"] [data-qa-selector="board_card"]')
-        .should('contain', issue.body.title)
-    }))
+        cy.contains('[data-board-type="closed"] [data-qa-selector="board_card"]', issue.body.title)
+          .should('be.visible')
+      })
+    })
   })
 })

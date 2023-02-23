@@ -1,12 +1,12 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Create Group', () => {
   beforeEach(() => {
     cy.api_deleteGroups()
-    cy.login()
+    cy.sessionLogin()
   })
 
-  it('successfully', () => {
+  it('creates a group successfully', () => {
     const group = {
       name: faker.datatype.uuid(),
       description: faker.random.words(5)
@@ -15,6 +15,6 @@ describe('Create Group', () => {
     cy.gui_createPublicGroup(group)
 
     cy.url().should('be.equal', `${Cypress.config('baseUrl')}${group.name}`)
-    cy.contains(group.name).should('be.visible')
+    cy.contains('h1', group.name).should('be.visible')
   })
 })

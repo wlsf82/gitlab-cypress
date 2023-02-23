@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Sample project to experiment with Cypress for testing the GitLab application",
   "scripts": {
-    "cypress:open": "cypress open",
-    "lint": "npx standard",
-    "lint:fix": "npx standard --fix",
+    "cy:open": "cypress open",
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "cypress run",
     "test:api": "cypress run --spec 'cypress/e2e/api/**/*'",
-    "test:gui": "cypress run --spec cypress/e2e/gui/_index.cy.js"
+    "test:gui": "cypress run --spec 'cypress/e2e/gui/**/*'"
   },
   "standard": {
     "globals": [
@@ -24,7 +25,8 @@
     "testing",
     "automation",
     "cypress",
-    "gitlab"
+    "gitlab",
+    "web-testing"
   ],
   "repository": {
     "type": "git",
@@ -33,9 +35,8 @@
   "author": "Walmyr Filho <walmyr@gitlab.com>",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^10.9.0",
-    "cypress-plugin-api": "^2.2.1",
-    "faker": "^5.5.3",
-    "standardjs": "^1.0.0-alpha"
+    "@faker-js/faker": "^7.6.0",
+    "cypress": "^12.6.0",
+    "standard": "^17.0.0"
   }
 }

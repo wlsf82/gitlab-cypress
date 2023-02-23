@@ -1,28 +1,23 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
-describe('Update user info', () => {
-  const randomName = faker.name.firstName().toLowerCase()
-  const newUser = {
-    email: `${randomName}@example.com`,
-    name: `${randomName} ${faker.name.lastName().toLowerCase()}`,
-    username: randomName,
-    password: faker.internet.password()
-  }
+describe('User info', () => {
+  beforeEach(() => cy.deleteAllUsersButRoot())
 
-  before(() => cy.api_getAllUsers().then(users => users.body.forEach(user => {
-    if (user.username === newUser.username) {
-      cy.api_deleteUser(user.id)
+  it('updates user info successfully', () => {
+    const randomName = faker.name.firstName().toLowerCase()
+    const newUser = {
+      email: `${randomName}@example.com`,
+      name: `${randomName} ${faker.name.lastName().toLowerCase()}`,
+      username: randomName,
+      password: faker.internet.password()
     }
-  })))
-
-  it('successfully', () => {
     const website = `https://${randomName}.example.com`
 
-    cy.api_createUser(newUser).then(response => {
-      cy.api_updateUserWebsite(response.body.id, website).then(response => {
-        expect(response.status).to.equal(200)
-        expect(response.body.username).to.equal(newUser.username)
-        expect(response.body.website_url).to.equal(website)
+    cy.api_createUser(newUser).then(({ body }) => {
+      cy.api_updateUserWebsite(body.id, website).then(({ status, body }) => {
+        expect(status).to.equal(200)
+        expect(body.username).to.equal(newUser.username)
+        expect(body.website_url).to.equal(website)
       })
     })
   })

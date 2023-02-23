@@ -1,18 +1,18 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
-describe('Create Group', () => {
+describe('Group', () => {
   before(() => cy.api_deleteGroups())
 
-  it('successfully', () => {
+  it('creates a group successfully', () => {
     const randomUuid = faker.datatype.uuid()
     const group = {
       name: randomUuid,
       path: randomUuid
     }
 
-    cy.api_createGroup(group).then(response => {
-      expect(response.status).to.equal(201)
-      expect(response.body.name).to.equal(group.name)
+    cy.api_createGroup(group).then(({ status, body }) => {
+      expect(status).to.equal(201)
+      expect(body.name).to.equal(group.name)
     })
   })
 })

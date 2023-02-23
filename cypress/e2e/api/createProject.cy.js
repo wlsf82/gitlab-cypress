@@ -1,16 +1,14 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
-describe('Create Project', () => {
+describe('Project', () => {
   before(() => cy.api_deleteProjects())
 
-  it('successfully', () => {
-    const project = {
-      name: faker.random.word()
-    }
+  it('creates a project successfully', () => {
+    const project = { name: faker.random.word() }
 
-    cy.api_createProject(project).then(response => {
-      expect(response.status).to.equal(201)
-      expect(response.body.name).to.equal(project.name)
+    cy.api_createProject(project).then(({ status, body }) => {
+      expect(status).to.equal(201)
+      expect(body.name).to.equal(project.name)
     })
   })
 })

@@ -1,6 +1,6 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
-describe('Create a subgroup', () => {
+describe('Create a sub-group', () => {
   const randomUuid = faker.datatype.uuid()
   const group = {
     name: randomUuid,
@@ -12,12 +12,14 @@ describe('Create a subgroup', () => {
 
   beforeEach(() => {
     cy.api_deleteGroups()
-    cy.login()
-    cy.api_createGroup(group).then(res => cy.gui_createSubgroup(res.body.id, group.subgroup))
+    cy.sessionLogin()
+    cy.api_createGroup(group).then(({ body }) => {
+      cy.gui_createSubgroup(body.id, group.subgroup)
+    })
   })
 
-  it('successfully', () => {
+  it('creates a sub-group successfully', () => {
     cy.url().should('be.equal', `${Cypress.config('baseUrl')}${group.name}/${group.subgroup.name}`)
-    cy.get('h1').should('contain', group.subgroup.name)
+    cy.contains('h1', group.subgroup.name).should('be.visible')
   })
 })

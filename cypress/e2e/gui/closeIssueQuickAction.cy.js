@@ -1,13 +1,15 @@
 describe('Close an issue using quick action', () => {
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
-    cy.api_createIssue().then(issue => cy.api_getAllProjects().then(projects =>
-      cy.visit(`${Cypress.env('user_name')}/${projects.body[0].name}/issues/${issue.body.iid}`)
-    ))
+    cy.sessionLogin()
+    cy.api_createIssue().then(issue => {
+      cy.api_getAllProjects().then(({ body }) => {
+        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${issue.body.iid}`)
+      })
+    })
   })
 
-  it('successfully', () => {
+  it('closes an issue using a quick action successfully', () => {
     cy.gui_commentOnIssue('/close ')
 
     cy.contains('Closed this issue')
@@ -15,8 +17,7 @@ describe('Close an issue using quick action', () => {
 
     cy.reload()
 
-    cy.get('.status-box-issue-closed')
+    cy.contains('.status-box-issue-closed', 'Closed')
       .should('be.visible')
-      .and('contain', 'Closed')
   })
 })

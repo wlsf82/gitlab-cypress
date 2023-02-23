@@ -1,34 +1,14 @@
-Cypress.Commands.add('login', (
+Cypress.Commands.add('gui_login', (
   username = Cypress.env('user_name'),
-  password = null,
-  { cacheSession = true } = {}
+  password = Cypress.env('user_password')
 ) => {
-  const login = () => {
-    let loginId
-    let pw
+  cy.visit('users/sign_in')
 
-    if (password) {
-      loginId = username
-      pw = password
-    } else {
-      loginId = username
-      pw = Cypress.env('user_password')
-    }
+  cy.get("[data-qa-selector='login_field']").type(username)
+  cy.get("[data-qa-selector='password_field']").type(password, { log: false })
+  cy.get("[data-qa-selector='sign_in_button']").click()
 
-    cy.visit('users/sign_in')
-
-    cy.get("[data-qa-selector='login_field']").type(loginId)
-    cy.get("[data-qa-selector='password_field']").type(pw, { log: false })
-    cy.get("[data-qa-selector='sign_in_button']").click()
-  }
-
-  const options = { cacheAcrossSpecs: true }
-
-  if (cacheSession) {
-    cy.session([username, password], login, options)
-  } else {
-    login()
-  }
+  cy.get('.qa-user-avatar').should('exist')
 })
 
 Cypress.Commands.add('gui_createAccessToken', name => {

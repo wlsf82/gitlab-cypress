@@ -1,12 +1,12 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Create Project', () => {
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
+    cy.sessionLogin()
   })
 
-  it('successfully', () => {
+  it('creates a project successfully', () => {
     const project = {
       name: faker.datatype.uuid(),
       description: faker.random.words(5)
@@ -15,7 +15,7 @@ describe('Create Project', () => {
     cy.gui_createProject(project)
 
     cy.url().should('be.equal', `${Cypress.config('baseUrl')}${Cypress.env('user_name')}/${project.name}`)
-    cy.contains(project.name).should('be.visible')
-    cy.contains(project.description).should('be.visible')
+    cy.contains('h1', project.name).should('be.visible')
+    cy.contains('p', project.description).should('be.visible')
   })
 })

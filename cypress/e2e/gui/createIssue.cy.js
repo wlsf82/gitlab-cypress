@@ -1,4 +1,4 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Create Issue', () => {
   const project = {
@@ -12,11 +12,11 @@ describe('Create Issue', () => {
 
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
+    cy.sessionLogin()
     cy.api_createProject(project)
   })
 
-  it('successfully', () => {
+  it('creates a project successfully', () => {
     cy.gui_createIssue(project, project.issue)
 
     cy.get('.issue-details')

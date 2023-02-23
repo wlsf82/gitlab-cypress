@@ -1,4 +1,4 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Create Group Label', () => {
   const randomUuid = faker.datatype.uuid()
@@ -12,15 +12,15 @@ describe('Create Group Label', () => {
 
   beforeEach(() => {
     cy.api_deleteGroups()
-    cy.login()
+    cy.sessionLogin()
     cy.api_createGroup(group)
     cy.visit(group.path)
   })
 
-  it('successfully', () => {
+  it('creates a group label successfully', () => {
     cy.gui_createGroupLabel(group, group.label)
 
     cy.url().should('be.equal', `${Cypress.config('baseUrl')}groups/${group.path}/-/labels`)
-    cy.get('.manage-labels-list').should('contain', group.label.title)
+    cy.contains('.manage-labels-list', group.label.title).should('be.visible')
   })
 })
