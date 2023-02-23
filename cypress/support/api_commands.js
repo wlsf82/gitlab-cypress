@@ -18,14 +18,14 @@ Cypress.Commands.add('api_getAllGroups', () => {
 })
 
 Cypress.Commands.add('api_deleteGroups', () => {
-  cy.api_getAllGroups().then(({ body }) => {
-    body.forEach(({ id }) => {
+  cy.api_getAllGroups()
+    .its('body')
+    .each(({ id }) => {
       cy.request({
         method: 'DELETE',
         url: `/api/v4/groups/${id}?private_token=${accessToken}`
       })
     })
-  })
 })
 
 Cypress.Commands.add('api_createProject', ({ name }) => {
@@ -44,14 +44,14 @@ Cypress.Commands.add('api_getAllProjects', () => {
 })
 
 Cypress.Commands.add('api_deleteProjects', () => {
-  cy.api_getAllProjects().then(({ body }) => {
-    body.forEach(({ id }) => {
+  cy.api_getAllProjects()
+    .its('body')
+    .each(({ id }) => {
       cy.request({
         method: 'DELETE',
         url: `/api/v4/projects/${id}?private_token=${accessToken}`
       })
     })
-  })
 })
 
 Cypress.Commands.add('api_createIssue', () => {
@@ -141,12 +141,12 @@ Cypress.Commands.add('api_getAllBroadcastMessages', () => {
 })
 
 Cypress.Commands.add('api_deleteBroadcastMessages', () => {
-  cy.api_getAllBroadcastMessages().then(({ body }) => {
-    body.forEach(({ id }) => {
+  cy.api_getAllBroadcastMessages()
+    .its('body')
+    .each(({ id }) => {
       cy.request({
         method: 'DELETE',
         url: `/api/v4/broadcast_messages/${id}?private_token=${accessToken}`
       })
     })
-  })
 })
