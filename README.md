@@ -53,4 +53,4 @@ And run `npm run test:gui` to run only the GUI tests in headless mode.
 
 ___
 
-Made with 💚 by [Walmyr](https://walmyr.dev).
+Developed with 💚 by [Walmyr](https://walmyr.dev).
