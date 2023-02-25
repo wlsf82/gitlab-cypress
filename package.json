@@ -6,9 +6,9 @@
     "cy:open": "cypress open",
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "test": "cypress run",
-    "test:api": "cypress run --spec 'cypress/e2e/api/**/*'",
-    "test:gui": "cypress run --spec 'cypress/e2e/gui/**/*'"
+    "test": "npm run test:api && npm run test:gui",
+    "test:api": "cypress run --spec 'cypress/e2e/api/index.cy.js'",
+    "test:gui": "cypress run --spec 'cypress/e2e/gui/index.cy.js'"
   },
   "standard": {
     "globals": [

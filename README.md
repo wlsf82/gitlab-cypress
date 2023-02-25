@@ -30,11 +30,7 @@ Run `npm i` to install the dev dependencies.
 
 > Before running the tests, create a file called `cypress.env.json` in the project root directory, based on the [`cypress.env.example.json`](./cypress.env.example.json) file, and update the value of the `user_password` property with the credentials of the `root` user.
 >
-> After that, log into your local GitLab environment and create an access token with the `api` scope, and then, in the `cypress.env.json` file, in the property called `gitlab_access_token`, update its value with the just created token. This token will be used by most of the tests.
->
-> An easy way to create this token is to simply run the test `cypress/e2e/gui/createAccessToken.spec.js` in interactive mode (see below for instructions), and use the automatically created token to update the `cypress.env.json` file.
->
-> By default, the tests will run against `http://localhos/`, but if you need to run them in a different URL (e.g.: `http://localhos:3000/`), change the `baseUrl` property in the `cypress.config.js` file.
+> By default, the tests will run against `http://localhos/`, but if you need to run them in a different URL (e.g.: `http://localhos:3000/`), change the `baseUrl` property in the [`cypress.config.js`](./cypress.config.js) file.
 
 ### Headless mode
 
@@ -46,10 +42,12 @@ And run `npm run test:gui` to run only the GUI tests in headless mode.
 
 ### Interactive mode
 
-1. Run `npm run cy:open` to open the Cypress App
-2. Select E2E Testing
-3. Select one of the available browsers (e.g., Electron), and click the Start button
-4. Finally, click on the test file you want to run and wait for it to finish.
+1. Run `npm run cy:open` to open the Cypress App;
+2. Select E2E Testing;
+3. Select one of the available browsers (e.g., Electron), and click the Start button;
+4. Run the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js). This test will create a GitLab Access Token and make it available to all other tests while the Cypress App is kept open;
+5.1. Finally, click on the test file you want to run and wait for it to finish.
+5.2. Or, click on the `index.cy.js` file (from [`cypress/e2e/api`](./cypress/e2e/api/) or [`cypress/e2e/gui`](./cypress/e2e/gui/)) to run them all at once.
 
 ___
 

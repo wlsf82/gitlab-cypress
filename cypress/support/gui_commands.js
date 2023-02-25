@@ -19,6 +19,26 @@ Cypress.Commands.add('gui_createAccessToken', name => {
   cy.get('.qa-create-token-button').click()
 })
 
+Cypress.Commands.add('gui_deleteAccessTokens', () => {
+  cy.visit('profile/personal_access_tokens')
+
+  cy.get('body').then($body => {
+    if ($body.find('.settings-message:contains(This user has no active Personal Access Tokens.)').length) {
+      cy.log('no active tokens found.')
+      return
+    }
+    cy.get('.active-tokens tbody tr')
+      .its('length')
+      .then(numberOfActiveTokens => {
+        Cypress._.times(numberOfActiveTokens, () => {
+          cy.get('.qa-revoke-button')
+            .eq(0)
+            .click()
+        })
+      })
+  })
+})
+
 Cypress.Commands.add('gui_createProject', project => {
   cy.visit('projects/new')
 
