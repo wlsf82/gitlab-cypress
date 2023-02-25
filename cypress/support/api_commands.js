@@ -3,13 +3,21 @@ import { faker } from '@faker-js/faker'
 let accessToken
 
 /**
- * `cy.task` can only be called from within a test!
+ * Ideally, the `setAccessTokenIfNotYetSet` function should be called just once,
+ * right before the definition of all custom commands.
+ * However, `cy.task` can only be called from within a test, which means that
+ * calling it from outside of a test would result in a
+ * `Cannot call cy.task() outside a running test.` error.
  *
- * `setAccessTokenIfNotYetSet` is defined as a function that can be called
- * by custom commands or tests. This is because `cy.task` can only be called
- * from within a test. Since custom commands are called by test, calling the
- * `setAccessTokenIfNotYetSet` is like calling it from inside the test that
- * uses the command, making it a valid call.
+ * This is why `setAccessTokenIfNotYetSet` is defined here as a function
+ * that can be called by custom commands (or tests.)
+ *
+ * Since custom commands are called by test, calling the
+ * `setAccessTokenIfNotYetSet` function inside them is like calling it
+ * from inside the test that uses the command, making it a valid call.
+ *
+ * This is why every `api_*` command needs to call `setAccessTokenIfNotYetSet`
+ * at the begining of their body.
  */
 const setAccessTokenIfNotYetSet = () => {
   if (!accessToken) {
