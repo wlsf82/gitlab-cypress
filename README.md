@@ -46,8 +46,7 @@ And run `npm run test:gui` to run only the GUI tests in headless mode.
 2. Select E2E Testing;
 3. Select one of the available browsers (e.g., Electron), and click the Start button;
 4. Run the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js). This test will create a GitLab Access Token and make it available to all other tests while the Cypress App is kept open;
-5.1. Finally, click on the test file you want to run and wait for it to finish.
-5.2. Or, click on the `index.cy.js` file (from [`cypress/e2e/api`](./cypress/e2e/api/) or [`cypress/e2e/gui`](./cypress/e2e/gui/)) to run them all at once.
+5. Finally, click on the test file you want to run and wait for it to finish, or, click on the `index.cy.js` file (from [`cypress/e2e/api`](./cypress/e2e/api/) or [`cypress/e2e/gui`](./cypress/e2e/gui/)) to run them all at once.
 
 ___
 
