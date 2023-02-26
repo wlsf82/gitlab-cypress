@@ -30,7 +30,8 @@ Cypress.Commands.add('api_createGroup', ({ name, path }) => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'POST',
-    url: `/api/v4/groups/?private_token=${accessToken}`,
+    url: `/api/v4/groups`,
+    headers: { "Private-Token": accessToken },
     body: { name, path }
   })
 })
@@ -39,7 +40,8 @@ Cypress.Commands.add('api_getAllGroups', () => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'GET',
-    url: `/api/v4/groups/?private_token=${accessToken}`
+    url: `/api/v4/groups`,
+    headers: { "Private-Token": accessToken }
   })
 })
 
@@ -50,7 +52,8 @@ Cypress.Commands.add('api_deleteGroups', () => {
     .each(({ id }) => {
       cy.request({
         method: 'DELETE',
-        url: `/api/v4/groups/${id}?private_token=${accessToken}`
+        url: `/api/v4/groups/${id}`,
+        headers: { "Private-Token": accessToken }
       })
     })
 })
@@ -59,7 +62,8 @@ Cypress.Commands.add('api_createProject', ({ name }) => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'POST',
-    url: `/api/v4/projects/?private_token=${accessToken}`,
+    url: `/api/v4/projects`,
+    headers: { "Private-Token": accessToken },
     body: { name }
   })
 })
@@ -68,7 +72,8 @@ Cypress.Commands.add('api_getAllProjects', () => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'GET',
-    url: `/api/v4/projects/?private_token=${accessToken}`
+    url: `/api/v4/projects`,
+    headers: { "Private-Token": accessToken }
   })
 })
 
@@ -79,7 +84,8 @@ Cypress.Commands.add('api_deleteProjects', () => {
     .each(({ id }) => {
       cy.request({
         method: 'DELETE',
-        url: `/api/v4/projects/${id}?private_token=${accessToken}`
+        url: `/api/v4/projects/${id}`,
+        headers: { "Private-Token": accessToken }
       })
     })
 })
@@ -90,7 +96,8 @@ Cypress.Commands.add('api_createIssue', () => {
     .then(({ body }) => {
       cy.request({
         method: 'POST',
-        url: `/api/v4/projects/${body.id}/issues?private_token=${accessToken}`,
+        url: `/api/v4/projects/${body.id}/issues`,
+        headers: { "Private-Token": accessToken },
         body: { title: `title-${faker.datatype.uuid()}` }
       })
     })
@@ -100,7 +107,8 @@ Cypress.Commands.add('api_createProjectLabel', (projectId, label) => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'POST',
-    url: `/api/v4/projects/${projectId}/labels?private_token=${accessToken}`,
+    url: `/api/v4/projects/${projectId}/labels`,
+    headers: { "Private-Token": accessToken },
     body: {
       name: label.name,
       color: label.color
@@ -112,7 +120,8 @@ Cypress.Commands.add('api_createProjectMilestone', (projectId, milestone) => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'POST',
-    url: `/api/v4/projects/${projectId}/milestones?private_token=${accessToken}`,
+    url: `/api/v4/projects/${projectId}/milestones`,
+    headers: { "Private-Token": accessToken },
     body: { title: milestone.title }
   })
 })
@@ -128,7 +137,8 @@ Cypress.Commands.add('api_createUser', user => {
 
   cy.request({
     method: 'POST',
-    url: `/api/v4/users/?private_token=${accessToken}`,
+    url: `/api/v4/users`,
+    headers: { "Private-Token": accessToken },
     body: {
       email: user.email,
       name: user.name,
@@ -143,7 +153,8 @@ Cypress.Commands.add('api_getAllUsers', () => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'GET',
-    url: `/api/v4/users/?private_token=${accessToken}`
+    url: `/api/v4/users`,
+    headers: { "Private-Token": accessToken }
   })
 })
 
@@ -151,7 +162,8 @@ Cypress.Commands.add('api_deleteUser', userId => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'DELETE',
-    url: `/api/v4/users/${userId}?private_token=${accessToken}`
+    url: `/api/v4/users/${userId}`,
+    headers: { "Private-Token": accessToken }
   })
 })
 
@@ -168,7 +180,8 @@ Cypress.Commands.add('api_updateUserWebsite', (userId, website) => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'PUT',
-    url: `/api/v4/users/${userId}?private_token=${accessToken}`,
+    url: `/api/v4/users/${userId}`,
+    headers: { "Private-Token": accessToken },
     body: { website_url: website }
   })
 })
@@ -177,7 +190,8 @@ Cypress.Commands.add('api_getAllBroadcastMessages', () => {
   setAccessTokenIfNotYetSet()
   cy.request({
     method: 'GET',
-    url: `/api/v4/broadcast_messages/?private_token=${accessToken}`
+    url: `/api/v4/broadcast_messages`,
+    headers: { "Private-Token": accessToken }
   })
 })
 
@@ -188,7 +202,8 @@ Cypress.Commands.add('api_deleteBroadcastMessages', () => {
     .each(({ id }) => {
       cy.request({
         method: 'DELETE',
-        url: `/api/v4/broadcast_messages/${id}?private_token=${accessToken}`
+        url: `/api/v4/broadcast_messages/${id}`,
+        headers: { "Private-Token": accessToken }
       })
     })
 })
