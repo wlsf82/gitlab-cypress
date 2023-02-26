@@ -11,6 +11,29 @@ Cypress.Commands.add('gui_login', (
   cy.get('.qa-user-avatar').should('exist')
 })
 
+Cypress.Commands.add('gui_login_or_signup', (
+  username = Cypress.env('user_name'),
+  password = Cypress.env('user_password')
+) => {
+  cy.visit('')
+
+  cy.url().then(url => {
+    if (url.includes('/users/sign_in')) {
+      cy.gui_login(username, password)
+      return
+    }
+    if (url.includes('/users/password/edit?reset_password_token=')) {
+      cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
+      cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
+      cy.get('[data-qa-selector="change_password_button"]').click()
+
+      cy.gui_login(username, password)
+      return
+    }
+    return
+  })
+})
+
 Cypress.Commands.add('gui_createAccessToken', name => {
   cy.visit('profile/personal_access_tokens')
 

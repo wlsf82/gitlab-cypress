@@ -1,11 +1,8 @@
-// Setup - Create access token
-import './profile/createAccessToken.cy'
+// Setup - Sign in (or Sign up) and create an access token
+import '../gui/profile/createAccessToken.cy'
 
 // GUI tests
 import './admin/broadcastMessage.cy'
-import './authentication/login.cy'
-import './authentication/loginAsNonDefaultUser.cy'
-import './authentication/logout.cy'
 import './group/createGroup.cy'
 import './group/createGroupLabel.cy'
 import './group/subGroup.cy'
@@ -22,6 +19,9 @@ import './project/issueBoard.cy'
 import './project/issueMilestone.cy'
 import './project/labelAnIssue.cy'
 import './project/reopenClosedIssue.cy'
+import './authentication/loginAsNonDefaultUser.cy'
 
-// Tear down - delete access token(s)
+// Teardown - Delete access token(s)
 import './profile/deleteAccessTokens.cy'
+// Leave the logout test to the end since it destroys the user session
+import './authentication/logout.cy'

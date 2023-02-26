@@ -1,4 +1,4 @@
-// Setup - Create access token
+// Setup - Sign in (or Sign up) and create an access token
 import '../gui/profile/createAccessToken.cy'
 
 // API tests
@@ -7,5 +7,5 @@ import './project/createProject.cy'
 import './user/createUser.cy'
 import './user/updateUser.cy'
 
-// Tear down - delete access token(s)
+// Teardown - Delete access token(s)
 import '../gui/profile/deleteAccessTokens.cy'
