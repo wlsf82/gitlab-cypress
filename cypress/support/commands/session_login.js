@@ -5,7 +5,7 @@ Cypress.Commands.add('sessionLogin', (
   const login = () => cy.gui_login_or_signup(user, password)
 
   const validate = () => {
-    cy.visit('/')
+    cy.visit('')
     cy.location('pathname', { timeout: 1000 })
       .should('not.eq', '/users/sign_in')
   }
