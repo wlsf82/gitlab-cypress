@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker'
+
 Cypress.Commands.add('gui_login', (
   username = Cypress.env('user_name'),
   password = Cypress.env('user_password')
@@ -35,12 +37,21 @@ Cypress.Commands.add('gui_login_or_signup', (
   })
 })
 
-Cypress.Commands.add('gui_createAccessToken', name => {
+Cypress.Commands.add('gui_createAccessToken', (name = faker.datatype.uuid()) => {
   cy.visit('profile/personal_access_tokens')
 
   cy.get('.qa-personal-access-token-name-field').type(name)
   cy.get('.qa-api-radio').check()
   cy.get('.qa-create-token-button').click()
+
+  cy.contains('Your new personal access token has been created.')
+    .should('be.visible')
+  cy.get('.qa-created-personal-access-token')
+    .should('be.visible')
+    .then(($field) => {
+      const token = $field[0].value
+      cy.task('saveToken', token)
+    })
 })
 
 Cypress.Commands.add('gui_deleteAccessTokens', () => {
