@@ -28,9 +28,7 @@ Cypress.Commands.add('gui_login_or_signup', (
       cy.get('[data-qa-selector="change_password_button"]').click()
 
       cy.gui_login(username, password)
-      return
     }
-    return
   })
 })
 

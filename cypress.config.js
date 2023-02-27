@@ -1,25 +1,25 @@
 const { defineConfig } = require('cypress')
 
-let gitlab_access_token
+let accessToken
 
 module.exports = defineConfig({
   e2e: {
     baseUrl: 'http://localhost/',
-    setupNodeEvents(on, config) {
+    setupNodeEvents (on, config) {
       on('task', {
-        saveToken(token) {
-          gitlab_access_token = token
-          return gitlab_access_token
+        saveToken (token) {
+          accessToken = token
+          return accessToken
         },
-        getToken() {
-          if (gitlab_access_token) {
-            return gitlab_access_token
+        getToken () {
+          if (accessToken) {
+            return accessToken
           }
           return null
-        },
+        }
       })
       return config
-    },
+    }
   },
-  fixturesFolder: false,
+  fixturesFolder: false
 })

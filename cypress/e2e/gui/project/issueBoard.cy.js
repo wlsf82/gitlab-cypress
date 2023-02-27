@@ -7,7 +7,7 @@ describe('Issue board', () => {
   it('shows an open issue on the issue board, closes it, and shows it closed', () => {
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
-      .then(function({ body }) {
+      .then(function ({ body }) {
         const { title, iid } = this.issue.body
 
         cy.visit(`${Cypress.env('user_name')}/${body[0].name}/-/boards`)

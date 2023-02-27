@@ -11,7 +11,7 @@ describe('Create Access Token', () => {
     cy.get('.qa-created-personal-access-token')
       .should('be.visible')
       .then(($field) => {
-        const token = $field[0]['value']
+        const token = $field[0].value
         cy.task('saveToken', token)
       })
   })
