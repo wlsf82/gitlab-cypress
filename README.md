@@ -53,12 +53,12 @@ And run `npm run test:gui` to run only the GUI tests in headless mode.
 1. Run `npm run cy:open` to open the Cypress App;
 2. Select E2E Testing;
 3. Select one of the available browsers (e.g., Electron), and click the Start button;
-4. Run the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js) test;
-5. Finally, click on the test file you want to run and wait for it to finish. Or, click on the `index.cy.js` file (from [`cypress/e2e/api`](./cypress/e2e/api/) or [`cypress/e2e/gui`](./cypress/e2e/gui/)) to run them all at once.
+4. **Run the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js) test;**
+5. Finally, click on the test file you want to run and wait for it to finish. Or, click on the `index.cy.js` file (from the [`cypress/e2e/api`](./cypress/e2e/api/) or [`cypress/e2e/gui`](./cypress/e2e/gui/) directories) to run them all at once.
 
 > **Important notes about the above steps**
 >
-> _Do not skip step 4!_ It will authenticate the `root` user, create a GitLab Access Token, and make it available to all other tests while the Cypress App is kept open unless the [`cypress/e2e/gui/profile/deleteAccessTokens.cy.js`](./cypress/e2e/gui/profile/deleteAccessTokens.cy.js) test is run. In such a case, the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js) test needs to be re-run.
+> **Do not skip step 4!** It will authenticate the `root` user, create a GitLab Access Token, and make it available to all other tests while the Cypress App is kept open unless the [`cypress/e2e/gui/profile/deleteAccessTokens.cy.js`](./cypress/e2e/gui/profile/deleteAccessTokens.cy.js) test is run. In such a case, the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js) test needs to be re-run.
 >
 > Also, step 4 creates a session for the `root` user, which will be restored by most tests. This means that login via GUI should only happens once, speeding up the execution. 🏎️
 
