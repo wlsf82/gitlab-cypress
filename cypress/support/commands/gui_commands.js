@@ -11,6 +11,12 @@ Cypress.Commands.add('gui_login', (
   cy.get('.qa-user-avatar').should('exist')
 })
 
+Cypress.Commands.add('gui_signup', (password = Cypress.env('user_password')) => {
+  cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
+  cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
+  cy.get('[data-qa-selector="change_password_button"]').click()
+})
+
 Cypress.Commands.add('gui_login_or_signup', (
   username = Cypress.env('user_name'),
   password = Cypress.env('user_password')
@@ -23,10 +29,7 @@ Cypress.Commands.add('gui_login_or_signup', (
       return
     }
     if (url.includes('/users/password/edit?reset_password_token=')) {
-      cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
-      cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
-      cy.get('[data-qa-selector="change_password_button"]').click()
-
+      cy.gui_signup(password)
       cy.gui_login(username, password)
     }
   })
