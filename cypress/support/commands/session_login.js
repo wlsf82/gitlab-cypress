@@ -15,5 +15,15 @@ Cypress.Commands.add('sessionLogin', (
     validate
   }
 
+  /**
+   * @param user string - the id of the session. If the id changes, a new
+   * session is created.
+   * @param login function - the function creates the session.
+   * @param options object - an object to add certain characteristics to the
+   * session, such as sharing the cached session across specs (test files),
+   * and a way to validate if the session is still valid.
+   *
+   * For more details, visit https://docs.cypress.io/api/commands/session
+   */
   cy.session(user, login, options)
 })
