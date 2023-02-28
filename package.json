@@ -4,7 +4,7 @@
   "description": "Sample project to experiment with Cypress for testing the GitLab application",
   "scripts": {
     "cy:open": "cypress open",
-    "lint": "standard",
+    "lint": "standard --verbose | snazzy",
     "lint:fix": "standard --fix",
     "test": "npm run test:api && npm run test:gui",
     "test:api": "cypress run --spec 'cypress/e2e/api/index.cy.js'",
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
     "cypress": "^12.7.0",
+    "snazzy": "^9.0.0",
     "standard": "^17.0.0"
   }
 }
