@@ -19,22 +19,19 @@ Cypress.Commands.add('gui_signup', (password = Cypress.env('user_password')) => 
   cy.get('[data-qa-selector="change_password_button"]').click()
 })
 
-Cypress.Commands.add('gui_login_or_signup', (
+Cypress.Commands.add('gui_login_or_signup_and_login', (
   username = Cypress.env('user_name'),
   password = Cypress.env('user_password')
 ) => {
   cy.visit('')
 
   cy.url().then(url => {
-    if (url.includes('/users/sign_in')) {
-      cy.gui_login(username, password)
-      return
-    }
     if (url.includes('/users/password/edit?reset_password_token=')) {
       cy.gui_signup(password)
-      cy.gui_login(username, password)
     }
   })
+
+  cy.gui_login(username, password)
 })
 
 Cypress.Commands.add('gui_createAccessToken', (name = faker.datatype.uuid()) => {
