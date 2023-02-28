@@ -56,7 +56,7 @@ Cypress.Commands.add('gui_deleteAccessTokens', () => {
 
   cy.get('body').then($body => {
     if ($body.find('.settings-message:contains(This user has no active Personal Access Tokens.)').length) {
-      cy.log('no active tokens found.')
+      cy.log('no active tokens were found.')
       return
     }
     cy.get('.active-tokens tbody tr')
