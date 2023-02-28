@@ -62,6 +62,12 @@ And run `npm run test:gui` to run only the GUI tests in headless mode.
 >
 > Also, step 4 creates a session for the `root` user, which will be restored by most tests. This means that login via GUI should only happens once, speeding up the execution. 🏎️
 
+#### Example
+
+Here's an example of running all the GUI tests in interactive mode.
+
+https://user-images.githubusercontent.com/2768415/221730106-36514c8b-1013-4d2f-a6c8-f536bef65732.mp4
+
 ___
 
 Developed with 💚 by [Walmyr](https://walmyr.dev).
