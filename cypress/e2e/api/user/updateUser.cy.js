@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en'
 
 describe('User info', () => {
   beforeEach(() => cy.deleteAllUsersButRoot())

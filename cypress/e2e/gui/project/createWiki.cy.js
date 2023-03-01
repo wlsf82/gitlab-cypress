@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en'
 
 describe('Create new page', () => {
   const project = { name: faker.datatype.uuid() }

@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en'
 
 describe('Project', () => {
   before(() => cy.api_deleteProjects())

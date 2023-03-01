@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en'
 
 describe('Issue milestone', () => {
   const milestone = { title: `milestone-${faker.random.word()}` }

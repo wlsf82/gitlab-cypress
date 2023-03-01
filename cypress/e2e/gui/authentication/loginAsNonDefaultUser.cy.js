@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en'
 
 describe('Login as non-default user', () => {
   const randomName = faker.name.firstName().toLowerCase()

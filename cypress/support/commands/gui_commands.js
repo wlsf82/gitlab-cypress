@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en'
 
 Cypress.Commands.add('gui_login', (
   username = Cypress.env('user_name'),

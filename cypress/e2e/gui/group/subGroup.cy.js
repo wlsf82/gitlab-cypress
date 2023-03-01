@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en'
 
 describe('Create a sub-group', () => {
   const randomUuid = faker.datatype.uuid()
