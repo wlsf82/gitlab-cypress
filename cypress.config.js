@@ -1,25 +1,13 @@
 const { defineConfig } = require('cypress')
 const esbuildPreprocessor = require('./cypress/support/esbuild-preprocessor')
-
-let accessToken
+const tasks = require('./cypress/support/tasks')
 
 module.exports = defineConfig({
   e2e: {
     baseUrl: 'http://localhost/',
     setupNodeEvents (on, config) {
       esbuildPreprocessor(on)
-      on('task', {
-        saveToken (token) {
-          accessToken = token
-          return accessToken
-        },
-        getToken () {
-          if (accessToken) {
-            return accessToken
-          }
-          return null
-        }
-      })
+      tasks(on)
       return config
     }
   },
