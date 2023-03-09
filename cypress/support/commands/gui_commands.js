@@ -144,3 +144,18 @@ Cypress.Commands.add('gui_createFile', file => {
   cy.get('#editor').type(file.content)
   cy.get('.qa-commit-button').click()
 })
+
+Cypress.Commands.add('gui_addUserToProject', ({ username }, project) => {
+  cy.visit(`${Cypress.env('user_name')}/${project}/-/project_members`)
+  cy.contains('label', 'GitLab member or Email address')
+    .next()
+    .type(`@${username}`)
+  cy.contains('li', `@${username}`)
+    .should('be.visible')
+    .click()
+  cy.get('.qa-add-member-button').click()
+  cy.contains('.flash-notice', 'Users were successfully added.')
+    .should('be.visible')
+  cy.contains('.qa-members-list', `@${username}`)
+    .should('be.visible')
+})
