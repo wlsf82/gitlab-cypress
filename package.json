@@ -40,6 +40,7 @@
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@faker-js/faker": "^7.6.0",
     "cypress": "^12.7.0",
+    "cypress-plugin-xhr-toggle": "^1.0.0",
     "esbuild": "^0.17.10",
     "snazzy": "^9.0.0",
     "standard": "^17.0.0"

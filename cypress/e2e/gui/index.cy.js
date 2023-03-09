@@ -19,6 +19,7 @@ import './project/issueBoard.cy'
 import './project/issueMilestone.cy'
 import './project/labelAnIssue.cy'
 import './project/reopenClosedIssue.cy'
+import './project/multipleUsersInAnProject.cy.js'
 import './authentication/loginAsNonDefaultUser.cy'
 
 // Teardown - Delete access token(s)
