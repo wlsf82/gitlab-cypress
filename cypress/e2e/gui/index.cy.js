@@ -3,6 +3,8 @@ import '../gui/profile/createAccessToken.cy'
 
 // GUI tests
 import './admin/broadcastMessage.cy'
+// The below test destroys the user session. The next one recreates it.
+import './admin/impersonateUser.cy.js'
 import './group/createGroup.cy'
 import './group/createGroupLabel.cy'
 import './group/subGroup.cy'
