@@ -159,3 +159,13 @@ Cypress.Commands.add('gui_addUserToProject', ({ username }, project) => {
   cy.contains('.qa-members-list', `@${username}`)
     .should('be.visible')
 })
+
+Cypress.Commands.add('gui_createSnippet', snippetObj => {
+  const { title, description, visibility, snippet } = snippetObj
+
+  cy.get('.qa-snippet-title').type(title)
+  cy.get('.qa-issuable-form-description').type(description)
+  cy.get(`[data-qa-selector="${visibility}_radio"]`).check()
+  cy.get('#editor .ace_content').type(snippet)
+  cy.get('.qa-create-snippet-button').click()
+})

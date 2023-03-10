@@ -209,3 +209,25 @@ Cypress.Commands.add('api_deleteBroadcastMessages', () => {
       })
     })
 })
+
+Cypress.Commands.add('api_getAllSnippets', () => {
+  setAccessTokenIfNotYetSet()
+  cy.request({
+    method: 'GET',
+    url: '/api/v4/snippets',
+    headers: { 'Private-Token': accessToken }
+  })
+})
+
+Cypress.Commands.add('api_deleteSnippets', () => {
+  setAccessTokenIfNotYetSet()
+  cy.api_getAllSnippets()
+    .its('body')
+    .each(({ id }) => {
+      cy.request({
+        method: 'DELETE',
+        url: `/api/v4/snippets/${id}`,
+        headers: { 'Private-Token': accessToken }
+      })
+    })
+})
