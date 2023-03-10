@@ -8,14 +8,18 @@ describe('Project with multiple users', () => {
     cy.log('1. Delete all users and projects to start in a clean state')
     cy.deleteAllUsersButRoot()
     cy.api_deleteProjects()
+
     cy.log('2. Create a brand new user')
     cy.api_createUser(newUser)
+
     cy.log(`3. Create a new issue (and by consequence a new project) for the ${defaultUser} user`)
     cy.api_createIssue()
       .its('body.iid')
       .as('issueIid')
+
     cy.log(`4. Sign in as ${defaultUser}`)
     cy.signInAsDefaultUser()
+
     cy.log(`5. Add the new user to the ${defaultUser} user's project`)
     cy.api_getAllProjects().as('projects')
     cy.get('@projects')
