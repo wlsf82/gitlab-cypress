@@ -4,12 +4,13 @@ describe('Close an issue using quick action', () => {
     cy.sessionLogin()
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
-      .then(function ({ body }) {
-        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${this.issue.body.iid}`)
-      })
+      .its('body')
+      .as('projectsBody')
   })
 
-  it('closes an issue using a quick action successfully', () => {
+  it('closes an issue using a quick action successfully', function () {
+    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
+
     cy.gui_commentOnIssue('/close ')
 
     cy.contains('Closed this issue')

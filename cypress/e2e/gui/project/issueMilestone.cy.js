@@ -9,8 +9,11 @@ describe('Issue milestone', () => {
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
       .then(function ({ body }) {
-        cy.api_createProjectMilestone(body[0].id, milestone)
-        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${this.issue.body.iid}`)
+        const project = body[0]
+        const issueIid = this.issue.body.iid
+
+        cy.api_createProjectMilestone(project.id, milestone)
+        cy.visit(`${Cypress.env('user_name')}/${project.name}/issues/${issueIid}`)
       })
   })
 

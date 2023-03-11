@@ -7,11 +7,12 @@ describe('Create new page', () => {
     cy.api_deleteProjects()
     cy.sessionLogin()
     cy.api_createProject(project)
-    cy.visit(`${Cypress.env('user_name')}/${project.name}/wikis/home?view=create`)
   })
 
   it('creates a wiki successfully', () => {
     const wikiContent = faker.random.words(4)
+
+    cy.visit(`${Cypress.env('user_name')}/${project.name}/wikis/home?view=create`)
 
     cy.get('.qa-wiki-content-textarea').type(wikiContent)
     cy.contains('Create page').click()

@@ -4,12 +4,13 @@ describe('Close an issue', () => {
     cy.sessionLogin()
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
-      .then(function ({ body }) {
-        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${this.issue.body.iid}`)
-      })
+      .its('body')
+      .as('projectsBody')
   })
 
-  it('closes an issue successfully', () => {
+  it('closes an issue successfully', function () {
+    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
+
     cy.get('.d-none.btn-close').click()
 
     cy.contains('.status-box-issue-closed', 'Closed')

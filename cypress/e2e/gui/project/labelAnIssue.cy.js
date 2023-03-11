@@ -12,8 +12,11 @@ describe('Label an issue', () => {
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
       .then(function ({ body }) {
-        cy.api_createProjectLabel(body[0].id, label)
-        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${this.issue.body.iid}`)
+        const project = body[0]
+        const issueIid = this.issue.body.iid
+
+        cy.api_createProjectLabel(project.id, label)
+        cy.visit(`${Cypress.env('user_name')}/${project.name}/issues/${issueIid}`)
       })
   })
 

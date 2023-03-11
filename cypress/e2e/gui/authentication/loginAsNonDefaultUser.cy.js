@@ -16,6 +16,12 @@ describe('Login as non-default user', () => {
   })
 
   it('logs in as a non-default user successfully', () => {
+    /**
+     * The `gui_login` cmd already asserts that the user is logged in,
+     * to ensure the session is correctly created.
+     *
+     * This is why this test has no explicit assertion.
+     */
     cy.gui_login(newUser.username, newUser.password)
   })
 })
