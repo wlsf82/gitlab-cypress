@@ -13,12 +13,6 @@ Cypress.Commands.add('gui_login', (
   cy.get('.qa-user-avatar').should('exist')
 })
 
-Cypress.Commands.add('gui_signup', (password = Cypress.env('user_password')) => {
-  cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
-  cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
-  cy.get('[data-qa-selector="change_password_button"]').click()
-})
-
 Cypress.Commands.add('gui_login_or_signup_and_login', (
   username = Cypress.env('user_name'),
   password = Cypress.env('user_password')
@@ -27,11 +21,17 @@ Cypress.Commands.add('gui_login_or_signup_and_login', (
 
   cy.url().then(url => {
     if (url.includes('/users/password/edit?reset_password_token=')) {
-      cy.gui_signup(password)
+      cy.signup(password)
     }
   })
 
   cy.gui_login(username, password)
+})
+
+Cypress.Commands.add('signup', (password = Cypress.env('user_password')) => {
+  cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
+  cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
+  cy.get('[data-qa-selector="change_password_button"]').click()
 })
 
 Cypress.Commands.add('gui_createAccessToken', (name = faker.datatype.uuid()) => {
@@ -145,7 +145,9 @@ Cypress.Commands.add('gui_createFile', file => {
   cy.get('.qa-commit-button').click()
 })
 
-Cypress.Commands.add('gui_addUserToProject', ({ username }, project) => {
+Cypress.Commands.add('gui_addUserToProject', (user, project) => {
+  const { username } = user
+
   cy.visit(`${Cypress.env('user_name')}/${project}/-/project_members`)
   cy.contains('label', 'GitLab member or Email address')
     .next()
@@ -176,41 +178,47 @@ Cypress.Commands.add('gui_setStatus', (emojiCode, statusText) => {
   cy.get('#set-user-status-modal___BV_modal_content_')
     .should('be.visible')
     .as('setStatusModal')
-    .find('[aria-label="Add status emoji"]')
-    .click()
-  cy.get('[name="emoji-menu-search"]')
-    .should('be.visible')
-    .type(emojiCode)
-  cy.contains('.emoji-search-title', 'Search results')
-    .next()
-    .find('li')
-    .first()
-    .click()
-  cy.get('input[placeholder="What\'s your status?"]')
-    .type(statusText)
+    .selectEmojiAndStatusText(emojiCode, statusText)
   cy.get('@setStatusModal')
     .find('button:contains(Set status)')
     .click()
-  cy.get('.qa-user-avatar')
-    .as('avatar')
-    .click()
-  cy.get('.dropdown-menu .user-status')
-    .should('contain', statusText)
-  cy.get('.qa-user-avatar').click()
-})
-
-Cypress.Commands.add('gui_openEditStatusModal', () => {
-  cy.get('.qa-user-avatar')
-    .click()
-  cy.contains('button', 'Edit status').click()
-  cy.get('#set-user-status-modal___BV_modal_content_')
-    .should('be.visible')
+  cy.assertStatus(statusText)
 })
 
 Cypress.Commands.add('gui_ediStatus', (emojiCode, statusText) => {
-  cy.gui_openEditStatusModal()
+  cy.openEditStatusModal()
     .as('editStatusModal')
-    .find('[aria-label="Add status emoji"]')
+    .selectEmojiAndStatusText(emojiCode, statusText)
+  cy.get('@editStatusModal')
+    .find('button:contains(Set status)')
+    .click()
+  cy.assertStatus(statusText)
+})
+
+Cypress.Commands.add('gui_clearStatus', () => {
+  cy.openEditStatusModal()
+    .find('button:contains(Remove status)')
+    .click()
+  cy.get('.qa-user-avatar').click()
+  cy.get('.dropdown-menu.show').should('be.visible')
+  cy.get('.dropdown-menu .user-status')
+    .should('not.exist')
+  cy.get('.qa-user-avatar').click()
+})
+
+/**
+ * Custom commands defined here without the `gui_` prefix are only
+ * used by other custom commands, not directly by tests.
+ *
+ * This is a project's convention.
+ */
+
+Cypress.Commands.add('selectEmojiAndStatusText', { prevSubject: true }, (
+  subject,
+  emojiCode,
+  statusText
+) => {
+  subject.find('[aria-label="Add status emoji"]')
     .click()
   cy.get('[name="emoji-menu-search"]')
     .should('be.visible')
@@ -223,21 +231,21 @@ Cypress.Commands.add('gui_ediStatus', (emojiCode, statusText) => {
   cy.get('input[placeholder="What\'s your status?"]')
     .clear()
     .type(statusText)
-  cy.get('@editStatusModal')
-    .find('button:contains(Set status)')
-    .click()
-  cy.get('.qa-user-avatar').click()
-  cy.get('.dropdown-menu .user-status')
-    .should('contain', statusText)
-  cy.get('.qa-user-avatar').click()
 })
 
-Cypress.Commands.add('gui_clearStatus', () => {
-  cy.gui_openEditStatusModal()
-    .find('button:contains(Remove status)')
+Cypress.Commands.add('openEditStatusModal', () => {
+  cy.get('.qa-user-avatar')
     .click()
-  cy.get('.qa-user-avatar').click()
+  cy.contains('button', 'Edit status').click()
+  cy.get('#set-user-status-modal___BV_modal_content_')
+    .should('be.visible')
+})
+
+Cypress.Commands.add('assertStatus', statusText => {
+  cy.get('.qa-user-avatar')
+    .as('avatar')
+    .click()
   cy.get('.dropdown-menu .user-status')
-    .should('not.exist')
+    .should('contain', statusText)
   cy.get('.qa-user-avatar').click()
 })
