@@ -14,12 +14,13 @@ describe('Create a sub-group', () => {
     cy.api_deleteGroups()
     cy.sessionLogin()
     cy.api_createGroup(group)
-      .then(({ body }) => {
-        cy.gui_createSubgroup(body.id, group.subgroup)
-      })
+      .its('body')
+      .as('groupBody')
   })
 
-  it('creates a sub-group successfully', () => {
+  it('creates a sub-group successfully', function () {
+    cy.gui_createSubgroup(this.groupBody.id, group.subgroup)
+
     cy.url().should('be.equal', `${Cypress.config('baseUrl')}${group.name}/${group.subgroup.name}`)
     cy.contains('h1', group.subgroup.name).should('be.visible')
   })

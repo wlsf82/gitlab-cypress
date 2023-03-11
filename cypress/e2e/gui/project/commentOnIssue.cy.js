@@ -6,13 +6,14 @@ describe('Comment on an Issue', () => {
     cy.sessionLogin()
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
-      .then(function ({ body }) {
-        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${this.issue.body.iid}`)
-      })
+      .its('body')
+      .as('projectsBody')
   })
 
-  it('comments on an issue successfully', () => {
+  it('comments on an issue successfully', function () {
     const comment = faker.random.words(3)
+
+    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
 
     cy.gui_commentOnIssue(comment)
 

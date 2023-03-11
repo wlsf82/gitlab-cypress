@@ -13,10 +13,11 @@ describe('Create new file', () => {
     cy.api_deleteProjects()
     cy.sessionLogin()
     cy.api_createProject(project)
-    cy.visit(`${Cypress.env('user_name')}/${project.name}/new/master`)
   })
 
   it('creates a new file successfully', () => {
+    cy.visit(`${Cypress.env('user_name')}/${project.name}/new/master`)
+
     cy.gui_createFile(project.file)
 
     cy.contains('The file has been successfully created.').should('be.visible')
