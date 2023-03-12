@@ -111,6 +111,20 @@ Cypress.Commands.add('gui_createGroupLabel', (group, label) => {
   cy.contains('Create label').click()
 })
 
+Cypress.Commands.add('gui_removeGroup', ({ name, path }) => {
+  cy.visit(`groups/${path}/-/edit`)
+
+  cy.contains('h4', 'Path, transfer, remove')
+    .next()
+    .click()
+  cy.get('input[value="Remove group"]')
+    .should('be.visible')
+    .click()
+  cy.get('.qa-confirm-input')
+    .type(name)
+  cy.get('.qa-confirm-button').click()
+})
+
 Cypress.Commands.add('gui_createProjectMilestone', (project, milestone) => {
   cy.visit(`${Cypress.env('user_name')}/${project.name}/-/milestones/new`)
 
