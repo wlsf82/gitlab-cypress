@@ -24,7 +24,7 @@ Run `docker run --publish 80:80 --name gitlab --hostname localhost wlsf82/gitlab
 
 All should be ok if, when accessing the http://localhost/ URL, a form to define the password for the `root` user is displayed.
 
-> ❗**DO NOT DEFINE THE PASSWORD MANUALLY**❗
+> ❗**THERE'S NO NEED DEFINE THE PASSWORD MANUALLY**❗
 >
 > There's an automated test for it. 😉
 >
