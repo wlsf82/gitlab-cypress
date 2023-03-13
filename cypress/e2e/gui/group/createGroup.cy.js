@@ -8,7 +8,7 @@ describe('Create Group', () => {
 
   it('creates a group successfully', () => {
     const group = {
-      name: faker.datatype.uuid(),
+      name: `group-${faker.datatype.uuid()}`,
       description: faker.random.words(5)
     }
 

@@ -6,7 +6,7 @@ describe('Group', () => {
   it('creates a group successfully', () => {
     const randomUuid = faker.datatype.uuid()
     const group = {
-      name: randomUuid,
+      name: `group-${randomUuid}`,
       path: randomUuid
     }
 

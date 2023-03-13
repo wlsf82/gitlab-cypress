@@ -111,7 +111,7 @@ Cypress.Commands.add('gui_createGroupLabel', (group, label) => {
   cy.contains('Create label').click()
 })
 
-Cypress.Commands.add('gui_removeGroup', ({ name, path }) => {
+Cypress.Commands.add('gui_removeGroup', ({ path }) => {
   cy.visit(`groups/${path}/-/edit`)
 
   cy.contains('h4', 'Path, transfer, remove')
@@ -121,7 +121,7 @@ Cypress.Commands.add('gui_removeGroup', ({ name, path }) => {
     .should('be.visible')
     .click()
   cy.get('.qa-confirm-input')
-    .type(name)
+    .type(path)
   cy.get('.qa-confirm-button').click()
 })
 

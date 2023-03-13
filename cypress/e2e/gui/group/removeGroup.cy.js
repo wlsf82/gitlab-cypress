@@ -3,10 +3,10 @@ import { faker } from '@faker-js/faker/locale/en'
 describe('Remove Group', () => {
   const randomUuid = faker.datatype.uuid()
   const group = {
-    name: randomUuid,
+    name: `group-${randomUuid}`,
     path: randomUuid,
     label: {
-      title: faker.random.word()
+      title: `label-${faker.random.word()}`
     }
   }
 
