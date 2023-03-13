@@ -4,7 +4,7 @@ describe('Project', () => {
   before(() => cy.api_deleteProjects())
 
   it('creates a project successfully', () => {
-    const project = { name: faker.random.word() }
+    const project = { name: `project-${faker.datatype.uuid()}` }
 
     cy.api_createProject(project)
       .then(({ status, body }) => {

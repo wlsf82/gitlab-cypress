@@ -100,7 +100,7 @@ Cypress.Commands.add('api_createIssue', () => {
         method: 'POST',
         url: `/api/v4/projects/${body.id}/issues`,
         headers: { 'Private-Token': accessToken },
-        body: { title: `title-${faker.datatype.uuid()}` }
+        body: { title: `issue-${faker.datatype.uuid()}` }
       })
     })
 })
