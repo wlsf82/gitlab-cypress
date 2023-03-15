@@ -15,7 +15,7 @@ describe('Login as non-default user', () => {
     cy.api_createUser(newUser)
   })
 
-  it('logs in as a non-default user successfully', () => {
+  it('logs in as a non-default user', () => {
     /**
      * The `gui_login` cmd already asserts that the user is logged in,
      * to ensure the session is correctly created.

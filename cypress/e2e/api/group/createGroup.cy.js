@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker/locale/en'
 describe('Group', () => {
   before(() => cy.api_deleteGroups())
 
-  it('creates a group successfully', () => {
+  it('creates a group', () => {
     const randomUuid = faker.datatype.uuid()
     const group = {
       name: `group-${randomUuid}`,

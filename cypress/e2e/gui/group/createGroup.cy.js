@@ -6,7 +6,7 @@ describe('Create Group', () => {
     cy.sessionLogin()
   })
 
-  it('creates a group successfully', () => {
+  it('creates a group', () => {
     const group = {
       name: `group-${faker.datatype.uuid()}`,
       description: faker.random.words(5)

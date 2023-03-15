@@ -1,5 +1,5 @@
 describe('Login as default user', () => {
-  it('logs in successfully', () => {
+  it('logs in', () => {
     /**
      * The `sessionLogin` custom cmd uses the `gui_login` cmd,
      * which already asserts that the user is logged in, to ensure

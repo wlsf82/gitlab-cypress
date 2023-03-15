@@ -1,7 +1,7 @@
 describe('Create Access Token', () => {
   beforeEach(() => cy.sessionLogin())
 
-  it('creates an access token successfully', () => {
+  it('creates an access token', () => {
     /**
      * The `gui_createAccessToken` custom command hides its assertion
      * to avoid complexity into the test code. But it does ensure that

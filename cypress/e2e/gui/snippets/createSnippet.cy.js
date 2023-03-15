@@ -4,7 +4,7 @@ describe('Create Snippet', () => {
     cy.sessionLogin()
   })
 
-  it('creates a public snippet successfully', () => {
+  it('creates a public snippet', () => {
     const snippetObj = {
       title: 'JS Hello, World!',
       description: '"Hello, World" example in JavaScript',

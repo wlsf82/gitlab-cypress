@@ -20,7 +20,7 @@ describe('Label an issue', () => {
       })
   })
 
-  it('labels an issue successfully', () => {
+  it('labels an issue', () => {
     cy.gui_labelIssueWith(label)
 
     cy.contains('.qa-labels-block', label.name).should('be.visible')
