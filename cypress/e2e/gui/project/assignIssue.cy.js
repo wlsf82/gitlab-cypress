@@ -9,7 +9,10 @@ describe('Assign issue', () => {
   })
 
   it('assigns an issue to yourself', function () {
-    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
+    const { name: projectName } = this.projectsBody[0]
+    const { iid: issueIid } = this.issue.body
+
+    cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
 
     cy.contains('assign yourself').click()
 
