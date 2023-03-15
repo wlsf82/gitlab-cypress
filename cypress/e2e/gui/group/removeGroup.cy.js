@@ -4,10 +4,7 @@ describe('Remove Group', () => {
   const randomUuid = faker.datatype.uuid()
   const group = {
     name: `group-${randomUuid}`,
-    path: randomUuid,
-    label: {
-      title: `label-${faker.random.word()}`
-    }
+    path: randomUuid
   }
 
   beforeEach(() => {
