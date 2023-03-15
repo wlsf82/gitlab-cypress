@@ -66,7 +66,7 @@ And run `npm run test:gui` to run only the GUI tests in headless mode.
 
 Here's an example of running all the GUI tests in interactive mode.
 
-https://user-images.githubusercontent.com/2768415/224581418-7e3532d5-49a3-493d-b37f-a92af68769c4.mp4
+https://user-images.githubusercontent.com/2768415/225186210-4dd51c26-9baf-4e65-9b09-6f79a818a7d5.mp4
 
 ___
 
