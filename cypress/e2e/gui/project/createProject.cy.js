@@ -6,7 +6,7 @@ describe('Create Project', () => {
     cy.sessionLogin()
   })
 
-  it('creates a project successfully', () => {
+  it('creates a project', () => {
     const project = {
       name: `project-${faker.datatype.uuid()}`,
       description: faker.random.words(5)

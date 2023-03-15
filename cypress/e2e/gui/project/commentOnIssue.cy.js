@@ -10,7 +10,7 @@ describe('Comment on an Issue', () => {
       .as('projectsBody')
   })
 
-  it('comments on an issue successfully', function () {
+  it('comments on an issue', function () {
     const comment = faker.random.words(3)
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body

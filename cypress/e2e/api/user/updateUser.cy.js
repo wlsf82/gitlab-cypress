@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker/locale/en'
 describe('User info', () => {
   beforeEach(() => cy.deleteAllUsersButRoot())
 
-  it('updates user info successfully', () => {
+  it('updates user info', () => {
     const randomName = faker.name.firstName().toLowerCase()
     const newUser = {
       email: `${randomName}@example.com`,

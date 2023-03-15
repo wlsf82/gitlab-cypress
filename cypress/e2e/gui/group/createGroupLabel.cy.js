@@ -17,7 +17,7 @@ describe('Create Group Label', () => {
     cy.visit(group.path)
   })
 
-  it('creates a group label successfully', () => {
+  it('creates a group label', () => {
     cy.gui_createGroupLabel(group, group.label)
 
     cy.url().should('be.equal', `${Cypress.config('baseUrl')}groups/${group.path}/-/labels`)

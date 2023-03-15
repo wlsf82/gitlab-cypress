@@ -16,7 +16,7 @@ describe('Create Issue', () => {
     cy.api_createProject(project)
   })
 
-  it('creates a project successfully', () => {
+  it('creates a project', () => {
     cy.gui_createIssue(project, project.issue)
 
     cy.get('.issue-details')

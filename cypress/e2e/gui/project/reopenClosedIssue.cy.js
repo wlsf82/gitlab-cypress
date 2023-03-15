@@ -13,7 +13,7 @@ describe('Reopen a closed issue', () => {
       })
   })
 
-  it('reopens a closed issue successfully', () => {
+  it('reopens a closed issue', () => {
     cy.get('[data-qa-selector="reopen_issue_button"]').click()
 
     cy.contains('.status-box-open', 'Open').should('be.visible')

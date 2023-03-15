@@ -14,7 +14,7 @@ describe('Remove Group', () => {
     cy.api_createGroup(group)
   })
 
-  it('removes a group successfully', () => {
+  it('removes a group', () => {
     // Act
     cy.gui_removeGroup(group)
 
