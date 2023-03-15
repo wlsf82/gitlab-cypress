@@ -5,7 +5,10 @@ describe('Reopen a closed issue', () => {
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
       .then(function ({ body }) {
-        cy.visit(`${Cypress.env('user_name')}/${body[0].name}/issues/${this.issue.body.iid}`)
+        const { name: projectName } = body[0]
+        const { iid: issueIid } = this.issue.body
+
+        cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
         cy.get('.d-none.btn-close').click()
       })
   })
