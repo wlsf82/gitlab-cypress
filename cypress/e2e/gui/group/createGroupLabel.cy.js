@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-describe('Create Group Label', () => {
+describe('Group Label', () => {
   const randomUuid = faker.datatype.uuid()
   const group = {
     name: `group-${randomUuid}`,

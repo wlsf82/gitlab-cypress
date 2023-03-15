@@ -1,4 +1,4 @@
-describe('Close an issue', () => {
+describe('Issue', () => {
   beforeEach(() => {
     cy.api_deleteProjects()
     cy.sessionLogin()

@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-describe('Create Project', () => {
+describe('Project', () => {
   beforeEach(() => {
     cy.api_deleteProjects()
     cy.sessionLogin()

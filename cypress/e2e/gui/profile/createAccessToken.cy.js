@@ -1,4 +1,4 @@
-describe('Create Access Token', () => {
+describe('Access Token', () => {
   beforeEach(() => cy.sessionLogin())
 
   it('creates an access token', () => {

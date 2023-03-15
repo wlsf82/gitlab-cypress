@@ -1,4 +1,4 @@
-describe('Reopen a closed issue', () => {
+describe('Closed issue', () => {
   beforeEach(() => {
     cy.api_deleteProjects()
     cy.sessionLogin()

@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-describe('Create new page', () => {
+describe('Wiki', () => {
   const project = { name: `project-${faker.datatype.uuid()}` }
 
   beforeEach(() => {
