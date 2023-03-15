@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-describe('Create Group', () => {
+describe('Group', () => {
   beforeEach(() => {
     cy.api_deleteGroups()
     cy.sessionLogin()

@@ -1,4 +1,4 @@
-describe('Create Snippet', () => {
+describe('Snippet', () => {
   beforeEach(() => {
     cy.api_deleteSnippets()
     cy.sessionLogin()

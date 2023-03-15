@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-describe('Label an issue', () => {
+describe('Issue label', () => {
   const label = {
     name: `label-${faker.random.word()}`,
     color: '#ffaabb'

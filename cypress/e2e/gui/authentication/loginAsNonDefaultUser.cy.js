@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-describe('Login as non-default user', () => {
+describe('Login', () => {
   const randomName = faker.name.firstName().toLowerCase()
   const newUser = {
     email: `${randomName}@example.com`,

@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-describe('Create Projet Milestone', () => {
+describe('Projet Milestone', () => {
   const project = {
     name: `project-${faker.datatype.uuid()}`,
     milestone: {
