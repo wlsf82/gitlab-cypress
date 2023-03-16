@@ -162,12 +162,20 @@ Cypress.Commands.add('gui_createFile', file => {
 Cypress.Commands.add('gui_addUserToProject', (user, project) => {
   const { username } = user
 
+  cy.intercept('GET', `autocomplete/users.json?search=@${user}&active=true`)
+    .as('getUser')
+
   cy.visit(`${Cypress.env('user_name')}/${project}/-/project_members`)
   cy.contains('label', 'GitLab member or Email address')
     .next()
     .type(`@${username}`)
+  cy.wait('@getUser')
+    .its('response.statusCode')
+    .should('be.oneOf', [200, 304])
   cy.contains('li', `@${username}`)
+    .as('userListItem')
     .should('be.visible')
+  cy.get('@userListItem')
     .click()
   cy.get('.qa-add-member-button').click()
   cy.contains('.flash-notice', 'Users were successfully added.')
