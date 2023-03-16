@@ -1,0 +1,57 @@
+name: 'Cypress Tests Workflow'
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Standard JS
+      run: npm run lint
+
+  cypress-tests:
+    needs: static-analysis
+    runs-on: ubuntu-latest
+    services:
+      gitlab-ce:
+        image: wlsf82/gitlab-ce:latest
+        ports:
+          - 80:80
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        env:
+          CYPRESS_user_name: ${{ secrets.CYPRESS_user_name }}
+          CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
+        with:
+          command: npm test
+      
+      - name: Upload screenshots
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Screenshots
+          path: cypress/screenshots
+          retention-days: 1
+
+      - name: Upload videos
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Videos
+          path: cypress/videos
+          retention-days: 1
