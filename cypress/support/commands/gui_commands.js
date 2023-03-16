@@ -187,33 +187,26 @@ Cypress.Commands.add('gui_createSnippet', snippetObj => {
 })
 
 Cypress.Commands.add('gui_setStatus', (emojiCode, statusText) => {
-  cy.get('.qa-user-avatar').click()
-  cy.contains('button', 'Set status').click()
-  cy.get('#set-user-status-modal___BV_modal_content_')
-    .should('be.visible')
-    .as('setStatusModal')
+  cy.openStatusModal()
+    .as('statusModal')
     .selectEmojiAndStatusText(emojiCode, statusText)
-  cy.get('@setStatusModal')
+  cy.get('@statusModal')
     .find('button:contains(Set status)')
     .click()
   cy.assertStatus(statusText)
 })
 
 Cypress.Commands.add('gui_ediStatus', (emojiCode, statusText) => {
-  cy.openEditStatusModal()
-    .as('editStatusModal')
-    .selectEmojiAndStatusText(emojiCode, statusText)
-  cy.get('@editStatusModal')
-    .find('button:contains(Set status)')
-    .click()
-  cy.assertStatus(statusText)
+  cy.gui_setStatus(emojiCode, statusText)
 })
 
 Cypress.Commands.add('gui_clearStatus', () => {
-  cy.openEditStatusModal()
+  cy.openStatusModal()
     .find('button:contains(Remove status)')
     .click()
-  cy.get('.qa-user-avatar').click()
+  cy.get('.qa-user-avatar')
+    .should('be.visible')
+    .click()
   cy.get('.dropdown-menu.show').should('be.visible')
   cy.get('.dropdown-menu .user-status')
     .should('not.exist')
@@ -236,7 +229,7 @@ Cypress.Commands.add('selectEmojiAndStatusText', { prevSubject: true }, (
     .click()
   cy.get('[name="emoji-menu-search"]')
     .should('be.visible')
-    .type(emojiCode)
+    .type(` ${emojiCode}`)
   cy.contains('.emoji-search-title', 'Search results')
     .next()
     .find('li')
@@ -247,10 +240,10 @@ Cypress.Commands.add('selectEmojiAndStatusText', { prevSubject: true }, (
     .type(statusText)
 })
 
-Cypress.Commands.add('openEditStatusModal', () => {
+Cypress.Commands.add('openStatusModal', () => {
   cy.get('.qa-user-avatar')
     .click()
-  cy.contains('button', 'Edit status').click()
+  cy.contains('button', ' status').click()
   cy.get('#set-user-status-modal___BV_modal_content_')
     .should('be.visible')
 })
