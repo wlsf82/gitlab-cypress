@@ -14,6 +14,10 @@ describe('User info', () => {
     const website = `https://${randomName}.example.com`
 
     cy.api_createUser(newUser)
+      .as('newUser')
+      .its('status')
+      .should('be.equal', 201)
+    cy.get('@newUser')
       .then(({ body }) => {
         cy.api_updateUserWebsite(body.id, website).then(({ status, body }) => {
           expect(status).to.equal(200)
