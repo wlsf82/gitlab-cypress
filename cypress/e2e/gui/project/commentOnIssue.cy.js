@@ -13,7 +13,7 @@ describe('Comment on an Issue', () => {
   it('comments on an issue successfully', function () {
     const comment = faker.random.words(3)
 
-    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
+    cy.visit(`${Cypress.env('USER_NAME')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
 
     cy.gui_commentOnIssue(comment)
 

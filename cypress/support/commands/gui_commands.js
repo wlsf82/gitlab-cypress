@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker/locale/en'
 
 Cypress.Commands.add('gui_login', (
-  username = Cypress.env('user_name'),
-  password = Cypress.env('user_password')
+  username = Cypress.env('USER_NAME'),
+  password = Cypress.env('USER_PASSWORD')
 ) => {
   cy.visit('users/sign_in')
 
@@ -14,8 +14,8 @@ Cypress.Commands.add('gui_login', (
 })
 
 Cypress.Commands.add('gui_login_or_signup_and_login', (
-  username = Cypress.env('user_name'),
-  password = Cypress.env('user_password')
+  username = Cypress.env('USER_NAME'),
+  password = Cypress.env('USER_PASSWORD')
 ) => {
   cy.visit('')
 
@@ -28,7 +28,7 @@ Cypress.Commands.add('gui_login_or_signup_and_login', (
   cy.gui_login(username, password)
 })
 
-Cypress.Commands.add('signup', (password = Cypress.env('user_password')) => {
+Cypress.Commands.add('signup', (password = Cypress.env('USER_PASSWORD')) => {
   cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
   cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
   cy.get('[data-qa-selector="change_password_button"]').click()
@@ -81,7 +81,7 @@ Cypress.Commands.add('gui_createProject', project => {
 })
 
 Cypress.Commands.add('gui_createIssue', (project, issue) => {
-  cy.visit(`${Cypress.env('user_name')}/${project.name}/issues/new`)
+  cy.visit(`${Cypress.env('USER_NAME')}/${project.name}/issues/new`)
 
   cy.get('.qa-issuable-form-title').type(issue.title)
   cy.get('.qa-issuable-form-description').type(issue.description)
@@ -126,7 +126,7 @@ Cypress.Commands.add('gui_removeGroup', ({ name, path }) => {
 })
 
 Cypress.Commands.add('gui_createProjectMilestone', (project, milestone) => {
-  cy.visit(`${Cypress.env('user_name')}/${project.name}/-/milestones/new`)
+  cy.visit(`${Cypress.env('USER_NAME')}/${project.name}/-/milestones/new`)
 
   cy.get('.qa-milestone-title').type(milestone.title)
   cy.get('.qa-milestone-create-button').click()
@@ -162,7 +162,7 @@ Cypress.Commands.add('gui_createFile', file => {
 Cypress.Commands.add('gui_addUserToProject', (user, project) => {
   const { username } = user
 
-  cy.visit(`${Cypress.env('user_name')}/${project}/-/project_members`)
+  cy.visit(`${Cypress.env('USER_NAME')}/${project}/-/project_members`)
   cy.contains('label', 'GitLab member or Email address')
     .next()
     .type(`@${username}`)

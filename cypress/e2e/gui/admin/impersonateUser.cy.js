@@ -52,6 +52,6 @@ describe('User impersonation', () => {
     // Assert
     cy.get('.dropdown-menu-right ul li.current-user')
       .should('contain', 'Administrator')
-      .and('contain', `@${Cypress.env('user_name')}`)
+      .and('contain', `@${Cypress.env('USER_NAME')}`)
   })
 })

@@ -1,6 +1,6 @@
 Cypress.Commands.add('sessionLogin', (
-  user = Cypress.env('user_name'),
-  password = Cypress.env('user_password')
+  user = Cypress.env('USER_NAME'),
+  password = Cypress.env('USER_PASSWORD')
 ) => {
   const login = () => cy.gui_login_or_signup_and_login(user, password)
 

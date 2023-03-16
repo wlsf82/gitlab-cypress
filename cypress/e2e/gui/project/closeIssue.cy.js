@@ -9,7 +9,7 @@ describe('Close an issue', () => {
   })
 
   it('closes an issue successfully', function () {
-    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
+    cy.visit(`${Cypress.env('USER_NAME')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
 
     cy.get('.d-none.btn-close').click()
 

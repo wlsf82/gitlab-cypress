@@ -9,7 +9,7 @@ describe('Close an issue using quick action', () => {
   })
 
   it('closes an issue using a quick action successfully', function () {
-    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
+    cy.visit(`${Cypress.env('USER_NAME')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
 
     cy.gui_commentOnIssue('/close ')
 

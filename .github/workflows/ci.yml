@@ -35,8 +35,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         env:
-          CYPRESS_user_name: ${{ secrets.user_name }}
-          CYPRESS_user_password: ${{ secrets.user_password }}
+          CYPRESS_USER_NAME: ${{ secrets.USER_NAME }}
+          CYPRESS_USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
         with:
           command: npm test
       
@@ -52,6 +52,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: Video
+          name: Videos
           path: cypress/videos
           retention-days: 1

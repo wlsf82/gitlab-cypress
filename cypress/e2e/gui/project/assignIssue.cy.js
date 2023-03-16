@@ -9,11 +9,11 @@ describe('Assign issue', () => {
   })
 
   it('assigns an issue to yourself', function () {
-    cy.visit(`${Cypress.env('user_name')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
+    cy.visit(`${Cypress.env('USER_NAME')}/${this.projectsBody[0].name}/issues/${this.issue.body.iid}`)
 
     cy.contains('assign yourself').click()
 
-    cy.contains('.qa-assignee-block', `@${Cypress.env('user_name')}`)
+    cy.contains('.qa-assignee-block', `@${Cypress.env('USER_NAME')}`)
       .should('be.visible')
   })
 })

@@ -16,7 +16,7 @@ describe('Create new file', () => {
   })
 
   it('creates a new file successfully', () => {
-    cy.visit(`${Cypress.env('user_name')}/${project.name}/new/master`)
+    cy.visit(`${Cypress.env('USER_NAME')}/${project.name}/new/master`)
 
     cy.gui_createFile(project.file)
 
