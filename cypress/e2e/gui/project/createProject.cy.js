@@ -14,7 +14,7 @@ describe('Project', () => {
 
     cy.gui_createProject(project)
 
-    cy.url().should('be.equal', `${Cypress.config('baseUrl')}${Cypress.env('user_name')}/${project.name}`)
+    cy.url().should('be.equal', `${Cypress.config('baseUrl')}${Cypress.env('USER_NAME')}/${project.name}`)
     cy.contains('h1', project.name).should('be.visible')
     cy.contains('p', project.description).should('be.visible')
   })

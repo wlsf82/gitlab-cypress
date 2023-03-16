@@ -8,7 +8,7 @@ describe('Closed issue', () => {
         const { name: projectName } = body[0]
         const { iid: issueIid } = this.issue.body
 
-        cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+        cy.visit(`${Cypress.env('USER_NAME')}/${projectName}/issues/${issueIid}`)
         cy.get('.d-none.btn-close').click()
       })
   })

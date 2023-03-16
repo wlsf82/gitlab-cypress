@@ -1,6 +1,6 @@
 const newUser = require('../../../fixtures/sampleUser')
 const { username: newUserName, password: newUserPassword } = newUser
-const defaultUser = Cypress.env('user_name')
+const defaultUser = Cypress.env('USER_NAME')
 
 describe('Project with multiple users', () => {
   beforeEach(() => {

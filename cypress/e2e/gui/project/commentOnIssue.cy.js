@@ -15,7 +15,7 @@ describe('Issue', () => {
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
-    cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+    cy.visit(`${Cypress.env('USER_NAME')}/${projectName}/issues/${issueIid}`)
 
     cy.gui_commentOnIssue(comment)
 
