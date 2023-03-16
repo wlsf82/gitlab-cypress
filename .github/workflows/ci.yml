@@ -52,6 +52,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: Screenshots
+          name: Video
           path: cypress/videos
           retention-days: 1
