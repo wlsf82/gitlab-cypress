@@ -1,5 +1,7 @@
 # GitLab Cypress
 
+[![main](https://github.com/wlsf82/gitlab-cypress/actions/workflows/main.yml/badge.svg)](https://github.com/wlsf82/gitlab-cypress/actions)
+
 Sample project to experiment with [Cypress](https://cypress.io) for testing the GitLab application.
 
 ## Pre-requirements
