@@ -18,7 +18,7 @@ describe('Group', () => {
    * @TODO: Find out why this tests fails on CI.
    * E.g., https://github.com/wlsf82/gitlab-cypress/actions/runs/4442725501/jobs/7799374091
    */
-  it.skip('removes a group', () => {
+  it('removes a group', () => {
     // Act
     cy.gui_removeGroup(group)
 
