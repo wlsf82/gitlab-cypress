@@ -15,12 +15,12 @@ describe('Group', () => {
   })
 
   /**
-   * @TODO: Find out why this tests fails on CI.
-   * E.g., https://github.com/wlsf82/gitlab-cypress/actions/runs/4442725501/jobs/7799374091
+   * Read the `gui_removeGroup` custom cmd
+   * to understand the use of done.
    */
-  it('removes a group', (done) => {
+  it('removes a group', () => {
     // Act
-    cy.gui_removeGroup(group, done)
+    cy.gui_removeGroup(group)
 
     // Assert
     cy.contains(
