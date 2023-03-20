@@ -112,6 +112,23 @@ Cypress.Commands.add('gui_createGroupLabel', (group, label) => {
 })
 
 Cypress.Commands.add('gui_removeGroup', ({ path }) => {
+  /**
+   * The test that uses this command was flaky when run on CI.
+   * To avoid flakiness, the following was implemented.
+   *
+   * Failure example:
+   * https://github.com/wlsf82/gitlab-cypress/actions/
+   * runs/4463324752/jobs/7838446252
+   *
+   * Reference:
+   * https://docs.cypress.io/api/events/catalog-of-events
+   * #To-catch-a-single-uncaught-exception
+   */
+  cy.on('uncaught:exception', () => {
+    // return false to prevent the error from failing this test
+    return false
+  })
+
   cy.visit(`groups/${path}/-/edit`)
 
   cy.contains('h4', 'Path, transfer, remove')
