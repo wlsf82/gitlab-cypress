@@ -11,5 +11,9 @@ module.exports = defineConfig({
       tasks(on)
       return config
     }
+  },
+  retries: {
+    runMode: 2,
+    openMode: 0
   }
 })
