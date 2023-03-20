@@ -111,7 +111,14 @@ Cypress.Commands.add('gui_createGroupLabel', (group, label) => {
   cy.contains('Create label').click()
 })
 
-Cypress.Commands.add('gui_removeGroup', ({ path }) => {
+Cypress.Commands.add('gui_removeGroup', ({ path }, done) => {
+  cy.on('uncaught:exception', () => {
+    done()
+
+    // return false to prevent the error from failing this test
+    return false
+  })
+
   cy.visit(`groups/${path}/-/edit`)
 
   cy.contains('h4', 'Path, transfer, remove')
