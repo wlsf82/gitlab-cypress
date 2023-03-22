@@ -37,6 +37,7 @@ jobs:
         env:
           CYPRESS_user_name: ${{ secrets.CYPRESS_user_name }}
           CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
           command: npm test
       
