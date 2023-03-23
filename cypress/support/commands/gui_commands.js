@@ -179,7 +179,7 @@ Cypress.Commands.add('gui_createFile', file => {
 Cypress.Commands.add('gui_addUserToProject', (user, project) => {
   const { username } = user
 
-  cy.intercept('GET', `autocomplete/users.json?search=@${user}&active=true`)
+  cy.intercept('GET', `autocomplete/users.json?search=@${username}&active=true`)
     .as('getUser')
 
   cy.visit(`${Cypress.env('user_name')}/${project}/-/project_members`)
