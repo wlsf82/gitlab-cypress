@@ -7,7 +7,7 @@
     "lint": "standard --verbose | snazzy",
     "lint:fix": "standard --fix",
     "test": "npm run test:api && npm run test:gui",
-    "test:cloud": "cypress run --record --spec 'cypress/e2e/api/index.cy.js' && cypress run --record --spec 'cypress/e2e/gui/index.cy.js'",
+    "test:cloud": "cypress run --record --tag 'api' --spec 'cypress/e2e/api/index.cy.js' && cypress run --record --tag 'gui' --spec 'cypress/e2e/gui/index.cy.js'",
     "test:api": "cypress run --spec 'cypress/e2e/api/index.cy.js'",
     "test:gui": "cypress run --spec 'cypress/e2e/gui/index.cy.js'"
   },
