@@ -174,7 +174,11 @@ Cypress.Commands.add('deleteAllUsersButRoot', () => {
   cy.api_getAllUsers()
     .its('body')
     .each(({ username, id }) => {
-      if (username !== 'root') cy.api_deleteUser(id)
+      if (username !== 'root') {
+        cy.api_deleteUser(id)
+          .its('status')
+          .should('equal', 204)
+      }
     })
 })
 
