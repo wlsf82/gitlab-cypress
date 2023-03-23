@@ -49,7 +49,7 @@ Run `npm t` to run all tests in headless mode.
 
 Run `npm run test:api` to run only the API tests in headless mode.
 
-And run `npm run test:gui` to run only the GUI tests in headless mode.
+Run `npm run test:gui` to run only the GUI tests in headless mode.
 
 ### Interactive mode
 
