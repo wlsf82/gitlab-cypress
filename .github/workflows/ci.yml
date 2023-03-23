@@ -39,7 +39,7 @@ jobs:
           CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
-          command: npm test
+          command: npm run test:cloud
       
       - name: Upload screenshots
         if: failure()
