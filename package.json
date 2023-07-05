@@ -6,10 +6,12 @@
     "cy:open": "cypress open",
     "lint": "standard --verbose | snazzy",
     "lint:fix": "standard --fix",
-    "test": "npm run test:api && npm run test:gui",
-    "test:cloud": "cypress run --record --tag 'api' --spec 'cypress/e2e/api/index.cy.js' && cypress run --record --tag 'gui' --spec 'cypress/e2e/gui/index.cy.js'",
+    "test:api:cloud": "cypress run --record --tag 'api' --spec 'cypress/e2e/api/index.cy.js'",
+    "test:gui:project:cloud": "cypress run --record --tag 'gui:project' --spec 'cypress/e2e/gui/project/index.cy.js'",
+    "test:gui:all:but:project:cloud": "cypress run --record --tag 'gui:all:but:project' --spec 'cypress/e2e/gui/index.cy.js'",
     "test:api": "cypress run --spec 'cypress/e2e/api/index.cy.js'",
-    "test:gui": "cypress run --spec 'cypress/e2e/gui/index.cy.js'"
+    "test:gui:project": "cypress run --spec 'cypress/e2e/gui/project/index.cy.js'",
+    "test:gui:all:but:project": "cypress run --spec 'cypress/e2e/gui/index.cy.js'"
   },
   "standard": {
     "globals": [
