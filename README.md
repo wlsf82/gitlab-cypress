@@ -49,7 +49,9 @@ Run `npm t` to run all tests in headless mode.
 
 Run `npm run test:api` to run only the API tests in headless mode.
 
-Run `npm run test:gui` to run only the GUI tests in headless mode.
+Run `npm run test:gui:project` to run only the GUI Project-related tests in headless mode.
+
+Run `npm run test:gui:all:but:project` to run only the GUI Project-not-related tests in headless mode.
 
 ### Interactive mode
 
@@ -57,7 +59,7 @@ Run `npm run test:gui` to run only the GUI tests in headless mode.
 2. Select E2E Testing;
 3. Select one of the available browsers (e.g., Electron), and click the Start button;
 4. **Run the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js) test;**
-5. Finally, click on the test file you want to run and wait for it to finish. Or, click on the `index.cy.js` file (from the [`cypress/e2e/api`](./cypress/e2e/api/) or [`cypress/e2e/gui`](./cypress/e2e/gui/) directories) to run them all at once.
+5. Finally, click on the test file you want to run and wait for it to finish.
 
 > **Important notes about the above steps**
 >
