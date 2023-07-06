@@ -45,6 +45,8 @@ Run `npm i` to install the dev dependencies.
 
 ### Headless mode
 
+Run `npm test` to run all tests in headless mode.
+
 Run `npm run test:api` to run only the API tests in headless mode.
 
 Run `npm run test:gui:project` to run only the GUI Project-related tests in headless mode.
