@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "Sample project to experiment with Cypress for testing the GitLab application",
   "scripts": {
-    "cy:open": "cypress open",
+    "cy:open": "cypress open --config excludeSpecPattern=[cypress/e2e/api/index.cy.js,cypress/e2e/gui/project/index.cy.js,cypress/e2e/gui/allButProject.cy.js]",
     "lint": "standard --verbose | snazzy",
     "lint:fix": "standard --fix",
+    "test": "cypress run --spec 'cypress/e2e/gui/profile/createAccessToken.cy.js,cypress/e2e/api/**/*.cy.js,cypress/e2e/gui/**/*.cy.js' --config excludeSpecPattern=[cypress/e2e/api/index.cy.js,cypress/e2e/gui/project/index.cy.js,cypress/e2e/gui/allButProject.cy.js,cypress/e2e/gui/profile/deleteAccessTokens.cy.js]",
     "test:api:cloud": "cypress run --record --tag 'api' --spec 'cypress/e2e/api/index.cy.js'",
     "test:gui:project:cloud": "cypress run --record --tag 'gui:project' --spec 'cypress/e2e/gui/project/index.cy.js'",
-    "test:gui:all:but:project:cloud": "cypress run --record --tag 'gui:all:but:project' --spec 'cypress/e2e/gui/index.cy.js'",
+    "test:gui:all:but:project:cloud": "cypress run --record --tag 'gui:all:but:project' --spec 'cypress/e2e/gui/allButProject.cy.js'",
     "test:api": "cypress run --spec 'cypress/e2e/api/index.cy.js'",
     "test:gui:project": "cypress run --spec 'cypress/e2e/gui/project/index.cy.js'",
-    "test:gui:all:but:project": "cypress run --spec 'cypress/e2e/gui/index.cy.js'"
+    "test:gui:all:but:project": "cypress run --spec 'cypress/e2e/gui/allButProject.cy.js'"
   },
   "standard": {
     "globals": [
