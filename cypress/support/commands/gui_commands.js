@@ -34,7 +34,7 @@ Cypress.Commands.add('signup', (password = Cypress.env('user_password')) => {
   cy.get('[data-qa-selector="change_password_button"]').click()
 })
 
-Cypress.Commands.add('gui_createAccessToken', (name = faker.datatype.uuid()) => {
+Cypress.Commands.add('gui_createAccessToken', (name = faker.string.uuid()) => {
   cy.visit('profile/personal_access_tokens')
 
   cy.get('.qa-personal-access-token-name-field').type(name)

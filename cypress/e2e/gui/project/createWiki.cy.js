@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en'
 
 describe('Wiki', () => {
-  const project = { name: `project-${faker.datatype.uuid()}` }
+  const project = { name: `project-${faker.string.uuid()}` }
 
   beforeEach(() => {
     cy.api_deleteProjects()

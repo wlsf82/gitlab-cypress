@@ -4,7 +4,7 @@ describe('Group', () => {
   before(() => cy.api_deleteGroups())
 
   it('creates a group', () => {
-    const randomUuid = faker.datatype.uuid()
+    const randomUuid = faker.string.uuid()
     const group = {
       name: `group-${randomUuid}`,
       path: randomUuid

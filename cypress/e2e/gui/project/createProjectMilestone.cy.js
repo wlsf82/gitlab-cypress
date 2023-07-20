@@ -2,9 +2,9 @@ import { faker } from '@faker-js/faker/locale/en'
 
 describe('Projet Milestone', () => {
   const project = {
-    name: `project-${faker.datatype.uuid()}`,
+    name: `project-${faker.string.uuid()}`,
     milestone: {
-      title: `milestone-${faker.datatype.uuid()}`
+      title: `milestone-${faker.string.uuid()}`
     }
   }
 

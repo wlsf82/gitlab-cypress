@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker/locale/en'
 
 describe('File', () => {
   const project = {
-    name: `project-${faker.datatype.uuid()}`,
+    name: `project-${faker.string.uuid()}`,
     file: {
       name: `${faker.random.word()}.txt`,
       content: faker.random.words(10)

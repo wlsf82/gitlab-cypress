@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker/locale/en'
 
 describe('Sub-group', () => {
-  const randomUuid = faker.datatype.uuid()
+  const randomUuid = faker.string.uuid()
   const group = {
     name: `group-${randomUuid}`,
     path: randomUuid,
     subgroup: {
-      name: `sub-group-${faker.datatype.uuid()}`
+      name: `sub-group-${faker.string.uuid()}`
     }
   }
 

@@ -94,13 +94,13 @@ Cypress.Commands.add('api_deleteProjects', () => {
 
 Cypress.Commands.add('api_createIssue', () => {
   setAccessTokenIfNotYetSet()
-  cy.api_createProject({ name: `project-${faker.datatype.uuid()}` })
+  cy.api_createProject({ name: `project-${faker.string.uuid()}` })
     .then(({ body }) => {
       cy.request({
         method: 'POST',
         url: `/api/v4/projects/${body.id}/issues`,
         headers: { 'Private-Token': accessToken },
-        body: { title: `issue-${faker.datatype.uuid()}` }
+        body: { title: `issue-${faker.string.uuid()}` }
       })
     })
 })
