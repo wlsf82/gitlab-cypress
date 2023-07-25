@@ -45,7 +45,7 @@
     "@faker-js/faker": "^8.0.2",
     "cypress": "^12.17.2",
     "cypress-plugin-xhr-toggle": "^1.0.0",
-    "esbuild": "^0.18.15",
+    "esbuild": "^0.18.16",
     "snazzy": "^9.0.0",
     "standard": "^17.1.0"
   }
