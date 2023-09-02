@@ -6,7 +6,6 @@ module.exports = defineConfig({
   projectId: 'vxwq6z',
   e2e: {
     baseUrl: 'http://localhost/',
-    env: { hideXhr: true },
     setupNodeEvents (on, config) {
       esbuildPreprocessor(on)
       tasks(on)
