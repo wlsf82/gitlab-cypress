@@ -44,22 +44,6 @@ jobs:
         with:
           command: npm run test:api:cloud
 
-      - name: Upload screenshots
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Screenshots
-          path: cypress/screenshots
-          retention-days: 1
-
-      - name: Upload videos
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Videos
-          path: cypress/videos
-          retention-days: 1
-
   gui-project-cypress-tests:
     needs: static-analysis
     runs-on: ubuntu-latest
@@ -81,22 +65,6 @@ jobs:
         with:
           command: npm run test:gui:project:cloud
 
-      - name: Upload screenshots
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Screenshots
-          path: cypress/screenshots
-          retention-days: 1
-
-      - name: Upload videos
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Videos
-          path: cypress/videos
-          retention-days: 1
-
   gui-all-but-project-cypress-tests:
     needs: static-analysis
     runs-on: ubuntu-latest
@@ -117,19 +85,3 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
           command: npm run test:gui:all:but:project:cloud
-
-      - name: Upload screenshots
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Screenshots
-          path: cypress/screenshots
-          retention-days: 1
-
-      - name: Upload videos
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Videos
-          path: cypress/videos
-          retention-days: 1
