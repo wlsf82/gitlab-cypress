@@ -43,7 +43,7 @@
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@faker-js/faker": "^8.0.2",
-    "cypress": "^12.17.4",
+    "cypress": "^13.2.0",
     "cypress-plugin-xhr-toggle": "^1.0.0",
     "esbuild": "^0.19.2",
     "snazzy": "^9.0.0",
