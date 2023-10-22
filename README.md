@@ -73,6 +73,19 @@ Here's an example of running all the GUI tests in interactive mode.
 
 https://user-images.githubusercontent.com/2768415/225186210-4dd51c26-9baf-4e65-9b09-6f79a818a7d5.mp4
 
+## Contributing
+
+If you want to contribute to this project, follow the below steps.
+
+1. Fork the project;
+2. Clone your fork and make your changes;
+3. Test your changes locally, and move on only when all tests are green;
+4. Push your changes to GitHub and create a pull request (PR);
+5. After the GitHub Workflow of your PR is green, tag @wlsf82, ask for review and wait for feedback;
+6. If everything goes well, you should have your changes rebased and merged to the main branch. Otherwise, you will receive comments with adjustments needed before merging.
+
+> [This](https://cbea.ms/git-commit/) is the commit messaging guidelines you should follow.
+
 ___
 
 Developed with 💚 by [Walmyr](https://walmyr.dev).
