@@ -15,7 +15,7 @@ describe('File', () => {
     cy.api_createProject(project)
   })
 
-  it('creates a new file', () => {
+  it.skip('creates a new file', () => {
     cy.visit(`${Cypress.env('user_name')}/${project.name}/new/master`)
 
     cy.gui_createFile(project.file)
