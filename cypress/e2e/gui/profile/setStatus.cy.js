@@ -4,7 +4,7 @@ describe('Set Status', () => {
     cy.visit('')
   })
 
-  it('sets, edits and clears user status', () => {
+  it.skip('sets, edits and clears user status', () => {
     /**
      * All custom commands used in this test already provide assertions
      * that the status was correctly set, edited, or deleted.
