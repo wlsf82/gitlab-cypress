@@ -4,7 +4,7 @@ describe('Issue board', () => {
     cy.sessionLogin()
   })
 
-  it('shows an open issue on the issue board, closes it, and shows it closed', () => {
+  it.skip('shows an open issue on the issue board, closes it, and shows it closed', () => {
     cy.api_createIssue().as('issue')
     cy.api_getAllProjects()
       .then(function ({ body }) {

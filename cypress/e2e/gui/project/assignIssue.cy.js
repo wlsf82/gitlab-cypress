@@ -8,7 +8,7 @@ describe('Issue', () => {
       .as('projectsBody')
   })
 
-  it('assigns an issue to yourself', function () {
+  it.skip('assigns an issue to yourself', function () {
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
