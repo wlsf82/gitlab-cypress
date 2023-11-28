@@ -281,3 +281,23 @@ Cypress.Commands.add('assertStatus', statusText => {
     .should('contain', statusText)
   cy.get('.qa-user-avatar').click()
 })
+// CRUD
+Cypress.Commands.add('gui_deployKeyCreationName', (name = faker.string.uuid()) => {
+  cy.visit('http://localhost/admin/deploy_keys/new')
+  cy.get('#deploy_key_title').type(name)
+})
+
+Cypress.Commands.add('gui_deployKeyCreation',() => {
+  const publicKey = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF55ZxNcdW524Ob/y6kFkYu92DjTi2bqLkz37AFgFpZ+ root@example.com'
+  cy.get('#deploy_key_key').type(publicKey)
+  cy.get('.btn-success').click()
+  
+})
+Cypress.Commands.add('gui_deleteKey', () => {
+  cy.get('.page-title')
+    .should('contain',  '1')
+  cy.get('.btn-remove').click()
+  cy.get('.page-title')
+  .should('contain',  '0')
+})
+
