@@ -4,13 +4,13 @@ import '../gui/profile/createAccessToken.cy'
 // GUI tests (all but project)
 import './admin/broadcastMessage.cy'
 // The below test destroys the user session. The next one recreates it.
-import './admin/impersonateUser.cy.js'
+import './admin/impersonateUser.cy'
 import './group/createGroup.cy'
 import './group/createGroupLabel.cy'
-import './group/removeGroup.cy.js'
+import './group/removeGroup.cy'
 import './group/subGroup.cy'
-import './profile/setStatus.cy.js'
-import './snippets/createSnippet.cy.js'
+import './profile/setStatus.cy'
+import './snippets/createSnippet.cy'
 import './authentication/loginAsNonDefaultUser.cy'
 
 // Teardown - Delete access token(s)
