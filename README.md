@@ -11,7 +11,7 @@ You need to have a GitLab local environment such as [GDK](https://gitlab.com/git
 
 You also need to have [Node.js](https://nodejs.org/) and npm installed on your computer.
 
-For this project, the following versions of node and npm were used:
+For this project, the following versions of Node.js and npm were used:
 
 ```sh
 $ node -v
