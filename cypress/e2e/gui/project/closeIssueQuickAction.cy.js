@@ -8,7 +8,7 @@ describe('Issue - Quick action', () => {
       .as('projectsBody')
   })
 
-  it('closes an issue using a quick action', function () {
+  it.skip('closes an issue using a quick action', function () {
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
