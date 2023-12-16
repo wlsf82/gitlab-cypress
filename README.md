@@ -1,7 +1,7 @@
 # GitLab Cypress
 
 [![main](https://github.com/wlsf82/gitlab-cypress/actions/workflows/ci.yml/badge.svg)](https://github.com/wlsf82/gitlab-cypress/actions)
-[![gitlab-cypess](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/vxwq6z&style=flat&logo=cypress)](https://cloud.cypress.io/projects/vxwq6z/runs)
+[![gitlab-cypess](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/vxwq6z/main&style=flat&logo=cypress)](https://cloud.cypress.io/projects/vxwq6z/runs)
 
 Sample project to experiment with [Cypress](https://cypress.io) to test the GitLab application.
 
