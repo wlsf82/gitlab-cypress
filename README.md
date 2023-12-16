@@ -25,7 +25,7 @@ $ npm -v
 
 Run `docker run --publish 80:80 --name gitlab --hostname localhost wlsf82/gitlab-ce` and wait for the environment to be up and running (this might take a minute or so).
 
-All should be ok if, when accessing the http://localhost/ URL, a form to define the password for the `root` user is displayed.
+All should be ok if, when accessing the http://localhost/ URL, a form to define the password of the `root` user is displayed.
 
 > ❗**THERE'S NO NEED TO DEFINE THE PASSWORD MANUALLY**❗
 >
