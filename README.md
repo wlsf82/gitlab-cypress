@@ -49,7 +49,9 @@ Run `npm test` to run all tests in headless mode.
 
 Run `npm run test:api` to run only the API tests in headless mode.
 
-Run `npm run test:gui:project` to run only the GUI Project-related tests in headless mode.
+Run `npm run test:gui:project:issue` to run only the GUI Project-issue-related tests in headless mode.
+
+Run `npm run test:gui:project:but:issue` to run only the GUI Project-but-issue-related tests in headless mode.
 
 Run `npm run test:gui:all:but:project` to run only the GUI Project-not-related tests in headless mode.
 

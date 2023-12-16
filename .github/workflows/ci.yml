@@ -44,7 +44,7 @@ jobs:
         with:
           command: npm run test:api:cloud
 
-  gui-project-cypress-tests:
+  gui-project-issue-cypress-tests:
     needs: static-analysis
     runs-on: ubuntu-latest
     services:
@@ -63,7 +63,28 @@ jobs:
           CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
-          command: npm run test:gui:project:cloud
+          command: npm run test:gui:project:issue:cloud
+
+  gui-project-but-issue-cypress-tests:
+    needs: static-analysis
+    runs-on: ubuntu-latest
+    services:
+      gitlab-ce:
+        image: wlsf82/gitlab-ce:latest
+        ports:
+          - 80:80
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        env:
+          CYPRESS_user_name: ${{ secrets.CYPRESS_user_name }}
+          CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        with:
+          command: npm run test:gui:project:but:issue:cloud
 
   gui-all-but-project-cypress-tests:
     needs: static-analysis
