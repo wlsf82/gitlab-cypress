@@ -34,5 +34,11 @@ describe('Star project', () => {
     cy.get('[data-qa-selector="projects_list"]')
       .find(`ul li:contains(${project.name})`)
       .should('be.visible')
+
+    cy.visit('explore/projects/starred')
+
+    cy.get('[data-qa-selector="projects_list"]')
+      .find(`ul li:contains(${project.name})`)
+      .should('be.visible')
   })
 })
