@@ -6,7 +6,7 @@
     "cy:open": "cypress open --config excludeSpecPattern=[cypress/e2e/api/index.cy.js,cypress/e2e/gui/project/projectIssue.cy.js,cypress/e2e/gui/project/projectButIssue.cy.js,cypress/e2e/gui/allButProject.cy.js]",
     "lint": "standard --verbose | snazzy",
     "lint:fix": "standard --fix",
-    "test": "cypress run --spec 'cypress/e2e/gui/profile/createAccessToken.cy.js,cypress/e2e/api/**/*.cy.js,cypress/e2e/gui/**/*.cy.js' --config excludeSpecPattern=[cypress/e2e/api/index.cy.js,cypress/e2e/gui/project/index.cy.js,cypress/e2e/gui/allButProject.cy.js,cypress/e2e/gui/profile/deleteAccessTokens.cy.js]",
+    "test": "cypress run --spec 'cypress/e2e/gui/profile/createAccessToken.cy.js,cypress/e2e/api/**/*.cy.js,cypress/e2e/gui/**/*.cy.js' --config excludeSpecPattern=[cypress/e2e/api/index.cy.js,cypress/e2e/gui/project/projectIssue.cy.js,cypress/e2e/gui/project/projectButIssue.cy.js,cypress/e2e/gui/allButProject.cy.js,cypress/e2e/gui/profile/deleteAccessTokens.cy.js]",
     "test:api:cloud": "cypress run --record --tag 'api' --spec 'cypress/e2e/api/index.cy.js'",
     "test:gui:project:issue:cloud": "cypress run --record --tag 'gui:project:issue' --spec 'cypress/e2e/gui/project/projectIssue.cy.js'",
     "test:gui:project:but:issue:cloud": "cypress run --record --tag 'gui:project:but:issue' --spec 'cypress/e2e/gui/project/projectButIssue.cy.js'",
