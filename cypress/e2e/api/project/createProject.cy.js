@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en'
 
 describe('Project', () => {
-  before(() => cy.api_deleteProjects())
+  beforeEach(() => cy.api_deleteProjects())
 
   it('creates a project', () => {
     const project = { name: `project-${faker.string.uuid()}` }
