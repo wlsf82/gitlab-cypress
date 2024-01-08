@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en'
 
 describe('Group', () => {
-  before(() => cy.api_deleteGroups())
+  beforeEach(() => cy.api_deleteGroups())
 
   it('creates a group', () => {
     const randomUuid = faker.string.uuid()
