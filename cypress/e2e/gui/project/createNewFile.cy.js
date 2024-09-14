@@ -4,8 +4,8 @@ describe('File', () => {
   const project = {
     name: `project-${faker.string.uuid()}`,
     file: {
-      name: `${faker.random.word()}.txt`,
-      content: faker.random.words(10)
+      name: `${faker.word.sample()}.txt`,
+      content: faker.word.words(10)
     }
   }
 

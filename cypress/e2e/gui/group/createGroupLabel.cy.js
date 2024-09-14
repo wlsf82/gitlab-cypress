@@ -6,7 +6,7 @@ describe('Group Label', () => {
     name: `group-${randomUuid}`,
     path: randomUuid,
     label: {
-      title: `label-${faker.random.word()}`
+      title: `label-${faker.word.sample()}`
     }
   }
 

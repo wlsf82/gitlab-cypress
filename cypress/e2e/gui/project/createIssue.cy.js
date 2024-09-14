@@ -3,10 +3,10 @@ import { faker } from '@faker-js/faker/locale/en'
 describe('Issue', () => {
   const project = {
     name: `project-${faker.string.uuid()}`,
-    description: faker.random.words(5),
+    description: faker.word.words(5),
     issue: {
       title: `issue-${faker.string.uuid()}`,
-      description: faker.random.words(3)
+      description: faker.word.words(3)
     }
   }
 

@@ -9,7 +9,7 @@ describe('Group', () => {
   it('creates a group', () => {
     const group = {
       name: `group-${faker.string.uuid()}`,
-      description: faker.random.words(5)
+      description: faker.word.words(5)
     }
 
     cy.gui_createPublicGroup(group)

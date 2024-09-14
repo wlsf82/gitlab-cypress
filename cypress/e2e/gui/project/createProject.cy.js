@@ -9,7 +9,7 @@ describe('Project', () => {
   it('creates a project', () => {
     const project = {
       name: `project-${faker.string.uuid()}`,
-      description: faker.random.words(5)
+      description: faker.word.words(5)
     }
 
     cy.gui_createProject(project)

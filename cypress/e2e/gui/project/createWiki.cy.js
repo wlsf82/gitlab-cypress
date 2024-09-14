@@ -10,7 +10,7 @@ describe('Wiki', () => {
   })
 
   it('creates a wiki', () => {
-    const wikiContent = faker.random.words(4)
+    const wikiContent = faker.word.words(4)
 
     cy.visit(`${Cypress.env('user_name')}/${project.name}/wikis/home?view=create`)
 

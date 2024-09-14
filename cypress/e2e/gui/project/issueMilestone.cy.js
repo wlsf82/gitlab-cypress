@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en'
 
 describe('Issue milestone', () => {
-  const milestone = { title: `milestone-${faker.random.word()}` }
+  const milestone = { title: `milestone-${faker.word.sample()}` }
 
   beforeEach(() => {
     cy.api_deleteProjects()

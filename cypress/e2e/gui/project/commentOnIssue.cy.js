@@ -11,7 +11,7 @@ describe('Issue', () => {
   })
 
   it('comments on an issue', function () {
-    const comment = faker.random.words(3)
+    const comment = faker.word.words(3)
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
