@@ -12,7 +12,7 @@ on:
 
 jobs:
   static-analysis:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
 
   api-cypress-tests:
     needs: static-analysis
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       gitlab-ce:
         image: wlsf82/gitlab-ce:latest
@@ -46,7 +46,7 @@ jobs:
 
   gui-project-issue-cypress-tests:
     needs: static-analysis
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       gitlab-ce:
         image: wlsf82/gitlab-ce:latest
@@ -67,7 +67,7 @@ jobs:
 
   gui-project-but-issue-cypress-tests:
     needs: static-analysis
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       gitlab-ce:
         image: wlsf82/gitlab-ce:latest
@@ -88,7 +88,7 @@ jobs:
 
   gui-all-but-project-cypress-tests:
     needs: static-analysis
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     services:
       gitlab-ce:
         image: wlsf82/gitlab-ce:latest
