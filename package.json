@@ -44,9 +44,9 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-    "@faker-js/faker": "^9.6.0",
-    "cypress": "^14.2.1",
-    "esbuild": "^0.25.1",
+    "@faker-js/faker": "^9.7.0",
+    "cypress": "^14.3.1",
+    "esbuild": "^0.25.2",
     "eslint": "^8.57.1",
     "snazzy": "^9.0.0",
     "standard": "^17.1.2"
