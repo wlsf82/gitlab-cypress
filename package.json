@@ -41,12 +41,12 @@
   "author": "Walmyr Filho <walmyr@gitlab.com>",
   "license": "MIT",
   "devDependencies": {
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-    "@faker-js/faker": "^9.7.0",
-    "cypress": "^14.3.3",
-    "esbuild": "^0.25.4",
+    "@faker-js/faker": "^9.8.0",
+    "cypress": "^14.4.0",
+    "esbuild": "^0.25.5",
     "eslint": "^8.57.1",
     "snazzy": "^9.0.0",
     "standard": "^17.1.2"
