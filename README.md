@@ -7,7 +7,7 @@ Sample project to experiment with [Cypress](https://cypress.io) to test the GitL
 
 ## Pre-requirements
 
-You need to have a GitLab local environment such as [GDK](https://gitlab.com/gitlab-org/gitlab-development-kit) or Docker up and running.
+You need to have a GitLab local environment up and running using this [Docker image](https://hub.docker.com/r/wlsf82/gitlab-ce).
 
 You also need to have [Node.js](https://nodejs.org/) and npm installed on your computer.
 
