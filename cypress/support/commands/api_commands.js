@@ -235,3 +235,25 @@ Cypress.Commands.add('api_deleteSnippets', () => {
       })
     })
 })
+
+Cypress.Commands.add('api_getAllSystemHooks', () => {
+  setAccessTokenIfNotYetSet()
+  cy.request({
+    method: 'GET',
+    url: '/api/v4/hooks',
+    headers: { 'Private-Token': accessToken }
+  })
+})
+
+Cypress.Commands.add('api_deleteSystemHooks', () => {
+  setAccessTokenIfNotYetSet()
+  cy.api_getAllSystemHooks()
+    .its('body')
+    .each(({ id }) => {
+      cy.request({
+        method: 'DELETE',
+        url: `/api/v4/hooks/${id}`,
+        headers: { 'Private-Token': accessToken }
+      })
+    })
+})

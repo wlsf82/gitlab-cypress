@@ -3,6 +3,7 @@ import '../gui/profile/createAccessToken.cy'
 
 // GUI tests (all but project)
 import './admin/broadcastMessage.cy'
+import './admin/systemHooks.cy'
 // The below test destroys the user session. The next one recreates it.
 import './admin/impersonateUser.cy'
 import './group/createGroup.cy'
