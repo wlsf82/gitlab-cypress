@@ -45,7 +45,7 @@
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@faker-js/faker": "^9.9.0",
-    "cypress": "^14.5.3",
+    "cypress": "^14.5.4",
     "esbuild": "^0.25.8",
     "eslint": "^8.57.1",
     "snazzy": "^9.0.0",
