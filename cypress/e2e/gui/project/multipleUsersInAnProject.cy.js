@@ -1,32 +1,36 @@
 const newUser = require('../../../fixtures/sampleUser')
 const { username: newUserName, password: newUserPassword } = newUser
-const defaultUser = Cypress.env('user_name')
+let defaultUser
 
 describe('Project with multiple users', () => {
   beforeEach(() => {
-    cy.log('--- Pre-conditions ---')
-    cy.log('1. Delete all users and projects to start in a clean state')
-    cy.deleteAllUsersButRoot()
-    cy.api_deleteProjects()
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      defaultUser = USERNAME
 
-    cy.log('2. Create a brand new user')
-    cy.api_createUser(newUser)
+      cy.log('--- Pre-conditions ---')
+      cy.log('1. Delete all users and projects to start in a clean state')
+      cy.deleteAllUsersButRoot()
+      cy.api_deleteProjects()
 
-    cy.log(`3. Create a new issue (and by consequence a new project) for the ${defaultUser} user`)
-    cy.api_createIssue()
-      .its('body.iid')
-      .as('issueIid')
+      cy.log('2. Create a brand new user')
+      cy.api_createUser(newUser)
 
-    cy.log(`4. Sign in as ${defaultUser}`)
-    cy.signInAsDefaultUser()
+      cy.log(`3. Create a new issue (and by consequence a new project) for the ${defaultUser} user`)
+      cy.api_createIssue()
+        .its('body.iid')
+        .as('issueIid')
 
-    cy.log(`5. Add the new user to the ${defaultUser} user's project`)
-    cy.api_getAllProjects().as('projects')
-    cy.get('@projects')
-      .its('body[0].name')
-      .as('projectName')
-      .then(projectName => cy.gui_addUserToProject(newUser, projectName))
-    cy.log('--- End of pre-conditions ---')
+      cy.log(`4. Sign in as ${defaultUser}`)
+      cy.signInAsDefaultUser()
+
+      cy.log(`5. Add the new user to the ${defaultUser} user's project`)
+      cy.api_getAllProjects().as('projects')
+      cy.get('@projects')
+        .its('body[0].name')
+        .as('projectName')
+        .then(projectName => cy.gui_addUserToProject(newUser, projectName))
+      cy.log('--- End of pre-conditions ---')
+    })
   })
 
   it('users reply to each other in an issue', () => {

@@ -16,7 +16,10 @@ describe('Issue label', () => {
         const issueIid = this.issue.body.iid
 
         cy.api_createProjectLabel(project.id, label)
-        cy.visit(`${Cypress.env('user_name')}/${project.name}/issues/${issueIid}`)
+
+        cy.env(['USERNAME']).then(({ USERNAME }) => {
+          cy.visit(`${USERNAME}/${project.name}/issues/${issueIid}`)
+        })
       })
   })
 

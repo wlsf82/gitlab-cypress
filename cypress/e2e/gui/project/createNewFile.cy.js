@@ -16,12 +16,14 @@ describe('File', () => {
   })
 
   it.skip('creates a new file', () => {
-    cy.visit(`${Cypress.env('user_name')}/${project.name}/new/master`)
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      cy.visit(`${USERNAME}/${project.name}/new/master`)
 
-    cy.gui_createFile(project.file)
+      cy.gui_createFile(project.file)
 
-    cy.contains('The file has been successfully created.').should('be.visible')
-    cy.contains(project.file.name).should('be.visible')
-    cy.contains(project.file.content).should('be.visible')
+      cy.contains('The file has been successfully created.').should('be.visible')
+      cy.contains(project.file.name).should('be.visible')
+      cy.contains(project.file.content).should('be.visible')
+    })
   })
 })

@@ -13,7 +13,10 @@ describe('Issue milestone', () => {
         const issueIid = this.issue.body.iid
 
         cy.api_createProjectMilestone(project.id, milestone)
-        cy.visit(`${Cypress.env('user_name')}/${project.name}/issues/${issueIid}`)
+
+        cy.env(['USERNAME']).then(({ USERNAME }) => {
+          cy.visit(`${USERNAME}/${project.name}/issues/${issueIid}`)
+        })
       })
   })
 

@@ -50,8 +50,10 @@ describe('User impersonation', () => {
     cy.get('.qa-user-avatar').click()
 
     // Assert
-    cy.get('.dropdown-menu-right ul li.current-user')
-      .should('contain', 'Administrator')
-      .and('contain', `@${Cypress.env('user_name')}`)
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      cy.get('.dropdown-menu-right ul li.current-user')
+        .should('contain', 'Administrator')
+        .and('contain', `@${USERNAME}`)
+    })
   })
 })

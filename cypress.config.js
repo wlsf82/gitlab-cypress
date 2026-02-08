@@ -3,6 +3,7 @@ const esbuildPreprocessor = require('./cypress/support/esbuild-preprocessor')
 const tasks = require('./cypress/support/tasks')
 
 module.exports = defineConfig({
+  allowCypressEnv: false,
   projectId: 'vxwq6z',
   e2e: {
     baseUrl: 'http://localhost/',

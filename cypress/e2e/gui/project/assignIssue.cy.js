@@ -12,11 +12,13 @@ describe('Issue', () => {
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
-    cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      cy.visit(`${USERNAME}/${projectName}/issues/${issueIid}`)
 
-    cy.contains('assign yourself').click()
+      cy.contains('assign yourself').click()
 
-    cy.contains('.qa-assignee-block', `@${Cypress.env('user_name')}`)
-      .should('be.visible')
+      cy.contains('.qa-assignee-block', `@${USERNAME}`)
+        .should('be.visible')
+    })
   })
 })

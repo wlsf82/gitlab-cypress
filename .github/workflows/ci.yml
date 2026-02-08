@@ -1,4 +1,4 @@
-name: 'Cypress Tests Workflow'
+name: "Cypress Tests Workflow"
 
 on:
   push:
@@ -14,14 +14,14 @@ jobs:
   static-analysis:
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run Standard JS
-      run: npm run lint
+      - name: Run Standard JS
+        run: npm run lint
 
   api-cypress-tests:
     needs: static-analysis
@@ -38,8 +38,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
-          CYPRESS_user_name: ${{ secrets.CYPRESS_user_name }}
-          CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
+          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_USERPASSWORD: ${{ secrets.CYPRESS_USERPASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
           command: npm run test:api:cloud
@@ -59,8 +59,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
-          CYPRESS_user_name: ${{ secrets.CYPRESS_user_name }}
-          CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
+          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_USERPASSWORD: ${{ secrets.CYPRESS_USERPASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
           command: npm run test:gui:project:issue:cloud
@@ -80,8 +80,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
-          CYPRESS_user_name: ${{ secrets.CYPRESS_user_name }}
-          CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
+          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_USERPASSWORD: ${{ secrets.CYPRESS_USERPASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
           command: npm run test:gui:project:but:issue:cloud
@@ -101,8 +101,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
-          CYPRESS_user_name: ${{ secrets.CYPRESS_user_name }}
-          CYPRESS_user_password: ${{ secrets.CYPRESS_user_password }}
+          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_USERPASSWORD: ${{ secrets.CYPRESS_USERPASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
           command: npm run test:gui:all:but:project:cloud

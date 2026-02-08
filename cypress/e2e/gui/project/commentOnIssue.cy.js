@@ -15,11 +15,13 @@ describe('Issue', () => {
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
-    cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      cy.visit(`${USERNAME}/${projectName}/issues/${issueIid}`)
 
-    cy.gui_commentOnIssue(comment)
+      cy.gui_commentOnIssue(comment)
 
-    cy.contains('.qa-noteable-note-item', comment)
-      .should('be.visible')
+      cy.contains('.qa-noteable-note-item', comment)
+        .should('be.visible')
+    })
   })
 })

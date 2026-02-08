@@ -12,16 +12,18 @@ describe('Issue - Quick action', () => {
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
-    cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      cy.visit(`${USERNAME}/${projectName}/issues/${issueIid}`)
 
-    cy.gui_commentOnIssue('/close ')
+      cy.gui_commentOnIssue('/close ')
 
-    cy.contains('Closed this issue')
-      .should('be.visible')
+      cy.contains('Closed this issue')
+        .should('be.visible')
 
-    cy.reload()
+      cy.reload()
 
-    cy.contains('.status-box-issue-closed', 'Closed')
-      .should('be.visible')
+      cy.contains('.status-box-issue-closed', 'Closed')
+        .should('be.visible')
+    })
   })
 })

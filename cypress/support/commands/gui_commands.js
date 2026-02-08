@@ -1,37 +1,45 @@
 import { faker } from '@faker-js/faker/locale/en'
 
-Cypress.Commands.add('gui_login', (
-  username = Cypress.env('user_name'),
-  password = Cypress.env('user_password')
-) => {
-  cy.visit('users/sign_in')
+Cypress.Commands.add('gui_login', (user, password) => {
+  cy.env(['USERNAME', 'USERPASSWORD']).then(({ USERNAME, USERPASSWORD }) => {
+    user = USERNAME
+    password = USERPASSWORD
 
-  cy.get('[data-qa-selector="login_field"]').type(username)
-  cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
-  cy.get('[data-qa-selector="sign_in_button"]').click()
+    cy.visit('users/sign_in')
 
-  cy.get('.qa-user-avatar').should('exist')
-})
+    cy.get('[data-qa-selector="login_field"]').type(user)
+    cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
+    cy.get('[data-qa-selector="sign_in_button"]').click()
 
-Cypress.Commands.add('gui_login_or_signup_and_login', (
-  username = Cypress.env('user_name'),
-  password = Cypress.env('user_password')
-) => {
-  cy.visit('')
-
-  cy.url().then(url => {
-    if (url.includes('/users/password/edit?reset_password_token=')) {
-      cy.signup(password)
-    }
+    cy.get('.qa-user-avatar').should('exist')
   })
-
-  cy.gui_login(username, password)
 })
 
-Cypress.Commands.add('signup', (password = Cypress.env('user_password')) => {
-  cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
-  cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
-  cy.get('[data-qa-selector="change_password_button"]').click()
+Cypress.Commands.add('gui_login_or_signup_and_login', (username, password) => {
+  cy.env(['USERNAME', 'USERPASSWORD']).then(({ USERNAME, USERPASSWORD }) => {
+    username = USERNAME
+    password = USERPASSWORD
+
+    cy.visit('')
+
+    cy.url().then(url => {
+      if (url.includes('/users/password/edit?reset_password_token=')) {
+        cy.signup(password)
+      }
+    })
+
+    cy.gui_login(USERNAME, password)
+  })
+})
+
+Cypress.Commands.add('signup', (password) => {
+  cy.env(['USERPASSWORD']).then(({ USERPASSWORD }) => {
+    password = USERPASSWORD
+
+    cy.get('[data-qa-selector="password_field"]').type(password, { log: false })
+    cy.get('[data-qa-selector="password_confirmation_field"]').type(password, { log: false })
+    cy.get('[data-qa-selector="change_password_button"]').click()
+  })
 })
 
 Cypress.Commands.add('gui_createAccessToken', (name = faker.string.uuid()) => {
@@ -81,11 +89,13 @@ Cypress.Commands.add('gui_createProject', project => {
 })
 
 Cypress.Commands.add('gui_createIssue', (project, issue) => {
-  cy.visit(`${Cypress.env('user_name')}/${project.name}/issues/new`)
+  cy.env(['USERNAME']).then(({ USERNAME }) => {
+    cy.visit(`${USERNAME}/${project.name}/issues/new`)
 
-  cy.get('.qa-issuable-form-title').type(issue.title)
-  cy.get('.qa-issuable-form-description').type(issue.description)
-  cy.contains('Submit issue').click()
+    cy.get('.qa-issuable-form-title').type(issue.title)
+    cy.get('.qa-issuable-form-description').type(issue.description)
+    cy.contains('Submit issue').click()
+  })
 })
 
 Cypress.Commands.add('gui_createPublicGroup', group => {
@@ -143,10 +153,12 @@ Cypress.Commands.add('gui_removeGroup', ({ path }) => {
 })
 
 Cypress.Commands.add('gui_createProjectMilestone', (project, milestone) => {
-  cy.visit(`${Cypress.env('user_name')}/${project.name}/-/milestones/new`)
+  cy.env(['USERNAME']).then(({ USERNAME }) => {
+    cy.visit(`${USERNAME}/${project.name}/-/milestones/new`)
 
-  cy.get('.qa-milestone-title').type(milestone.title)
-  cy.get('.qa-milestone-create-button').click()
+    cy.get('.qa-milestone-title').type(milestone.title)
+    cy.get('.qa-milestone-create-button').click()
+  })
 })
 
 Cypress.Commands.add('gui_labelIssueWith', label => {
@@ -182,23 +194,25 @@ Cypress.Commands.add('gui_addUserToProject', (user, project) => {
   cy.intercept('GET', `autocomplete/users.json?search=@${username}&active=true`)
     .as('getUser')
 
-  cy.visit(`${Cypress.env('user_name')}/${project}/-/project_members`)
-  cy.contains('label', 'GitLab member or Email address')
-    .next()
-    .type(`@${username}`)
-  cy.wait('@getUser')
-    .its('response.statusCode')
-    .should('be.oneOf', [200, 304])
-  cy.contains('li', `@${username}`)
-    .as('userListItem')
-    .should('be.visible')
-  cy.get('@userListItem')
-    .click()
-  cy.get('.qa-add-member-button').click()
-  cy.contains('.flash-notice', 'Users were successfully added.')
-    .should('be.visible')
-  cy.contains('.qa-members-list', `@${username}`)
-    .should('be.visible')
+  cy.env(['USERNAME']).then(({ USERNAME }) => {
+    cy.visit(`${USERNAME}/${project}/-/project_members`)
+    cy.contains('label', 'GitLab member or Email address')
+      .next()
+      .type(`@${username}`)
+    cy.wait('@getUser')
+      .its('response.statusCode')
+      .should('be.oneOf', [200, 304])
+    cy.contains('li', `@${username}`)
+      .as('userListItem')
+      .should('be.visible')
+    cy.get('@userListItem')
+      .click()
+    cy.get('.qa-add-member-button').click()
+    cy.contains('.flash-notice', 'Users were successfully added.')
+      .should('be.visible')
+    cy.contains('.qa-members-list', `@${username}`)
+      .should('be.visible')
+  })
 })
 
 Cypress.Commands.add('gui_createSnippet', snippetObj => {

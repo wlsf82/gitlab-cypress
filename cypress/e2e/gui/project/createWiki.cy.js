@@ -12,12 +12,14 @@ describe('Wiki', () => {
   it('creates a wiki', () => {
     const wikiContent = faker.word.words(4)
 
-    cy.visit(`${Cypress.env('user_name')}/${project.name}/wikis/home?view=create`)
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      cy.visit(`${USERNAME}/${project.name}/wikis/home?view=create`)
 
-    cy.get('.qa-wiki-content-textarea').type(wikiContent)
-    cy.contains('Create page').click()
+      cy.get('.qa-wiki-content-textarea').type(wikiContent)
+      cy.contains('Create page').click()
 
-    cy.url().should('be.equal', `${Cypress.config('baseUrl')}${Cypress.env('user_name')}/${project.name}/wikis/home`)
-    cy.contains('[data-qa-selector="wiki_page_content"]', wikiContent).should('be.visible')
+      cy.url().should('be.equal', `${Cypress.config('baseUrl')}${USERNAME}/${project.name}/wikis/home`)
+      cy.contains('[data-qa-selector="wiki_page_content"]', wikiContent).should('be.visible')
+    })
   })
 })

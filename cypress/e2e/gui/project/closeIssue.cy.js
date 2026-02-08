@@ -12,11 +12,13 @@ describe('Issue', () => {
     const { name: projectName } = this.projectsBody[0]
     const { iid: issueIid } = this.issue.body
 
-    cy.visit(`${Cypress.env('user_name')}/${projectName}/issues/${issueIid}`)
+    cy.env(['USERNAME']).then(({ USERNAME }) => {
+      cy.visit(`${USERNAME}/${projectName}/issues/${issueIid}`)
 
-    cy.get('.d-none.btn-close').click()
+      cy.get('.d-none.btn-close').click()
 
-    cy.contains('.status-box-issue-closed', 'Closed')
-      .should('be.visible')
+      cy.contains('.status-box-issue-closed', 'Closed')
+        .should('be.visible')
+    })
   })
 })
