@@ -7,7 +7,7 @@ Sample project to experiment with [Cypress](https://cypress.io) to test the GitL
 
 ## Pre-requirements
 
-You need to have a GitLab local environment up and running using this [Docker image](https://hub.docker.com/r/wlsf82/gitlab-ce).
+You need a GitLab local environment running using this [Docker image](https://hub.docker.com/r/wlsf82/gitlab-ce).
 
 You also need to have [Node.js](https://nodejs.org/) and npm installed on your computer.
 
@@ -25,7 +25,7 @@ $ npm -v
 
 Run `docker run --publish 80:80 --name gitlab --hostname localhost wlsf82/gitlab-ce` and wait for the environment to be up and running (this might take a minute or so).
 
-All should be ok if, when accessing the http://localhost/ URL, a form to define the password of the `root` user is displayed.
+Everything should be OK if, when you access `http://localhost/`, a form appears to set the `root` user password.
 
 > ❗**THERE'S NO NEED TO DEFINE THE PASSWORD MANUALLY**❗
 >
@@ -41,7 +41,7 @@ Run `npm i` to install the dev dependencies.
 
 > Before running the tests, create a file called `cypress.env.json` in the project root directory, based on the [`cypress.env.example.json`](./cypress.env.example.json) file, and update the value of the `USERPASSWORD` property with one of your choice.
 >
-> By default, the tests will run against `http://localhost/`, but if you need to run them in a different URL (e.g.: `http://localhost:3000/`), change the `baseUrl` property in the [`cypress.config.js`](./cypress.config.js) file.
+> By default, the tests will run against `http://localhost/`, but if you need to run them at a different URL (e.g., `http://localhost:3000/`), change the `baseUrl` property in the [`cypress.config.js`](./cypress.config.js) file.
 
 ### Headless mode
 
@@ -67,7 +67,7 @@ Run `npm run test:gui:all:but:project` to run only the GUI Project-not-related t
 >
 > **Do not skip step 4!** It will authenticate the `root` user, create a GitLab Access Token, and make it available to all other tests while the Cypress App is kept open unless the [`cypress/e2e/gui/profile/deleteAccessTokens.cy.js`](./cypress/e2e/gui/profile/deleteAccessTokens.cy.js) test is run. In such a case, the [`cypress/e2e/gui/profile/createAccessToken.cy.js`](./cypress/e2e/gui/profile/createAccessToken.cy.js) test needs to be re-run.
 >
-> Also, step 4 creates a session for the `root` user, which will be restored by most tests. This means that login via GUI should only happens once, speeding up the execution. 🏎️
+> Also, step 4 creates a session for the `root` user, which most tests will restore. This means login via the GUI should happen only once, speeding up execution. 🏎️
 
 #### Example
 
@@ -77,14 +77,14 @@ https://user-images.githubusercontent.com/2768415/225186210-4dd51c26-9baf-4e65-9
 
 ## Contributing
 
-If you want to contribute to this project, follow the below steps.
+If you want to contribute to this project, follow the steps below.
 
 1. Fork the project;
 2. Clone your fork and make your changes;
 3. Test your changes locally, and move on only when all tests are green;
 4. Push your changes to GitHub and create a pull request (PR);
-5. After the GitHub Workflow of your PR is green, tag @wlsf82, ask for review and wait for feedback;
-6. If everything goes well, you should have your changes rebased and merged to the main branch. Otherwise, you will receive comments with adjustments needed before merging.
+5. After the GitHub Workflow of your PR is green, tag @wlsf82, ask for review, and wait for feedback;
+6. If everything goes well, you should have your changes rebased and merged into the main branch. Otherwise, you will receive comments with adjustments needed before merging.
 
 > [This](https://cbea.ms/git-commit/) is the commit messaging guidelines you should follow.
 
